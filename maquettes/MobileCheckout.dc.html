@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Kat's Eye Création — Commande mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4EEE3}
+a{color:#4F5229}a:hover{color:#3A3C1D}
+.ph{background-color:#E3D6C2;background-image:repeating-linear-gradient(45deg,rgba(107,74,50,.07) 0 2px,transparent 2px 12px)}
+.ph-k{background-color:#B9B48C;background-image:repeating-linear-gradient(-45deg,rgba(46,42,31,.08) 0 2px,transparent 2px 12px)}
+.ph-w{background-color:#8A6448;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 3px,transparent 3px 14px)}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.f label{font-size:14px;font-weight:700}
+.f input,.f select{min-height:50px;padding:0 14px;border-radius:14px;border:1.5px solid #BFAE92;background:#FBF7F0;font:16px 'Nunito Sans',sans-serif;color:#2E2A1F;box-sizing:border-box;width:100%}
+.f input:focus,.f select:focus{outline:2px solid #4F5229;outline-offset:1px}
+</style>
+</helmet>
+<div style="width: 390px; min-height: 2000px; box-sizing: border-box; font-family: 'Nunito Sans', system-ui, sans-serif; color: #2E2A1F; background: #F4EEE3; overflow: hidden">
+
+<!-- En-tête -->
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 1.5px dashed #CDBFA8">
+<a href="MobileCart.dc.html" aria-label="Retour au panier" style="width: 44px; height: 44px; display: grid; place-items: center; color: #2E2A1F"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 600">Kat's Eye</span>
+<span style="width: 44px; display: grid; place-items: center" aria-label="Paiement sécurisé" role="img"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.7" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+</header>
+
+<!-- Étapes -->
+<ol aria-label="Étapes de commande" style="list-style: none; margin: 0; padding: 14px 16px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; font-size: 12px; font-weight: 700; text-align: center">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="3">
+<li aria-current="{{st.current}}" style="display: flex; flex-direction: column; gap: 6px; color: {{st.fg}}"><span style="height: 4px; border-radius: 2px; background: {{st.bar}}; border-top: {{st.dash}}; box-sizing: border-box"></span>{{st.label}}</li>
+</sc-for>
+</ol>
+
+<sc-if value="{{inForm}}" hint-placeholder-val="{{ true }}">
+<!-- Récap repliable -->
+<div style="margin: 0 16px; background: #FBF7F0; border-radius: 18px; outline: 1.5px dashed #CDBFA8; outline-offset: -6px">
+<button type="button" aria-expanded="{{summaryOpen}}" onClick="{{toggleSummary}}" style="width: 100%; min-height: 56px; padding: 0 18px; display: flex; justify-content: space-between; align-items: center; border: none; background: transparent; cursor: pointer; font: 700 15px 'Nunito Sans', sans-serif; color: #2E2A1F">
+<span>{{summaryLabel}}</span><span style="font-family: Fraunces, Georgia, serif; font-size: 18px">[TOTAL] €</span>
+</button>
+<sc-if value="{{summaryOpen}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 0 18px 18px; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="3">
+<div style="display: flex; gap: 12px; align-items: center">
+<div class="{{it.ph}}" style="width: 52px; height: 52px; border-radius: 12px; flex: none"></div>
+<span style="flex: 1; min-width: 0; font-size: 14px"><strong>{{it.name}}</strong> × {{it.qty}}</span>
+<span style="font-weight: 700; font-size: 14px">[PRIX] €</span>
+</div>
+</sc-for>
+<div style="display: flex; justify-content: space-between; font-size: 14px; border-top: 1.5px dashed #CDBFA8; padding-top: 10px"><span>Livraison</span><strong>{{shipPrice}}</strong></div>
+</div>
+</sc-if>
+</div>
+
+<!-- Livraison -->
+<sc-if value="{{isShip}}" hint-placeholder-val="{{ true }}">
+<form onSubmit="{{goPay}}" style="padding: 24px 16px 40px; display: flex; flex-direction: column; gap: 26px">
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.1">Où envoyer votre colis ?</h1>
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px">
+<legend style="padding: 0; margin-bottom: 12px; font-family: Fraunces, Georgia, serif; font-size: 21px">Vos coordonnées</legend>
+<div class="f"><label for="m-email">E-mail</label><input id="m-email" type="email" autocomplete="email" placeholder="vous@exemple.fr"></div>
+<div class="f"><label for="m-tel">Téléphone</label><input id="m-tel" type="tel" autocomplete="tel"></div>
+</fieldset>
+<fieldset style="border: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px">
+<legend style="padding: 0; margin-bottom: 12px; font-family: Fraunces, Georgia, serif; font-size: 21px">Adresse de livraison</legend>
+<div class="f"><label for="m-fn">Prénom</label><input id="m-fn" type="text" autocomplete="given-name"></div>
+<div class="f"><label for="m-ln">Nom</label><input id="m-ln" type="text" autocomplete="family-name"></div>
+<div class="f" style="grid-column: 1 / -1"><label for="m-addr">Adresse</label><input id="m-addr" type="text" autocomplete="address-line1"></div>
+<div class="f" style="grid-column: 1 / -1"><label for="m-addr2">Complément <span style="font-weight: 400; color: #6E6350">(facultatif)</span></label><input id="m-addr2" type="text" autocomplete="address-line2"></div>
+<div class="f"><label for="m-zip">Code postal</label><input id="m-zip" type="text" inputmode="numeric" autocomplete="postal-code"></div>
+<div class="f"><label for="m-city">Ville</label><input id="m-city" type="text" autocomplete="address-level2"></div>
+<div class="f" style="grid-column: 1 / -1"><label for="m-country">Pays</label><select id="m-country" autocomplete="country-name"><option>France</option><option>Belgique</option><option>Suisse</option><option>Luxembourg</option></select></div>
+</fieldset>
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+<legend style="padding: 0; margin-bottom: 12px; font-family: Fraunces, Georgia, serif; font-size: 21px">Mode de livraison</legend>
+<sc-for list="{{shipping}}" as="sh" hint-placeholder-count="3">
+<label style="display: flex; align-items: center; gap: 12px; min-height: 62px; padding: 0 14px; border-radius: 16px; border: 1.5px solid {{sh.border}}; background: {{sh.bg}}; cursor: pointer">
+<input type="radio" name="m-ship2" checked="{{sh.selected}}" onChange="{{sh.pick}}" style="width: 18px; height: 18px; flex: none; accent-color: #4F5229">
+<span style="flex: 1; display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 15px">{{sh.label}}</span><span style="font-size: 12px; color: #5C5241">{{sh.hint}}</span></span>
+<span style="font-weight: 700; font-size: 14px">{{sh.price}}</span>
+</label>
+</sc-for>
+</fieldset>
+<button type="submit" style="min-height: 58px; border-radius: 29px; border: none; background: {{accent}}; color: #F4EEE3; font: 700 16px 'Nunito Sans', sans-serif; cursor: pointer">Continuer vers le paiement</button>
+</form>
+</sc-if>
+
+<!-- Paiement -->
+<sc-if value="{{isPay}}" hint-placeholder-val="{{ false }}">
+<form onSubmit="{{goDone}}" style="padding: 24px 16px 40px; display: flex; flex-direction: column; gap: 22px">
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 34px">Paiement</h1>
+<div style="padding: 14px 16px; border-radius: 16px; border: 1.5px dashed #BFAE92; font-size: 14px; display: flex; flex-direction: column; gap: 4px">
+<span><strong>Livré à :</strong> [Prénom Nom], [CP Ville]</span>
+<span><strong>Par :</strong> {{shipLabel}}</span>
+<button type="button" onClick="{{goShip}}" style="align-self: flex-start; min-height: 44px; padding: 0; border: none; background: transparent; color: #4F5229; font: 700 14px 'Nunito Sans', sans-serif; text-decoration: underline; cursor: pointer">Modifier</button>
+</div>
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+<legend style="padding: 0; margin-bottom: 12px; font-family: Fraunces, Georgia, serif; font-size: 21px">Moyen de paiement</legend>
+<sc-for list="{{methods}}" as="m" hint-placeholder-count="3">
+<label style="display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 14px; border-radius: 16px; border: 1.5px solid {{m.border}}; background: {{m.bg}}; cursor: pointer; font-weight: 700; font-size: 15px">
+<input type="radio" name="m-pay" checked="{{m.selected}}" onChange="{{m.pick}}" style="width: 18px; height: 18px; flex: none; accent-color: #4F5229">{{m.label}}
+</label>
+</sc-for>
+</fieldset>
+<sc-if value="{{isCard}}" hint-placeholder-val="{{ true }}">
+<div style="background: #FBF7F0; border-radius: 20px; padding: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; outline: 1.5px dashed #CDBFA8; outline-offset: -6px">
+<div class="f" style="grid-column: 1 / -1"><label for="m-cname">Nom sur la carte</label><input id="m-cname" type="text" autocomplete="cc-name"></div>
+<div class="f" style="grid-column: 1 / -1"><label for="m-cnum">Numéro de carte</label><input id="m-cnum" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="•••• •••• •••• ••••"></div>
+<div class="f"><label for="m-cexp">Expiration</label><input id="m-cexp" type="text" autocomplete="cc-exp" placeholder="MM / AA"></div>
+<div class="f"><label for="m-ccvc">Cryptogramme</label><input id="m-ccvc" type="text" inputmode="numeric" autocomplete="cc-csc"></div>
+<p style="grid-column: 1 / -1; margin: 0; font-size: 12px; color: #5C5241">Champs fournis par [PRESTATAIRE DE PAIEMENT].</p>
+</div>
+</sc-if>
+<sc-if value="{{isOther}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; padding: 16px; border-radius: 16px; background: #FBF7F0; font-size: 14px; color: #4A4234">Vous serez redirigé·e vers {{methodLabel}} pour finaliser le paiement.</p>
+</sc-if>
+<div style="display: flex; flex-direction: column">
+<label style="display: flex; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; font-size: 14px">
+<input type="checkbox" checked="{{sameBilling}}" onChange="{{toggleBilling}}" style="width: 20px; height: 20px; flex: none; accent-color: #4F5229">Facturation identique à la livraison
+</label>
+<sc-if value="{{otherBilling}}" hint-placeholder-val="{{ false }}">
+<div class="f" style="margin: 4px 0 8px"><label for="m-bill">Adresse de facturation</label><input id="m-bill" type="text" autocomplete="billing street-address"></div>
+</sc-if>
+<label style="display: flex; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; font-size: 14px">
+<input type="checkbox" required style="width: 20px; height: 20px; flex: none; accent-color: #4F5229"><span>J'accepte les <a href="MobileCheckout.dc.html">CGV</a></span>
+</label>
+</div>
+<button type="submit" style="min-height: 58px; border-radius: 29px; border: none; background: {{accent}}; color: #F4EEE3; font: 700 16px 'Nunito Sans', sans-serif; cursor: pointer">Payer [TOTAL] €</button>
+</form>
+</sc-if>
+</sc-if>
+
+<!-- Confirmation -->
+<sc-if value="{{isDone}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 32px 16px 48px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center">
+<div style="width: 96px; height: 96px; border-radius: 48px; background: #4F5229; display: grid; place-items: center; outline: 1.5px dashed #4F5229; outline-offset: 7px">
+<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#F4EEE3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+</div>
+<p style="margin: 8px 0 0; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: #6B4A32; font-weight: 700">Commande n° [NUMÉRO]</p>
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1.1">Merci ! Votre cocon <em style="color: {{accent}}">se prépare à l'atelier.</em></h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A4234">Un e-mail de confirmation est parti vers [adresse e-mail]. Je vous écris dès que le colis est expédié, sous [DÉLAI].</p>
+<div style="width: 100%; display: flex; flex-direction: column; gap: 10px; text-align: left">
+<div style="padding: 14px 16px; border-radius: 16px; border: 1.5px dashed #BFAE92; display: flex; justify-content: space-between; font-size: 14px"><strong>Livraison</strong><span>{{shipLabel}}</span></div>
+<div style="padding: 14px 16px; border-radius: 16px; border: 1.5px dashed #BFAE92; display: flex; justify-content: space-between; font-size: 14px"><strong>Paiement</strong><span>{{methodLabel}}</span></div>
+<div style="padding: 14px 16px; border-radius: 16px; border: 1.5px dashed #BFAE92; display: flex; justify-content: space-between; font-size: 14px"><strong>Total réglé</strong><span>[TOTAL] €</span></div>
+</div>
+<p style="margin: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 19px; color: #6B4A32">— Kat</p>
+<a href="MobileHome.dc.html" style="width: 100%; display: flex; align-items: center; justify-content: center; min-height: 54px; border-radius: 27px; background: {{accent}}; color: #F4EEE3; text-decoration: none; font-weight: 700">Retour à la boutique</a>
+<button type="button" onClick="{{restart}}" style="width: 100%; min-height: 54px; border-radius: 27px; border: 1.5px solid #6B4A32; background: transparent; color: #6B4A32; font: 700 15px 'Nunito Sans', sans-serif; cursor: pointer">Revoir le parcours</button>
+</div>
+</sc-if>
+
+<footer style="background: #3A2B1F; color: #BFB39C; padding: 24px 16px; font-size: 12px">© 2026 Kat's Eye Création — fait main avec amour</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#5E6233","options":["#5E6233","#6B4A32","#4A5A3A","#7A5A2E"]},"startStep":{"editor":"enum","options":["livraison","paiement","confirmation"],"default":"livraison"},"$preview":{"width":390,"height":2000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const map = { livraison: 2, paiement: 3, confirmation: 4 };
+    this.state = { step: map[props.startStep] ?? 2, ship: 0, method: 0, sameBilling: true, summaryOpen: false };
+  }
+  componentDidUpdate(prev) {
+    if (prev.startStep !== this.props.startStep) {
+      const map = { livraison: 2, paiement: 3, confirmation: 4 };
+      this.setState({ step: map[this.props.startStep] ?? 2 });
+    }
+  }
+  renderVals() {
+    const s = this.state;
+    const go = (step) => (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ step }); };
+    const shipDefs = [
+      { label: 'À domicile', hint: '[Transporteur] · [délai]', price: '[TARIF] €' },
+      { label: 'Point relais', hint: 'Choix du point ensuite · [délai]', price: '[TARIF] €' },
+      { label: 'Retrait à l’atelier', hint: '[Ville] · sur rendez-vous', price: 'Gratuit' }
+    ];
+    const methodDefs = ['Carte bancaire', 'PayPal', '[Autre moyen]'];
+    const stepDefs = [{ n: 1, label: 'Panier' }, { n: 2, label: 'Livraison' }, { n: 3, label: 'Paiement' }];
+    const items = [
+      { name: 'Plaid « Sous-bois »', ph: 'ph-k', qty: 1 },
+      { name: 'Coussin « Écorce »', ph: 'ph-w', qty: 2 },
+      { name: 'Pochette « Mousse »', ph: 'ph', qty: 1 }
+    ];
+    return {
+      accent: this.props.accent ?? '#5E6233',
+      inForm: s.step < 4,
+      isShip: s.step === 2,
+      isPay: s.step === 3,
+      isDone: s.step === 4,
+      isCard: s.method === 0,
+      isOther: s.method !== 0,
+      methodLabel: methodDefs[s.method],
+      sameBilling: s.sameBilling,
+      otherBilling: !s.sameBilling,
+      toggleBilling: () => this.setState({ sameBilling: !s.sameBilling }),
+      summaryOpen: s.summaryOpen,
+      summaryLabel: (s.summaryOpen ? 'Masquer' : 'Voir') + ' ma commande (' + items.reduce((n, x) => n + x.qty, 0) + ')',
+      toggleSummary: () => this.setState({ summaryOpen: !s.summaryOpen }),
+      shipLabel: shipDefs[s.ship].label,
+      shipPrice: shipDefs[s.ship].price,
+      goPay: go(3),
+      goShip: go(2),
+      goDone: go(4),
+      restart: go(2),
+      items,
+      steps: stepDefs.map((d) => {
+        const reached = d.n <= s.step;
+        return {
+          label: d.label,
+          current: d.n === s.step ? 'step' : 'false',
+          fg: reached ? '#2E2A1F' : '#6E6350',
+          bar: reached ? (d.n === s.step ? '#6B4A32' : '#4F5229') : 'transparent',
+          dash: reached ? 'none' : '2px dashed #9C8C72'
+        };
+      }),
+      shipping: shipDefs.map((d, i) => ({ ...d, selected: i === s.ship, border: i === s.ship ? '#4F5229' : '#CDBFA8', bg: i === s.ship ? '#EEEBDC' : 'transparent', pick: () => this.setState({ ship: i }) })),
+      methods: methodDefs.map((label, i) => ({ label, selected: i === s.method, border: i === s.method ? '#4F5229' : '#CDBFA8', bg: i === s.method ? '#EEEBDC' : 'transparent', pick: () => this.setState({ method: i }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

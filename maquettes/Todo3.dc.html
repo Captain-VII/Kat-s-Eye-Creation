@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Todo Shopify — feuille 3</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+.it{display:flex;align-items:flex-start;gap:12px;padding:6px 0;font-size:15px;line-height:1.4}
+.it::before{content:"";flex:none;width:16px;height:16px;margin-top:2px;border:1.5px solid #2E2A1F;border-radius:3px}
+.it span{flex:1}
+.who{flex:none;font-size:12px;font-weight:700;padding:1px 8px;border-radius:9px;border:1px solid currentColor}
+.toi{color:#4F5229}.kat{color:#6B4A32}
+.sub{margin:14px 0 2px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B4A32}
+.mini{display:flex;align-items:center;gap:8px;font-size:14px}
+.mini::before{content:"";flex:none;width:14px;height:14px;border:1.5px solid #2E2A1F;border-radius:3px}
+code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:#F1ECE2;padding:0 4px;border-radius:3px}
+</style>
+</helmet>
+<div style="width: 794px; height: 1123px; box-sizing: border-box; padding: 52px 64px; background: #FFFFFF; color: #2E2A1F; font-family: 'Nunito Sans', system-ui, sans-serif; display: flex; flex-direction: column">
+
+<div style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 14px; border-bottom: 1.5px dashed #9C8C72">
+<div>
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #6B4A32">Kat's Eye Création · Mise en ligne</p>
+<h1 style="margin: 4px 0 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 34px">Le thème et l'ouverture</h1>
+</div>
+<span style="font-size: 13px; font-weight: 700; color: #5C5241">Feuille 3 / 3</span>
+</div>
+
+<h2 style="margin: 20px 0 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 22px">Étape 3 · Coder le thème <span style="font-family: 'Nunito Sans', sans-serif; font-size: 13px; font-weight: 700; color: #4F5229">(Toi)</span></h2>
+
+<p class="sub">La base</p>
+<div class="it"><span>Partir de Dawn avec <code>shopify theme init</code></span></div>
+<div class="it"><span>Couleurs (crème, kaki, noyer, écorce) et polices Fraunces + Nunito Sans</span></div>
+<div class="it"><span>Style « couture » en pointillés réutilisable (<code>.stitch</code>)</span></div>
+
+<p class="sub">Les sections de l'accueil</p>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 16px; padding: 6px 0 4px">
+<span class="mini">Bandeau</span><span class="mini">En-tête + menu mobile</span><span class="mini">Accueil (hero)</span>
+<span class="mini">Engagements</span><span class="mini">Collections</span><span class="mini">Nouveautés</span>
+<span class="mini">L'atelier</span><span class="mini">Avis</span><span class="mini">Newsletter</span>
+<span class="mini">Pied de page</span>
+</div>
+
+<p class="sub">Les autres pages</p>
+<div class="it"><span>Fiche produit : pastilles tissu, sections dépliables, mot de Kat, suggestions</span></div>
+<div class="it"><span>Panier : case cadeau, petit mot, récapitulatif</span></div>
+<div class="it"><span>Page « Sur-mesure » avec formulaire de contact</span></div>
+<div class="it"><span>Habiller la page de paiement (logo, couleurs, polices)</span></div>
+<div class="it"><span>Tout vérifier sur téléphone</span></div>
+
+<h2 style="margin: 22px 0 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 22px">Étape 4 · Ouvrir la boutique</h2>
+
+<p class="sub">Avec Kat</p>
+<div class="it"><span>Écrire son histoire, la phrase d'accueil et les mots de Kat</span><span class="who kat">Kat</span></div>
+<div class="it"><span>Séance appli : ajouter un article depuis le téléphone</span></div>
+<div class="it"><span>Séance appli : marquer une commande comme envoyée</span></div>
+
+<p class="sub">Le grand jour</p>
+<div class="it"><span>Passer une vraie commande de bout en bout, puis la rembourser</span><span class="who toi">Toi</span></div>
+<div class="it"><span>Retirer le mot de passe de la boutique</span><span class="who toi">Toi</span></div>
+<div class="it"><span>Annoncer l'ouverture (Instagram, proches)</span><span class="who kat">Kat</span></div>
+
+<div style="margin-top: auto; padding-top: 14px; border-top: 1.5px dashed #9C8C72; display: flex; flex-direction: column; gap: 22px">
+<span style="font-size: 13px; font-weight: 700; color: #5C5241">Notes</span>
+<span style="border-bottom: 1px solid #BFAE92"></span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

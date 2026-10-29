@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Kat's Eye Création — Accueil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4EEE3}
+a{color:#4F5229}a:hover{color:#3A3C1D}
+.ph{background-color:#E3D6C2;background-image:repeating-linear-gradient(45deg,rgba(107,74,50,.07) 0 2px,transparent 2px 12px)}
+.ph-k{background-color:#B9B48C;background-image:repeating-linear-gradient(-45deg,rgba(46,42,31,.08) 0 2px,transparent 2px 12px)}
+.ph-w{background-color:#8A6448;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 3px,transparent 3px 14px)}
+</style>
+</helmet>
+<div style="font-family: 'Nunito Sans', system-ui, sans-serif; color: #2E2A1F; background: #F4EEE3; min-height: 100vh">
+
+<!-- Bandeau -->
+<div style="background: #4F5229; color: #F4EEE3; text-align: center; padding: 10px 16px; font-size: 14px; letter-spacing: .02em">Chaque pièce est cousue à la main, en petite série — [INFO LIVRAISON]</div>
+
+<!-- En-tête -->
+<header style="max-width: 1240px; margin: 0 auto; padding: 22px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#accueil" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #2E2A1F">
+<svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="#6B4A32" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 22c5-8 11-12 18-12s13 4 18 12c-5 8-11 12-18 12S9 30 4 22Z"/><circle cx="22" cy="22" r="6.5"/><path d="M22 18.5v7" stroke-width="2.2"/><path d="M10 5l3 4M34 5l-3 4" stroke-dasharray="2 3"/></svg>
+<span style="display: flex; flex-direction: column; line-height: 1.05">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 26px; font-weight: 600">Kat's Eye</span>
+<span style="font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: #6B4A32">Création</span>
+</span>
+</a>
+<nav aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; gap: 6px 28px; font-weight: 600; font-size: 15px">
+<a href="#boutique" style="text-decoration: none; padding: 10px 0">Boutique</a>
+<a href="#collections" style="text-decoration: none; padding: 10px 0">Collections</a>
+<a href="#atelier" style="text-decoration: none; padding: 10px 0">L'atelier</a>
+<a href="#sur-mesure" style="text-decoration: none; padding: 10px 0">Sur-mesure</a>
+<a href="#contact" style="text-decoration: none; padding: 10px 0">Contact</a>
+</nav>
+<div style="display: flex; gap: 8px">
+<button type="button" aria-label="Rechercher" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid #CDBFA8; background: transparent; display: grid; place-items: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E2A1F" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
+<a href="Cart.dc.html" aria-label="Panier, {{cart}} article(s)" style="height: 44px; padding: 0 16px; border-radius: 22px; background: #6B4A32; color: #F4EEE3; display: flex; align-items: center; gap: 8px; font: 600 14px 'Nunito Sans', sans-serif; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1.2 11H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Panier · {{cart}}</a>
+</div>
+</header>
+
+<!-- Hero -->
+<section id="accueil" style="max-width: 1240px; margin: 0 auto; padding: 24px 24px 72px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 440px; display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-size: 13px; letter-spacing: .24em; text-transform: uppercase; color: #6B4A32; font-weight: 700">Couture artisanale · fait main</p>
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: clamp(42px, 6vw, 72px); line-height: 1.02; letter-spacing: -.01em">Des créations douces,<br><em style="color: {{accent}}">cousues avec soin</em>,<br>pour un intérieur cocon.</h1>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; max-width: 480px; color: #4A4234">Plaids, coussins, pochettes et petites douceurs du quotidien, imaginés et cousus un à un dans mon atelier. Des tissus naturels, des couleurs de sous-bois, et beaucoup de patience.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="#boutique" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 26px; background: {{accent}}; color: #F4EEE3; text-decoration: none; font-weight: 700">Découvrir la boutique</a>
+<a href="#atelier" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 26px; border: 1.5px solid #6B4A32; color: #6B4A32; text-decoration: none; font-weight: 700">L'histoire de l'atelier</a>
+</div>
+</div>
+<div style="flex: 1 1 460px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<div class="ph" style="grid-row: span 2; height: 520px; border-radius: 220px 220px 24px 24px; display: flex; align-items: flex-end; justify-content: center; padding: 24px; box-sizing: border-box; font-size: 13px; color: #6B4A32">[Photo : plaid plié + coussin]</div>
+<div class="ph-k" style="height: 252px; border-radius: 24px; display: grid; place-items: center; font-size: 13px; color: #2E2A1F">[Photo : détail couture]</div>
+<div style="height: 252px; border-radius: 24px; background: #6B4A32; color: #F4EEE3; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; outline: 1.5px dashed rgba(244,238,227,.45); outline-offset: -10px">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#E3D6C2" stroke-width="1.5" aria-hidden="true"><path d="M4 20 20 4"/><circle cx="18" cy="6" r="1.2"/><path d="M4 20c3-1 5-1 7 1" stroke-dasharray="2 2"/></svg>
+<p style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 24px; line-height: 1.2">Pièces uniques &amp; petites séries</p>
+</div>
+</div>
+</section>
+
+<!-- Engagements -->
+<section aria-label="Nos engagements" style="background: #E9DFCF; border-top: 1.5px dashed #BFAE92; border-bottom: 1.5px dashed #BFAE92">
+<div style="max-width: 1240px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px">
+<div style="display: flex; gap: 14px; align-items: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"/></svg><span style="font-weight: 700">Cousu main, en France</span></div>
+<div style="display: flex; gap: 14px; align-items: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true"><path d="M5 19c8 0 14-6 14-14C11 5 5 11 5 19Z"/><path d="M5 19 13 11"/></svg><span style="font-weight: 700">Tissus naturels choisis</span></div>
+<div style="display: flex; gap: 14px; align-items: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M3 12h18M12 8v12M8 8c-2-3 2-5 4 0 2-5 6-3 4 0"/></svg><span style="font-weight: 700">Emballage cadeau offert</span></div>
+<div style="display: flex; gap: 14px; align-items: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true"><path d="M4 7h11v10H4zM15 10h3l2 3v4h-5"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><span style="font-weight: 700">[Délai d'expédition]</span></div>
+</div>
+</section>
+
+<!-- Collections -->
+<section id="collections" style="max-width: 1240px; margin: 0 auto; padding: 88px 24px 40px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 36px">
+<div>
+<p style="margin: 0 0 8px; font-size: 13px; letter-spacing: .24em; text-transform: uppercase; color: #6B4A32; font-weight: 700">Les collections</p>
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 44px">Pour chaque coin de la maison</h2>
+</div>
+<a href="#boutique" style="font-weight: 700; padding: 12px 0">Tout voir →</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px">
+<a href="#boutique" style="text-decoration: none; color: #2E2A1F; display: flex; flex-direction: column; gap: 14px"><div class="ph-w" style="height: 300px; border-radius: 20px; display: grid; place-items: center; color: #F4EEE3; font-size: 13px">[Photo plaids]</div><span style="font-family: Fraunces, Georgia, serif; font-size: 24px">Plaids &amp; jetés</span></a>
+<a href="#boutique" style="text-decoration: none; color: #2E2A1F; display: flex; flex-direction: column; gap: 14px"><div class="ph-k" style="height: 300px; border-radius: 20px; display: grid; place-items: center; font-size: 13px">[Photo coussins]</div><span style="font-family: Fraunces, Georgia, serif; font-size: 24px">Coussins</span></a>
+<a href="#boutique" style="text-decoration: none; color: #2E2A1F; display: flex; flex-direction: column; gap: 14px"><div class="ph" style="height: 300px; border-radius: 20px; display: grid; place-items: center; color: #6B4A32; font-size: 13px">[Photo pochettes]</div><span style="font-family: Fraunces, Georgia, serif; font-size: 24px">Pochettes &amp; trousses</span></a>
+<a href="#boutique" style="text-decoration: none; color: #2E2A1F; display: flex; flex-direction: column; gap: 14px"><div class="ph-k" style="height: 300px; border-radius: 20px; display: grid; place-items: center; font-size: 13px">[Photo accessoires]</div><span style="font-family: Fraunces, Georgia, serif; font-size: 24px">Petites douceurs</span></a>
+</div>
+</section>
+
+<!-- Produits -->
+<section id="boutique" style="max-width: 1240px; margin: 0 auto; padding: 56px 24px 88px">
+<h2 style="margin: 0 0 32px; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 44px">Tout juste sortis de l'atelier</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px">
+<sc-for list="{{products}}" as="p" hint-placeholder-count="4">
+<article style="display: flex; flex-direction: column; gap: 12px; background: #FBF7F0; border-radius: 20px; padding: 12px 12px 20px; box-shadow: 0 1px 0 #E3D6C2">
+<div class="{{p.ph}}" style="height: 280px; border-radius: 14px; display: grid; place-items: center; font-size: 13px; color: #2E2A1F; position: relative">[Photo produit]<sc-if value="{{p.unique}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 12px; left: 12px; background: #F4EEE3; color: #6B4A32; border-radius: 12px; padding: 4px 10px; font-size: 12px; font-weight: 700">Pièce unique</span></sc-if></div>
+<div style="padding: 0 8px; display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 20px"><a href="Product.dc.html" style="color: #2E2A1F; text-decoration: none">{{p.name}}</a></h3>
+<p style="margin: 0; font-size: 14px; color: #5C5241">{{p.detail}}</p>
+</div>
+<div style="padding: 0 8px; display: flex; justify-content: space-between; align-items: center; margin-top: 4px">
+<span style="font-weight: 700; font-size: 17px">[PRIX] €</span>
+<button type="button" onClick="{{addOne}}" style="min-height: 44px; padding: 0 18px; border-radius: 22px; border: 1.5px solid {{accent}}; background: transparent; color: #3A3C1D; font: 700 14px 'Nunito Sans', sans-serif; cursor: pointer">Ajouter</button>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<!-- Atelier -->
+<section id="atelier" style="background: #4F5229; color: #F4EEE3">
+<div style="max-width: 1240px; margin: 0 auto; padding: 96px 24px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+<div class="ph-w" style="flex: 1 1 400px; height: 480px; border-radius: 24px; display: grid; place-items: center; font-size: 13px; outline: 1.5px dashed rgba(244,238,227,.5); outline-offset: -14px">[Photo : Kat à sa machine à coudre]</div>
+<div style="flex: 1 1 440px; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; letter-spacing: .24em; text-transform: uppercase; color: #D9CFA8; font-weight: 700">L'atelier</p>
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1.1">Derrière chaque couture, un œil attentif.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #E9E2D2">[Votre histoire : comment est né Kat's Eye Création, ce qui vous inspire, votre façon de travailler — quelques phrases sincères suffisent.]</p>
+<p style="margin: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 22px; color: #F4EEE3">— Kat</p>
+<a href="#sur-mesure" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 26px; background: #F4EEE3; color: #3A3C1D; text-decoration: none; font-weight: 700">Commander une pièce sur-mesure</a>
+</div>
+</div>
+</section>
+
+<!-- Avis -->
+<section style="max-width: 1240px; margin: 0 auto; padding: 88px 24px">
+<h2 style="margin: 0 0 32px; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 44px; text-align: center">Ils ont adopté leur cocon</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px">
+<figure style="margin: 0; padding: 32px; border-radius: 20px; border: 1.5px dashed #BFAE92; display: flex; flex-direction: column; gap: 16px"><blockquote style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 20px; line-height: 1.45">[Avis client]</blockquote><figcaption style="font-size: 14px; color: #5C5241; font-weight: 700">[Prénom, ville]</figcaption></figure>
+<figure style="margin: 0; padding: 32px; border-radius: 20px; border: 1.5px dashed #BFAE92; display: flex; flex-direction: column; gap: 16px"><blockquote style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 20px; line-height: 1.45">[Avis client]</blockquote><figcaption style="font-size: 14px; color: #5C5241; font-weight: 700">[Prénom, ville]</figcaption></figure>
+<figure style="margin: 0; padding: 32px; border-radius: 20px; border: 1.5px dashed #BFAE92; display: flex; flex-direction: column; gap: 16px"><blockquote style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 20px; line-height: 1.45">[Avis client]</blockquote><figcaption style="font-size: 14px; color: #5C5241; font-weight: 700">[Prénom, ville]</figcaption></figure>
+</div>
+</section>
+
+<!-- Newsletter -->
+<section id="sur-mesure" style="max-width: 1240px; margin: 0 auto 88px; padding: 0 24px">
+<div style="background: #E9DFCF; border-radius: 28px; padding: 56px 40px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between">
+<div style="flex: 1 1 380px">
+<h2 style="margin: 0 0 10px; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 36px">Les nouveautés, au coin du feu</h2>
+<p style="margin: 0; font-size: 16px; color: #4A4234">Recevez les nouvelles pièces avant tout le monde, une fois par mois, pas plus.</p>
+</div>
+<form style="flex: 1 1 420px; display: flex; flex-wrap: wrap; gap: 10px" onSubmit="{{noSubmit}}">
+<label for="nl-email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Adresse e-mail</label>
+<input id="nl-email" type="email" placeholder="votre@email.fr" style="flex: 1 1 240px; min-height: 52px; padding: 0 20px; border-radius: 26px; border: 1.5px solid #BFAE92; background: #FBF7F0; font: 16px 'Nunito Sans', sans-serif; color: #2E2A1F">
+<button type="submit" style="min-height: 52px; padding: 0 28px; border-radius: 26px; border: none; background: #6B4A32; color: #F4EEE3; font: 700 15px 'Nunito Sans', sans-serif; cursor: pointer">Je m'inscris</button>
+</form>
+</div>
+</section>
+
+<!-- Pied de page -->
+<footer id="contact" style="background: #3A2B1F; color: #E9E2D2">
+<div style="max-width: 1240px; margin: 0 auto; padding: 64px 24px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 26px; color: #F4EEE3">Kat's Eye Création</span>
+<p style="margin: 0; font-size: 14px; line-height: 1.6">Couture artisanale, pièces uniques et petites séries.</p>
+</div>
+<nav aria-label="Boutique" style="display: flex; flex-direction: column; gap: 8px; font-size: 14px"><strong style="color: #F4EEE3">Boutique</strong><a href="#collections" style="color: #E9E2D2">Collections</a><a href="#boutique" style="color: #E9E2D2">Nouveautés</a><a href="#sur-mesure" style="color: #E9E2D2">Sur-mesure</a></nav>
+<nav aria-label="Infos" style="display: flex; flex-direction: column; gap: 8px; font-size: 14px"><strong style="color: #F4EEE3">Infos</strong><a href="#contact" style="color: #E9E2D2">Livraison &amp; retours</a><a href="#contact" style="color: #E9E2D2">Entretien des tissus</a><a href="#contact" style="color: #E9E2D2">Mentions légales</a></nav>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px"><strong style="color: #F4EEE3">Me contacter</strong><span>[E-MAIL]</span><span>[Instagram]</span></div>
+</div>
+<p style="max-width: 1240px; margin: 0 auto; padding: 20px 24px 32px; font-size: 13px; color: #BFB39C; border-top: 1px dashed #6B5644">© 2026 Kat's Eye Création — fait main avec amour</p>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#5E6233","options":["#5E6233","#6B4A32","#4A5A3A","#7A5A2E"]},"$preview":{"width":1440,"height":3400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { cart: 0 };
+  }
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#5E6233',
+      cart: this.state.cart,
+      addOne: () => this.setState({ cart: this.state.cart + 1 }),
+      noSubmit: (e) => e.preventDefault(),
+      products: [
+        { name: 'Plaid « Sous-bois »', detail: 'Double gaze de coton, kaki & noisette', ph: 'ph-k', unique: true },
+        { name: 'Coussin « Écorce »', detail: 'Velours côtelé, housse amovible', ph: 'ph-w', unique: false },
+        { name: 'Pochette « Mousse »', detail: 'Lin lavé, doublure coton', ph: 'ph', unique: false },
+        { name: 'Bouillotte « Cocon »', detail: 'Housse polaire & laine bouillie', ph: 'ph-k', unique: true }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

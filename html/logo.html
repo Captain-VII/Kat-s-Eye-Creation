@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo Kat's Eye — échantillon</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9DFCF;color:#2E2A1F;font-family:'Nunito Sans',system-ui,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 16px;display:grid;gap:24px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:32px;margin:0}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#6B4A32;font-weight:700;margin:0}
+.intro{color:#5C5241;max-width:640px;margin:6px 0 0}
+
+.panel{--bg:#FBF7F0;background:var(--bg);border-radius:24px;padding:28px;outline:1.5px dashed #BFAE92;outline-offset:-10px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;gap:28px;color:#6B4A32}
+figure{margin:0;text-align:center}
+figcaption{font-size:13px;color:#5C5241;margin-top:8px}
+
+/* Lockup : la branche passe derrière le texte et le fond, pas sur le K */
+.lockup{--bg:#F4EEE3;--k:#6B4A32;--txt:#2E2A1F;--sub:#6B4A32;--bark:#6E5A47;--fl:#E2B8AF;--fl2:#D49C92;--flc:#9E5A48;
+  position:relative;overflow:hidden;background:var(--bg);border-radius:18px;height:190px;display:flex;align-items:center;gap:18px;padding:0 34px}
+.lockup.dark{--bg:#3A2B1F;--k:#E3D6C2;--txt:#F4EEE3;--sub:#D9CFA8;--bark:#8E7862}
+.lockup.khaki{--bg:#4F5229;--k:#F4EEE3;--txt:#F4EEE3;--sub:#D9CFA8;--bark:#2F2A1C}
+.lockup .branch{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.lockup .mark{position:relative;z-index:1;color:var(--k);flex:none}
+.lockup .word{position:relative;z-index:1}
+.lockup b{display:block;font-family:Fraunces,Georgia,serif;font-size:40px;font-weight:600;line-height:1;color:var(--txt)}
+.lockup small{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--sub)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.lockup{padding:0 20px}.lockup b{font-size:32px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Fleur de cerisier : pétales échancrés, deux tons, étamines -->
+  <symbol id="fl" viewBox="-7 -7 14 14">
+    <g id="petals">
+      <path d="M0 0C-2.6-1.6-2.8-5 -1-6.2L0-5.3 1-6.2C2.8-5 2.6-1.6 0 0Z" fill="var(--fl)"/>
+      <path d="M0 0C-2.6-1.6-2.8-5 -1-6.2L0-5.3 1-6.2C2.8-5 2.6-1.6 0 0Z" fill="var(--fl2)" transform="rotate(72)"/>
+      <path d="M0 0C-2.6-1.6-2.8-5 -1-6.2L0-5.3 1-6.2C2.8-5 2.6-1.6 0 0Z" fill="var(--fl)" transform="rotate(144)"/>
+      <path d="M0 0C-2.6-1.6-2.8-5 -1-6.2L0-5.3 1-6.2C2.8-5 2.6-1.6 0 0Z" fill="var(--fl2)" transform="rotate(216)"/>
+      <path d="M0 0C-2.6-1.6-2.8-5 -1-6.2L0-5.3 1-6.2C2.8-5 2.6-1.6 0 0Z" fill="var(--fl)" transform="rotate(288)"/>
+    </g>
+    <g stroke="var(--flc)" stroke-width=".35" stroke-linecap="round">
+      <path d="M0 0 0-2.4M0 0 2.2-.8M0 0 1.4 2M0 0-1.4 2M0 0-2.2-.8"/>
+    </g>
+    <circle r=".8" fill="var(--flc)"/>
+  </symbol>
+  <!-- Bouton de fleur -->
+  <symbol id="bud" viewBox="-3 -5 6 8">
+    <path d="M0-4.6C2-3 2.2 0 0 1.6-2.2 0-2-3 0-4.6Z" fill="var(--fl2)"/>
+    <path d="M-1.4 1 0 2.8 1.4 1" fill="none" stroke="var(--bark)" stroke-width=".6" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Branche tordue : le bois s'affine par segments, coudes et nœuds -->
+  <symbol id="branch" viewBox="0 0 420 190" preserveAspectRatio="xMaxYMid slice">
+    <g fill="none" stroke="var(--bark)" stroke-linecap="round" stroke-linejoin="round" opacity=".8">
+      <!-- tronc principal -->
+      <path d="M150 205C158 192 160 180 172 172S186 164 190 152" stroke-width="8"/>
+      <path d="M190 152C194 141 206 140 214 133S222 120 236 117" stroke-width="6.5"/>
+      <path d="M236 117C248 114 252 104 262 98S280 96 288 86" stroke-width="5"/>
+      <path d="M288 86C296 76 306 79 314 70S324 56 336 53" stroke-width="3.8"/>
+      <path d="M336 53C348 50 352 42 362 36S378 34 386 25" stroke-width="2.7"/>
+      <path d="M386 25C392 18 402 17 414 8" stroke-width="1.7"/>
+      <!-- rameaux -->
+      <path d="M214 133C210 124 214 118 211 109S214 98 220 94" stroke-width="2.6"/>
+      <path d="M220 94C223 90 228 89 230 84" stroke-width="1.4"/>
+      <path d="M262 98C270 102 272 110 281 112S292 118 296 124" stroke-width="2.3"/>
+      <path d="M314 70C312 61 317 57 314 49S318 38 322 34" stroke-width="2"/>
+      <path d="M362 36C368 41 374 40 378 46S384 52 390 53" stroke-width="1.6"/>
+      <path d="M190 152C182 152 178 158 170 157S160 152 154 156" stroke-width="2.2"/>
+      <path d="M288 86C286 80 288 76 285 71" stroke-width="1.3"/>
+    </g>
+    <!-- nœuds de l'écorce -->
+    <g fill="none" stroke="var(--bark)" stroke-width="1" opacity=".55">
+      <ellipse cx="203" cy="139" rx="2.6" ry="1.6" transform="rotate(-35 203 139)"/>
+      <ellipse cx="274" cy="94" rx="2" ry="1.2" transform="rotate(-30 274 94)"/>
+      <path d="M166 176c3-2 6-2 8 0M246 112c2-2 5-2 7 0"/>
+    </g>
+    <!-- fleurs et boutons, tailles et angles variés -->
+    <g>
+      <use href="#fl" x="219" y="79" width="17" height="17" transform="rotate(14 227 87)"/>
+      <use href="#fl" x="205" y="96" width="11" height="11" transform="rotate(-20 210 101)"/>
+      <use href="#bud" x="226" y="70" width="6" height="8" transform="rotate(25 229 74)"/>
+      <use href="#fl" x="289" y="114" width="16" height="16" transform="rotate(40 297 122)"/>
+      <use href="#fl" x="276" y="104" width="10" height="10"/>
+      <use href="#bud" x="298" y="126" width="6" height="8" transform="rotate(140 301 130)"/>
+      <use href="#fl" x="314" y="21" width="15" height="15" transform="rotate(-12 321 28)"/>
+      <use href="#bud" x="308" y="38" width="5" height="7" transform="rotate(-50 310 41)"/>
+      <use href="#fl" x="384" y="44" width="13" height="13" transform="rotate(30 390 50)"/>
+      <use href="#fl" x="338" y="38" width="9" height="9"/>
+      <use href="#bud" x="408" y="2" width="5" height="7" transform="rotate(60 410 5)"/>
+      <use href="#fl" x="146" y="148" width="13" height="13" transform="rotate(-30 152 154)"/>
+      <use href="#bud" x="258" y="86" width="5" height="7" transform="rotate(-15 260 89)"/>
+    </g>
+    <!-- pétales tombés -->
+    <g fill="var(--fl)" opacity=".8">
+      <path d="M352 96c2-2 5-1 5 1s-3 3-5-1Z"/>
+      <path d="M248 160c1-3 4-3 5-1s-2 4-5 1Z"/>
+      <path d="M392 120c2-1 4 0 4 2s-3 2-4-2Z"/>
+    </g>
+  </symbol>
+
+  <!-- K · ciseaux de brodeuse, version épaissie sans volutes -->
+  <symbol id="k" viewBox="0 0 52 52">
+    <g fill="none" stroke="currentColor" stroke-linecap="round">
+      <circle cx="14" cy="8" r="4.5" stroke-width="2.6"/>
+      <circle cx="14" cy="44" r="4.5" stroke-width="2.6"/>
+      <path d="M14 12.5v27" stroke-width="3.2"/>
+    </g>
+    <path d="M16.5 24C25 18 34 11 46 4.5 38.5 13.5 29 21.5 19.5 28.5Z" fill="currentColor"/>
+    <path d="M16.5 28C25 34 34 41 46 47.5 38.5 38.5 29 30.5 19.5 23.5Z" fill="currentColor"/>
+    <circle cx="16.4" cy="26" r="2.7" fill="var(--bg,#FBF7F0)" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="16.4" cy="26" r=".8" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<main>
+  <div>
+    <p class="eyebrow">Échantillon · piste A retenue</p>
+    <h1>Ciseaux de brodeuse, branche de cerisier</h1>
+    <p class="intro">Le K sans les volutes, avec un trait plus épais. La branche est tordue et noueuse, et s'affine vers la pointe. Elle passe derrière le nom et dans le fond, sans toucher au K.</p>
+  </div>
+
+  <div class="panel">
+    <figure><svg width="160" height="160"><use href="#k"/></svg><figcaption>Grand format</figcaption></figure>
+    <figure><svg width="64" height="64"><use href="#k"/></svg><figcaption>64 px</figcaption></figure>
+    <figure><svg width="32" height="32"><use href="#k"/></svg><figcaption>32 px</figcaption></figure>
+    <figure><svg width="20" height="20"><use href="#k"/></svg><figcaption>20 px</figcaption></figure>
+  </div>
+
+  <div class="grid">
+    <div class="lockup"><svg class="branch"><use href="#branch"/></svg><svg class="mark" width="76" height="76"><use href="#k"/></svg><span class="word"><b>Kat's Eye</b><small>Création</small></span></div>
+    <div class="lockup dark"><svg class="branch"><use href="#branch"/></svg><svg class="mark" width="76" height="76"><use href="#k"/></svg><span class="word"><b>Kat's Eye</b><small>Création</small></span></div>
+    <div class="lockup khaki"><svg class="branch"><use href="#branch"/></svg><svg class="mark" width="76" height="76"><use href="#k"/></svg><span class="word"><b>Kat's Eye</b><small>Création</small></span></div>
+  </div>
+</main>
+</body>
+</html>

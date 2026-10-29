@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Kat's Eye Création — Panier</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4EEE3}
+a{color:#4F5229}a:hover{color:#3A3C1D}
+.ph{background-color:#E3D6C2;background-image:repeating-linear-gradient(45deg,rgba(107,74,50,.07) 0 2px,transparent 2px 12px)}
+.ph-k{background-color:#B9B48C;background-image:repeating-linear-gradient(-45deg,rgba(46,42,31,.08) 0 2px,transparent 2px 12px)}
+.ph-w{background-color:#8A6448;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 3px,transparent 3px 14px)}
+</style>
+</helmet>
+<div style="font-family: 'Nunito Sans', system-ui, sans-serif; color: #2E2A1F; background: #F4EEE3; min-height: 100vh">
+
+<!-- En-tête -->
+<header style="border-bottom: 1.5px dashed #CDBFA8">
+<div style="max-width: 1240px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #2E2A1F">
+<svg width="40" height="40" viewBox="0 0 44 44" fill="none" stroke="#6B4A32" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 22c5-8 11-12 18-12s13 4 18 12c-5 8-11 12-18 12S9 30 4 22Z"/><circle cx="22" cy="22" r="6.5"/><path d="M22 18.5v7" stroke-width="2.2"/><path d="M10 5l3 4M34 5l-3 4" stroke-dasharray="2 3"/></svg>
+<span style="display: flex; flex-direction: column; line-height: 1.05">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 24px; font-weight: 600">Kat's Eye</span>
+<span style="font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: #6B4A32">Création</span>
+</span>
+</a>
+<ol aria-label="Étapes de commande" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; font-weight: 700">
+<li style="display: flex; align-items: center; gap: 8px; color: #2E2A1F"><span style="width: 26px; height: 26px; border-radius: 13px; background: #6B4A32; color: #F4EEE3; display: grid; place-items: center; font-size: 13px">1</span>Panier</li>
+<li style="display: flex; align-items: center; gap: 8px; color: #6E6350"><span style="width: 26px; height: 26px; border-radius: 13px; border: 1.5px dashed #9C8C72; display: grid; place-items: center; font-size: 13px; box-sizing: border-box">2</span>Livraison</li>
+<li style="display: flex; align-items: center; gap: 8px; color: #6E6350"><span style="width: 26px; height: 26px; border-radius: 13px; border: 1.5px dashed #9C8C72; display: grid; place-items: center; font-size: 13px; box-sizing: border-box">3</span>Paiement</li>
+</ol>
+<a href="Main.dc.html" style="font-weight: 700; font-size: 15px; padding: 12px 0">← Continuer mes achats</a>
+</div>
+</header>
+
+<div style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 96px">
+<h1 style="margin: 0 0 32px; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 52px">Mon panier <span style="font-size: 24px; color: #6E6350">· {{count}} article(s)</span></h1>
+
+<!-- Panier vide -->
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<div style="border: 1.5px dashed #BFAE92; border-radius: 28px; padding: 72px 24px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center">
+<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#6B4A32" stroke-width="1.3" aria-hidden="true"><path d="M5 8h14l-1.2 11H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+<p style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 30px">Votre panier attend sa première douceur</p>
+<p style="margin: 0; font-size: 16px; color: #4A4234">Les pièces sont cousues en petite série : ne tardez pas trop.</p>
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 26px; background: {{accent}}; color: #F4EEE3; text-decoration: none; font-weight: 700">Découvrir la boutique</a>
+</div>
+</sc-if>
+
+<!-- Panier rempli -->
+<sc-if value="{{filled}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+
+<!-- Articles -->
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="3">
+<article style="display: flex; flex-wrap: wrap; gap: 24px; padding: 24px 0; border-bottom: 1.5px dashed #BFAE92; align-items: center">
+<a href="Product.dc.html" class="{{it.ph}}" aria-label="Voir {{it.name}}" style="width: 140px; height: 140px; border-radius: 18px; flex: none; display: grid; place-items: center; font-size: 12px; color: #2E2A1F; text-decoration: none">[Photo]</a>
+<div style="flex: 1 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 22px"><a href="Product.dc.html" style="color: #2E2A1F; text-decoration: none">{{it.name}}</a></h2>
+<p style="margin: 0; font-size: 14px; color: #5C5241">{{it.options}}</p>
+<sc-if value="{{it.unique}}" hint-placeholder-val="{{ false }}"><span style="align-self: flex-start; background: #E9DFCF; color: #6B4A32; border-radius: 12px; padding: 4px 10px; font-size: 12px; font-weight: 700">Pièce unique</span></sc-if>
+<button type="button" onClick="{{it.remove}}" style="align-self: flex-start; min-height: 44px; padding: 0; border: none; background: transparent; color: #6B4A32; font: 700 14px 'Nunito Sans', sans-serif; text-decoration: underline; cursor: pointer">Retirer</button>
+</div>
+<div style="display: flex; align-items: center; gap: 24px">
+<sc-if value="{{it.unique}}" hint-placeholder-val="{{ false }}"><span style="font-size: 14px; color: #5C5241; min-width: 156px; text-align: center">Quantité : 1</span></sc-if>
+<sc-if value="{{it.multi}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; border: 1.5px solid #BFAE92; border-radius: 26px; height: 50px">
+<button type="button" aria-label="Retirer un {{it.name}}" onClick="{{it.dec}}" style="width: 48px; height: 48px; border: none; background: transparent; font-size: 20px; color: #2E2A1F; cursor: pointer">−</button>
+<span aria-live="polite" style="min-width: 28px; text-align: center; font-weight: 700">{{it.qty}}</span>
+<button type="button" aria-label="Ajouter un {{it.name}}" onClick="{{it.inc}}" style="width: 48px; height: 48px; border: none; background: transparent; font-size: 20px; color: #2E2A1F; cursor: pointer">+</button>
+</div>
+</sc-if>
+<span style="font-weight: 700; font-size: 18px; min-width: 96px; text-align: right">[PRIX] €</span>
+</div>
+</article>
+</sc-for>
+
+<!-- Cadeau -->
+<div style="margin-top: 28px; background: #E9DFCF; border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<label style="display: flex; align-items: center; gap: 14px; font-weight: 700; cursor: pointer; min-height: 44px">
+<input type="checkbox" checked="{{gift}}" onChange="{{toggleGift}}" style="width: 22px; height: 22px; accent-color: #4F5229">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M3 12h18M12 8v12M8 8c-2-3 2-5 4 0 2-5 6-3 4 0"/></svg>
+C'est pour offrir : emballage cadeau (offert)
+</label>
+<sc-if value="{{gift}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="gift-msg" style="font-size: 14px; font-weight: 700">Petit mot glissé dans le paquet (facultatif)</label>
+<textarea id="gift-msg" rows="3" placeholder="Pour toi, une douceur pour l'hiver…" style="border-radius: 16px; border: 1.5px solid #BFAE92; background: #FBF7F0; padding: 14px 16px; font: 15px 'Nunito Sans', sans-serif; color: #2E2A1F; resize: vertical"></textarea>
+</div>
+</sc-if>
+</div>
+</div>
+
+<!-- Récapitulatif -->
+<aside aria-label="Récapitulatif de commande" style="flex: 1 1 340px; min-width: 0; background: #FBF7F0; border-radius: 28px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px; outline: 1.5px dashed #CDBFA8; outline-offset: -10px">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 30px">Récapitulatif</h2>
+
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="padding: 0; margin-bottom: 10px; font-weight: 700; font-size: 15px">Livraison</legend>
+<sc-for list="{{shipping}}" as="sh" hint-placeholder-count="3">
+<label style="display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 16px; border-radius: 16px; border: 1.5px solid {{sh.border}}; background: {{sh.bg}}; cursor: pointer; font-size: 15px">
+<input type="radio" name="ship" checked="{{sh.selected}}" onChange="{{sh.pick}}" style="width: 18px; height: 18px; accent-color: #4F5229">
+<span style="flex: 1">{{sh.label}}</span>
+<span style="font-weight: 700; font-size: 14px">{{sh.price}}</span>
+</label>
+</sc-for>
+</fieldset>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="promo" style="font-weight: 700; font-size: 15px">Code promo</label>
+<div style="display: flex; gap: 8px">
+<input id="promo" type="text" placeholder="DOUCEUR10" style="flex: 1; min-width: 0; min-height: 48px; padding: 0 16px; border-radius: 24px; border: 1.5px solid #BFAE92; background: #F4EEE3; font: 15px 'Nunito Sans', sans-serif; color: #2E2A1F">
+<button type="button" style="min-height: 48px; padding: 0 18px; border-radius: 24px; border: 1.5px solid #6B4A32; background: transparent; color: #6B4A32; font: 700 14px 'Nunito Sans', sans-serif; cursor: pointer">Appliquer</button>
+</div>
+</div>
+
+<dl style="margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 15px; border-top: 1.5px dashed #CDBFA8; padding-top: 18px">
+<div style="display: flex; justify-content: space-between"><dt>Sous-total</dt><dd style="margin: 0; font-weight: 700">[SOUS-TOTAL] €</dd></div>
+<div style="display: flex; justify-content: space-between"><dt>Livraison</dt><dd style="margin: 0; font-weight: 700">{{shipPrice}}</dd></div>
+<sc-if value="{{gift}}" hint-placeholder-val="{{ false }}"><div style="display: flex; justify-content: space-between"><dt>Emballage cadeau</dt><dd style="margin: 0; font-weight: 700">Offert</dd></div></sc-if>
+<div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1.5px dashed #CDBFA8; padding-top: 14px; margin-top: 4px"><dt style="font-family: Fraunces, Georgia, serif; font-size: 22px">Total</dt><dd style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 600">[TOTAL] €</dd></div>
+</dl>
+
+<a href="Checkout.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 58px; border-radius: 29px; background: {{accent}}; color: #F4EEE3; text-decoration: none; font-weight: 700; font-size: 16px">Passer commande</a>
+<p style="margin: 0; display: flex; gap: 10px; align-items: center; font-size: 13px; color: #5C5241"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.7" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Paiement sécurisé · [moyens de paiement acceptés]</p>
+</aside>
+</div>
+</sc-if>
+
+<!-- Réassurance -->
+<div style="margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px">
+<div style="display: flex; gap: 14px; align-items: center; padding: 20px; border-radius: 20px; border: 1.5px dashed #BFAE92"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"/></svg><span style="font-weight: 700; font-size: 15px">Cousu main, avec soin</span></div>
+<div style="display: flex; gap: 14px; align-items: center; padding: 20px; border-radius: 20px; border: 1.5px dashed #BFAE92"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true"><path d="M4 7h11v10H4zM15 10h3l2 3v4h-5"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><span style="font-weight: 700; font-size: 15px">Expédié sous [DÉLAI]</span></div>
+<div style="display: flex; gap: 14px; align-items: center; padding: 20px; border-radius: 20px; border: 1.5px dashed #BFAE92"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.6"/><path d="M4 4v4.6h4.6"/></svg><span style="font-weight: 700; font-size: 15px">[Conditions de retour]</span></div>
+</div>
+</div>
+
+<footer style="background: #3A2B1F; color: #BFB39C">
+<p style="max-width: 1240px; margin: 0 auto; padding: 28px 24px; font-size: 13px">© 2026 Kat's Eye Création — fait main avec amour · <a href="Main.dc.html" style="color: #E9E2D2">Retour à l'accueil</a></p>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#5E6233","options":["#5E6233","#6B4A32","#4A5A3A","#7A5A2E"]},"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gift: false,
+      ship: 0,
+      items: [
+        { id: 'plaid', name: 'Plaid « Sous-bois »', options: 'Tissu : Kaki mousse · [Grand format]', ph: 'ph-k', unique: true, qty: 1 },
+        { id: 'coussin', name: 'Coussin « Écorce »', options: 'Velours côtelé · Noisette', ph: 'ph-w', unique: false, qty: 2 },
+        { id: 'pochette', name: 'Pochette « Mousse »', options: 'Lin lavé · Lin naturel', ph: 'ph', unique: false, qty: 1 }
+      ]
+    };
+  }
+  setQty(id, d) {
+    this.setState({ items: this.state.items.map((x) => x.id === id ? { ...x, qty: Math.max(1, x.qty + d) } : x) });
+  }
+  renderVals() {
+    const s = this.state;
+    const shipDefs = [
+      { label: 'Livraison à domicile', price: '[TARIF] €' },
+      { label: 'Point relais', price: '[TARIF] €' },
+      { label: 'Retrait à l’atelier', price: 'Gratuit' }
+    ];
+    return {
+      accent: this.props.accent ?? '#5E6233',
+      count: s.items.reduce((n, x) => n + x.qty, 0),
+      empty: s.items.length === 0,
+      filled: s.items.length > 0,
+      gift: s.gift,
+      toggleGift: () => this.setState({ gift: !s.gift }),
+      shipPrice: shipDefs[s.ship].price,
+      shipping: shipDefs.map((d, i) => ({ ...d, selected: i === s.ship, border: i === s.ship ? '#4F5229' : '#CDBFA8', bg: i === s.ship ? '#EEEBDC' : 'transparent', pick: () => this.setState({ ship: i }) })),
+      items: s.items.map((x) => ({
+        ...x,
+        multi: !x.unique,
+        inc: () => this.setQty(x.id, 1),
+        dec: () => this.setQty(x.id, -1),
+        remove: () => this.setState({ items: s.items.filter((y) => y.id !== x.id) })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+/* Kat's Eye Création — styles communs à toutes les sections */
+
+:root {
+  --kats-wood: 107, 74, 50;
+  --kats-khaki: 79, 82, 41;
+  --kats-stitch: 191, 174, 146;
+}
+
+body {
+  letter-spacing: 0.01rem;
+}
+
+h1, h2, h3, .h0, .h1, .h2, .h3 {
+  letter-spacing: -0.01em;
+}
+
+/* Surpiqûre : bordure en pointillés façon couture */
+.stitch {
+  border: 0.15rem dashed rgb(var(--kats-stitch));
+}
+
+.stitch-inset {
+  outline: 0.15rem dashed rgba(var(--color-foreground), 0.3);
+  outline-offset: -1.2rem;
+}
+
+.stitch-top { border-top: 0.15rem dashed rgb(var(--kats-stitch)); }
+.stitch-bottom { border-bottom: 0.15rem dashed rgb(var(--kats-stitch)); }
+
+/* Petit titre en capitales au-dessus des grands titres */
+.kats-eyebrow {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(var(--kats-wood));
+}
+
+.color-scheme-3 .kats-eyebrow,
+.color-scheme-4 .kats-eyebrow {
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+/* Étiquette « Pièce unique » */
+.kats-badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 1.2rem;
+  background: rgb(var(--color-background));
+  color: rgb(var(--kats-wood));
+  font-size: 1.2rem;
+  font-weight: 700;
+}

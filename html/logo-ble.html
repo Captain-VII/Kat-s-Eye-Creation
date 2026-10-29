@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo Kat's Eye — test épi de blé</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9DFCF;color:#2E2A1F;font-family:'Nunito Sans',system-ui,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:40px 16px;display:grid;gap:24px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:32px;margin:0}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#6B4A32;font-weight:700;margin:0}
+.intro{color:#5C5241;max-width:640px;margin:6px 0 0}
+
+.lockup{--bg:#F4EEE3;--k:#6B4A32;--txt:#2E2A1F;--sub:#6B4A32;--stem:#B8955A;--grain:#C9A45C;--grain2:#A9843F;--awn:#C8AE7A;
+  position:relative;overflow:hidden;background:var(--bg);border-radius:18px;height:200px;display:flex;align-items:center;padding:0 40px}
+.lockup.dark{--bg:#3A2B1F;--k:#E3D6C2;--txt:#F4EEE3;--sub:#D9CFA8;--stem:#9C7E4A;--grain:#C9A45C;--grain2:#A9843F;--awn:#8F7650}
+.lockup.khaki{--bg:#4F5229;--k:#F4EEE3;--txt:#F4EEE3;--sub:#D9CFA8;--stem:#C2A469;--grain:#D8B66C;--grain2:#B8914A;--awn:#A99A63}
+.lockup .wheat{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.word{position:relative;z-index:1;color:var(--txt)}
+
+/* Le nom, avec le K remplacé par les ciseaux */
+.name{display:flex;align-items:flex-end;font-family:Fraunces,Georgia,serif;font-size:48px;font-weight:600;line-height:1}
+.name svg{color:var(--k);width:.8em;height:.79em;margin:0 0 0 -.02em;flex:none}
+.word small{display:block;margin-top:8px;padding-left:.2em;font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--sub)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px}
+.plain{height:140px}
+.big{height:240px;justify-content:center}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.lockup{padding:0 22px}.name{font-size:38px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- K · ciseaux de brodeuse -->
+  <symbol id="k" viewBox="7 1.5 41 49" preserveAspectRatio="none">
+    <g fill="none" stroke="currentColor" stroke-linecap="round">
+      <circle cx="14" cy="8" r="4.6" stroke-width="3.8"/>
+      <circle cx="14" cy="44" r="4.6" stroke-width="3.8"/>
+      <path d="M14 12.5v27" stroke-width="5"/>
+    </g>
+    <path d="M16 23.5C25 17 34 10 47 3.5 39.5 13.5 29.5 22 20 29.5Z" fill="currentColor"/>
+    <path d="M16 28.5C25 35 34 42 47 48.5 39.5 38.5 29.5 30 20 22.5Z" fill="currentColor"/>
+    <circle cx="16.6" cy="26" r="3.1" fill="var(--bg,#FBF7F0)" stroke="currentColor" stroke-width="1.8"/>
+    <circle cx="16.6" cy="26" r="1" fill="currentColor"/>
+  </symbol>
+  <!-- Épis de blé : générés plus bas -->
+  <symbol id="wheat" viewBox="0 0 440 200" preserveAspectRatio="xMaxYMid slice"><g id="wheat-g"></g></symbol>
+</svg>
+
+<main>
+  <div>
+    <p class="eyebrow">Test · nom + épi de blé</p>
+    <h1>Le K des ciseaux remplace la lettre</h1>
+    <p class="intro">Les ciseaux de brodeuse deviennent la première lettre du nom. À la place du cerisier, des épis de blé dorés passent derrière le nom et dans le fond.</p>
+  </div>
+
+  <div class="lockup big"><div class="word"><span class="name" style="font-size:104px"><svg><use href="#k"/></svg>at's Eye</span><small style="font-size:18px">Création</small></div></div>
+
+  <div class="grid">
+    <div class="lockup"><svg class="wheat"><use href="#wheat"/></svg><div class="word"><span class="name"><svg><use href="#k"/></svg>at's Eye</span><small>Création</small></div></div>
+    <div class="lockup dark"><svg class="wheat"><use href="#wheat"/></svg><div class="word"><span class="name"><svg><use href="#k"/></svg>at's Eye</span><small>Création</small></div></div>
+    <div class="lockup khaki"><svg class="wheat"><use href="#wheat"/></svg><div class="word"><span class="name"><svg><use href="#k"/></svg>at's Eye</span><small>Création</small></div></div>
+    <div class="lockup plain"><div class="word"><span class="name"><svg><use href="#k"/></svg>at's Eye</span><small>Création</small></div></div>
+  </div>
+</main>
+
+<script>
+// Un épi : rachis légèrement courbé, grains en quinconce, barbes fines
+function ear(n) {
+  let s = '';
+  const rot = (x, y, a) => { const r = a * Math.PI / 180; return [x * Math.cos(r) - y * Math.sin(r), x * Math.sin(r) + y * Math.cos(r)]; };
+  const awns = [], grains = [];
+  for (let i = 0; i < n; i++) {
+    const y = -i * 5.2, bend = Math.sin(i / n * 1.6) * 2.2, size = 1 - (i / n) * 0.35;
+    for (const side of [-1, 1]) {
+      const a = side * (24 - i * 0.6);
+      const cx = bend + side * 2.4 * size, cy = y - (side > 0 ? 2.6 : 0);
+      grains.push(`<ellipse cx="${cx.toFixed(2)}" cy="${cy.toFixed(2)}" rx="${(2.3 * size).toFixed(2)}" ry="${(4.8 * size).toFixed(2)}" transform="rotate(${a.toFixed(1)} ${cx.toFixed(2)} ${cy.toFixed(2)})" fill="${(i + (side > 0)) % 2 ? 'var(--grain)' : 'var(--grain2)'}"/>`);
+      const [tx, ty] = rot(0, -4.6 * size, a), [ex, ey] = rot(0, -20 + i * 0.4, a * 0.55);
+      awns.push(`M${(cx + tx).toFixed(2)} ${(cy + ty).toFixed(2)}l${ex.toFixed(2)} ${ey.toFixed(2)}`);
+    }
+  }
+  const topY = -n * 5.2, topX = Math.sin(1.6) * 2.2;
+  grains.push(`<ellipse cx="${topX.toFixed(2)}" cy="${(topY - 1).toFixed(2)}" rx="1.6" ry="3.8" fill="var(--grain)"/>`);
+  awns.push(`M${topX.toFixed(2)} ${(topY - 4.6).toFixed(2)}l.4 -18`);
+  s += `<path d="${awns.join('')}" stroke="var(--awn)" stroke-width=".55" stroke-linecap="round" fill="none"/>`;
+  s += `<path d="M0 4C.6 -${n * 2} 1.6 -${n * 3.6} ${topX.toFixed(2)} ${topY}" stroke="var(--stem)" stroke-width=".9" fill="none"/>`;
+  s += grains.join('');
+  return s;
+}
+// Tige + feuille + épi, posés le long d'une courbe venant du bas
+function stalk(bx, by, hx, hy, angle, scale, n, leaf) {
+  const cx = (bx + hx) / 2 + 30, cy = (by + hy) / 2 + 10;
+  let s = `<path d="M${bx} ${by}Q${cx} ${cy} ${hx} ${hy}" stroke="var(--stem)" stroke-width="${(1.8 * scale).toFixed(2)}" fill="none" stroke-linecap="round"/>`;
+  if (leaf) {
+    const lx = (bx + 2 * cx + hx) / 4, ly = (by + 2 * cy + hy) / 4 + 30;
+    s += `<path d="M${lx} ${ly}c18 -6 34 -20 46 -38c-10 20 -26 34 -46 38Z" fill="var(--stem)" opacity=".7"/>`;
+  }
+  s += `<g transform="translate(${hx} ${hy}) rotate(${angle}) scale(${scale})">${ear(n)}</g>`;
+  return s;
+}
+document.getElementById('wheat-g').innerHTML =
+  `<g opacity=".85">` +
+  stalk(120, 215, 232, 70, 28, 1.5, 11, true) +
+  stalk(200, 215, 302, 46, 22, 1.6, 12, false) +
+  stalk(80, 215, 178, 116, 40, 1.25, 9, false) +
+  stalk(300, 215, 392, 92, 18, 1.35, 10, true) +
+  `</g>`;
+</script>
+</body>
+</html>

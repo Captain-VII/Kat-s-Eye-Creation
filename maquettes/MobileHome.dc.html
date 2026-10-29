@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Kat's Eye Création — Accueil mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4EEE3}
+a{color:#4F5229}a:hover{color:#3A3C1D}
+.ph{background-color:#E3D6C2;background-image:repeating-linear-gradient(45deg,rgba(107,74,50,.07) 0 2px,transparent 2px 12px)}
+.ph-k{background-color:#B9B48C;background-image:repeating-linear-gradient(-45deg,rgba(46,42,31,.08) 0 2px,transparent 2px 12px)}
+.ph-w{background-color:#8A6448;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 3px,transparent 3px 14px)}
+</style>
+</helmet>
+<div style="width: 390px; min-height: 3300px; box-sizing: border-box; font-family: 'Nunito Sans', system-ui, sans-serif; color: #2E2A1F; background: #F4EEE3; position: relative; overflow: hidden">
+
+<div style="background: #4F5229; color: #F4EEE3; text-align: center; padding: 8px 16px; font-size: 12px">Cousu à la main, en petite série — [INFO LIVRAISON]</div>
+
+<!-- En-tête -->
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 1.5px dashed #CDBFA8">
+<button type="button" aria-label="Ouvrir le menu" aria-expanded="{{menuOpen}}" onClick="{{toggleMenu}}" style="width: 44px; height: 44px; border: none; background: transparent; display: grid; place-items: center; cursor: pointer; padding: 0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E2A1F" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+<a href="MobileHome.dc.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #2E2A1F">
+<svg width="30" height="30" viewBox="0 0 44 44" fill="none" stroke="#6B4A32" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 22c5-8 11-12 18-12s13 4 18 12c-5 8-11 12-18 12S9 30 4 22Z"/><circle cx="22" cy="22" r="6.5"/><path d="M22 18.5v7" stroke-width="2.4"/></svg>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 600">Kat's Eye</span>
+</a>
+<a href="MobileCart.dc.html" aria-label="Panier, {{cart}} article(s)" style="width: 44px; height: 44px; display: grid; place-items: center; position: relative; color: #2E2A1F"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1.2 11H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span style="position: absolute; top: 4px; right: 2px; min-width: 18px; height: 18px; border-radius: 9px; background: #6B4A32; color: #F4EEE3; font-size: 11px; font-weight: 700; display: grid; place-items: center">{{cart}}</span></a>
+</header>
+
+<!-- Menu déroulant -->
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<nav aria-label="Navigation principale" style="background: #E9DFCF; padding: 8px 16px 20px; display: flex; flex-direction: column; border-bottom: 1.5px dashed #BFAE92">
+<a href="MobileHome.dc.html" style="min-height: 52px; display: flex; align-items: center; font-family: Fraunces, Georgia, serif; font-size: 22px; color: #2E2A1F; text-decoration: none; border-bottom: 1px dashed #CDBFA8">Boutique</a>
+<a href="MobileHome.dc.html" style="min-height: 52px; display: flex; align-items: center; font-family: Fraunces, Georgia, serif; font-size: 22px; color: #2E2A1F; text-decoration: none; border-bottom: 1px dashed #CDBFA8">Collections</a>
+<a href="MobileHome.dc.html" style="min-height: 52px; display: flex; align-items: center; font-family: Fraunces, Georgia, serif; font-size: 22px; color: #2E2A1F; text-decoration: none; border-bottom: 1px dashed #CDBFA8">L'atelier</a>
+<a href="MobileHome.dc.html" style="min-height: 52px; display: flex; align-items: center; font-family: Fraunces, Georgia, serif; font-size: 22px; color: #2E2A1F; text-decoration: none; border-bottom: 1px dashed #CDBFA8">Sur-mesure</a>
+<a href="MobileHome.dc.html" style="min-height: 52px; display: flex; align-items: center; font-family: Fraunces, Georgia, serif; font-size: 22px; color: #2E2A1F; text-decoration: none">Contact</a>
+</nav>
+</sc-if>
+
+<!-- Hero -->
+<section style="padding: 28px 16px 40px; display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: #6B4A32; font-weight: 700">Couture artisanale · fait main</p>
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.05">Des créations douces, <em style="color: {{accent}}">cousues avec soin</em>, pour un intérieur cocon.</h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A4234">Plaids, coussins, pochettes et petites douceurs, imaginés et cousus un à un dans mon atelier.</p>
+<div class="ph" style="height: 340px; border-radius: 170px 170px 24px 24px; display: flex; align-items: flex-end; justify-content: center; padding: 20px; box-sizing: border-box; font-size: 13px; color: #6B4A32; outline: 1.5px dashed rgba(107,74,50,.35); outline-offset: -12px">[Photo : plaid plié + coussin]</div>
+<a href="#boutique" style="display: flex; align-items: center; justify-content: center; min-height: 54px; border-radius: 27px; background: {{accent}}; color: #F4EEE3; text-decoration: none; font-weight: 700">Découvrir la boutique</a>
+<a href="#atelier" style="display: flex; align-items: center; justify-content: center; min-height: 54px; border-radius: 27px; border: 1.5px solid #6B4A32; color: #6B4A32; text-decoration: none; font-weight: 700">L'histoire de l'atelier</a>
+</section>
+
+<!-- Engagements -->
+<section aria-label="Nos engagements" style="background: #E9DFCF; border-top: 1.5px dashed #BFAE92; border-bottom: 1.5px dashed #BFAE92; padding: 20px 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 12px; font-size: 14px; font-weight: 700">
+<div style="display: flex; gap: 10px; align-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true" style="flex: none"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"/></svg>Cousu main</div>
+<div style="display: flex; gap: 10px; align-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true" style="flex: none"><path d="M5 19c8 0 14-6 14-14C11 5 5 11 5 19Z"/><path d="M5 19 13 11"/></svg>Tissus naturels</div>
+<div style="display: flex; gap: 10px; align-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true" style="flex: none"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M3 12h18M12 8v12"/></svg>Emballage offert</div>
+<div style="display: flex; gap: 10px; align-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true" style="flex: none"><path d="M4 7h11v10H4zM15 10h3l2 3v4h-5"/></svg>[Délai]</div>
+</section>
+
+<!-- Collections : défilement horizontal -->
+<section style="padding: 44px 0 20px">
+<div style="padding: 0 16px; display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 30px">Collections</h2>
+<a href="#boutique" style="font-weight: 700; font-size: 14px; padding: 12px 0">Tout voir →</a>
+</div>
+<div style="display: flex; gap: 12px; overflow-x: auto; padding: 0 16px 8px">
+<a href="#boutique" style="flex: none; width: 200px; text-decoration: none; color: #2E2A1F; display: flex; flex-direction: column; gap: 10px"><div class="ph-w" style="height: 240px; border-radius: 18px; display: grid; place-items: center; color: #F4EEE3; font-size: 12px">[Photo plaids]</div><span style="font-family: Fraunces, Georgia, serif; font-size: 20px">Plaids &amp; jetés</span></a>
+<a href="#boutique" style="flex: none; width: 200px; text-decoration: none; color: #2E2A1F; display: flex; flex-direction: column; gap: 10px"><div class="ph-k" style="height: 240px; border-radius: 18px; display: grid; place-items: center; font-size: 12px">[Photo coussins]</div><span style="font-family: Fraunces, Georgia, serif; font-size: 20px">Coussins</span></a>
+<a href="#boutique" style="flex: none; width: 200px; text-decoration: none; color: #2E2A1F; display: flex; flex-direction: column; gap: 10px"><div class="ph" style="height: 240px; border-radius: 18px; display: grid; place-items: center; color: #6B4A32; font-size: 12px">[Photo pochettes]</div><span style="font-family: Fraunces, Georgia, serif; font-size: 20px">Pochettes</span></a>
+<a href="#boutique" style="flex: none; width: 200px; text-decoration: none; color: #2E2A1F; display: flex; flex-direction: column; gap: 10px"><div class="ph-k" style="height: 240px; border-radius: 18px; display: grid; place-items: center; font-size: 12px">[Photo accessoires]</div><span style="font-family: Fraunces, Georgia, serif; font-size: 20px">Petites douceurs</span></a>
+</div>
+</section>
+
+<!-- Produits -->
+<section id="boutique" style="padding: 32px 16px 48px">
+<h2 style="margin: 0 0 18px; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 30px">Tout juste sortis de l'atelier</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+<sc-for list="{{products}}" as="p" hint-placeholder-count="4">
+<article style="display: flex; flex-direction: column; gap: 8px; background: #FBF7F0; border-radius: 18px; padding: 8px 8px 12px">
+<a href="MobileProduct.dc.html" class="{{p.ph}}" aria-label="Voir {{p.name}}" style="height: 180px; border-radius: 12px; display: grid; place-items: center; font-size: 11px; color: #2E2A1F; text-decoration: none; position: relative">[Photo]<sc-if value="{{p.unique}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 8px; left: 8px; background: #F4EEE3; color: #6B4A32; border-radius: 10px; padding: 3px 8px; font-size: 11px; font-weight: 700">Unique</span></sc-if></a>
+<h3 style="margin: 0; padding: 0 4px; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 16px; line-height: 1.2"><a href="MobileProduct.dc.html" style="color: #2E2A1F; text-decoration: none">{{p.name}}</a></h3>
+<div style="padding: 0 4px; display: flex; justify-content: space-between; align-items: center">
+<span style="font-weight: 700; font-size: 14px">[PRIX] €</span>
+<button type="button" aria-label="Ajouter {{p.name}} au panier" onClick="{{addOne}}" style="width: 44px; height: 44px; border-radius: 22px; border: 1.5px solid {{accent}}; background: transparent; color: #3A3C1D; font-size: 22px; line-height: 1; cursor: pointer; padding: 0">+</button>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<!-- Atelier -->
+<section id="atelier" style="background: #4F5229; color: #F4EEE3; padding: 48px 16px; display: flex; flex-direction: column; gap: 18px">
+<div class="ph-w" style="height: 300px; border-radius: 22px; display: grid; place-items: center; font-size: 12px; outline: 1.5px dashed rgba(244,238,227,.5); outline-offset: -12px">[Photo : Kat à sa machine]</div>
+<p style="margin: 0; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: #D9CFA8; font-weight: 700">L'atelier</p>
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.12">Derrière chaque couture, un œil attentif.</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #E9E2D2">[Votre histoire : comment est né Kat's Eye Création, ce qui vous inspire.]</p>
+<p style="margin: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 20px">— Kat</p>
+<a href="MobileHome.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 54px; border-radius: 27px; background: #F4EEE3; color: #3A3C1D; text-decoration: none; font-weight: 700">Commander sur-mesure</a>
+</section>
+
+<!-- Avis -->
+<section style="padding: 44px 0">
+<h2 style="margin: 0 16px 18px; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 30px">Ils ont adopté leur cocon</h2>
+<div style="display: flex; gap: 12px; overflow-x: auto; padding: 0 16px 8px">
+<figure style="flex: none; width: 290px; margin: 0; padding: 24px; box-sizing: border-box; border-radius: 18px; border: 1.5px dashed #BFAE92; display: flex; flex-direction: column; gap: 12px"><blockquote style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 18px; line-height: 1.45">[Avis client]</blockquote><figcaption style="font-size: 13px; color: #5C5241; font-weight: 700">[Prénom, ville]</figcaption></figure>
+<figure style="flex: none; width: 290px; margin: 0; padding: 24px; box-sizing: border-box; border-radius: 18px; border: 1.5px dashed #BFAE92; display: flex; flex-direction: column; gap: 12px"><blockquote style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 18px; line-height: 1.45">[Avis client]</blockquote><figcaption style="font-size: 13px; color: #5C5241; font-weight: 700">[Prénom, ville]</figcaption></figure>
+</div>
+</section>
+
+<!-- Newsletter -->
+<section style="margin: 0 16px 44px; background: #E9DFCF; border-radius: 24px; padding: 28px 20px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 26px">Les nouveautés, au coin du feu</h2>
+<p style="margin: 0; font-size: 15px; color: #4A4234">Une fois par mois, pas plus.</p>
+<label for="m-nl" style="font-size: 14px; font-weight: 700">Adresse e-mail</label>
+<input id="m-nl" type="email" placeholder="votre@email.fr" style="min-height: 52px; padding: 0 18px; border-radius: 26px; border: 1.5px solid #BFAE92; background: #FBF7F0; font: 16px 'Nunito Sans', sans-serif; color: #2E2A1F">
+<button type="button" style="min-height: 52px; border-radius: 26px; border: none; background: #6B4A32; color: #F4EEE3; font: 700 15px 'Nunito Sans', sans-serif; cursor: pointer">Je m'inscris</button>
+</section>
+
+<!-- Pied de page -->
+<footer style="background: #3A2B1F; color: #E9E2D2; padding: 36px 16px 28px; display: flex; flex-direction: column; gap: 20px">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 24px; color: #F4EEE3">Kat's Eye Création</span>
+<nav aria-label="Liens utiles" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; font-size: 14px">
+<a href="MobileHome.dc.html" style="color: #E9E2D2; padding: 10px 0">Collections</a>
+<a href="MobileHome.dc.html" style="color: #E9E2D2; padding: 10px 0">Livraison &amp; retours</a>
+<a href="MobileHome.dc.html" style="color: #E9E2D2; padding: 10px 0">Sur-mesure</a>
+<a href="MobileHome.dc.html" style="color: #E9E2D2; padding: 10px 0">Entretien</a>
+<a href="MobileHome.dc.html" style="color: #E9E2D2; padding: 10px 0">Contact</a>
+<a href="MobileHome.dc.html" style="color: #E9E2D2; padding: 10px 0">Mentions légales</a>
+</nav>
+<p style="margin: 0; font-size: 12px; color: #BFB39C; border-top: 1px dashed #6B5644; padding-top: 16px">© 2026 Kat's Eye Création — fait main avec amour</p>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#5E6233","options":["#5E6233","#6B4A32","#4A5A3A","#7A5A2E"]},"$preview":{"width":390,"height":3300}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { cart: 0, menuOpen: false };
+  }
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#5E6233',
+      cart: this.state.cart,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState({ menuOpen: !this.state.menuOpen }),
+      addOne: () => this.setState({ cart: this.state.cart + 1 }),
+      products: [
+        { name: 'Plaid « Sous-bois »', ph: 'ph-k', unique: true },
+        { name: 'Coussin « Écorce »', ph: 'ph-w', unique: false },
+        { name: 'Pochette « Mousse »', ph: 'ph', unique: false },
+        { name: 'Bouillotte « Cocon »', ph: 'ph-k', unique: true }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

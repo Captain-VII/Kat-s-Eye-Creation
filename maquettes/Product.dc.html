@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Kat's Eye Création — Fiche produit</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4EEE3}
+a{color:#4F5229}a:hover{color:#3A3C1D}
+.ph{background-color:#E3D6C2;background-image:repeating-linear-gradient(45deg,rgba(107,74,50,.07) 0 2px,transparent 2px 12px)}
+.ph-k{background-color:#B9B48C;background-image:repeating-linear-gradient(-45deg,rgba(46,42,31,.08) 0 2px,transparent 2px 12px)}
+.ph-w{background-color:#8A6448;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 3px,transparent 3px 14px)}
+</style>
+</helmet>
+<div style="font-family: 'Nunito Sans', system-ui, sans-serif; color: #2E2A1F; background: #F4EEE3; min-height: 100vh">
+
+<!-- En-tête -->
+<header style="border-bottom: 1.5px dashed #CDBFA8">
+<div style="max-width: 1240px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #2E2A1F">
+<svg width="40" height="40" viewBox="0 0 44 44" fill="none" stroke="#6B4A32" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 22c5-8 11-12 18-12s13 4 18 12c-5 8-11 12-18 12S9 30 4 22Z"/><circle cx="22" cy="22" r="6.5"/><path d="M22 18.5v7" stroke-width="2.2"/><path d="M10 5l3 4M34 5l-3 4" stroke-dasharray="2 3"/></svg>
+<span style="display: flex; flex-direction: column; line-height: 1.05">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 24px; font-weight: 600">Kat's Eye</span>
+<span style="font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: #6B4A32">Création</span>
+</span>
+</a>
+<nav aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; gap: 6px 28px; font-weight: 600; font-size: 15px">
+<a href="Main.dc.html" style="text-decoration: none; padding: 10px 0">Boutique</a>
+<a href="Main.dc.html" style="text-decoration: none; padding: 10px 0">Collections</a>
+<a href="Main.dc.html" style="text-decoration: none; padding: 10px 0">L'atelier</a>
+<a href="Main.dc.html" style="text-decoration: none; padding: 10px 0">Contact</a>
+</nav>
+<a href="Cart.dc.html" aria-label="Panier, {{cart}} article(s)" style="height: 44px; padding: 0 16px; border-radius: 22px; background: #6B4A32; color: #F4EEE3; display: flex; align-items: center; gap: 8px; font: 600 14px 'Nunito Sans', sans-serif; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1.2 11H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Panier · {{cart}}</a>
+</div>
+</header>
+
+<!-- Fil d'Ariane -->
+<nav aria-label="Fil d'Ariane" style="max-width: 1240px; margin: 0 auto; padding: 20px 24px 0; font-size: 14px; color: #5C5241; display: flex; flex-wrap: wrap; gap: 8px">
+<a href="Main.dc.html">Accueil</a><span aria-hidden="true">/</span><a href="Main.dc.html">Plaids &amp; jetés</a><span aria-hidden="true">/</span><span>Plaid « Sous-bois »</span>
+</nav>
+
+<!-- Produit -->
+<section style="max-width: 1240px; margin: 0 auto; padding: 28px 24px 72px; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<!-- Galerie -->
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div class="{{mainPh}}" style="height: 620px; border-radius: 28px; display: flex; align-items: flex-end; justify-content: center; padding: 24px; box-sizing: border-box; font-size: 13px; color: #2E2A1F; position: relative; outline: 1.5px dashed rgba(107,74,50,.35); outline-offset: -14px">
+<span style="position: absolute; top: 24px; left: 24px; background: #F4EEE3; color: #6B4A32; border-radius: 14px; padding: 6px 12px; font-size: 13px; font-weight: 700">Pièce unique</span>
+[Photo {{mainLabel}}]
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{shots}}" as="s" hint-placeholder-count="4">
+<button type="button" aria-label="Voir : {{s.label}}" aria-pressed="{{s.selected}}" onClick="{{s.pick}}" class="{{s.ph}}" style="height: 110px; border-radius: 16px; cursor: pointer; border: {{s.border}}; padding: 0; font: 600 12px 'Nunito Sans', sans-serif; color: #2E2A1F">{{s.label}}</button>
+</sc-for>
+</div>
+</div>
+
+<!-- Infos -->
+<div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-size: 13px; letter-spacing: .24em; text-transform: uppercase; color: #6B4A32; font-weight: 700">Plaids &amp; jetés</p>
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.05">Plaid « Sous-bois »</h1>
+<p style="margin: 0; font-size: 26px; font-weight: 700">[PRIX] €</p>
+</div>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #4A4234">[Description : ce qui rend cette pièce particulière, son toucher, l'usage imaginé — un plaid pour les soirées sur le canapé, à glisser au pied du lit…]</p>
+
+<!-- Tissu -->
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px">
+<legend style="padding: 0; margin-bottom: 12px; font-weight: 700; font-size: 15px">Tissu : <span style="font-weight: 400; color: #5C5241">{{fabricName}}</span></legend>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<sc-for list="{{fabrics}}" as="f" hint-placeholder-count="4">
+<button type="button" aria-label="{{f.name}}" aria-pressed="{{f.selected}}" onClick="{{f.pick}}" style="width: 52px; height: 52px; border-radius: 26px; cursor: pointer; padding: 0; background: {{f.color}}; border: 3px solid #F4EEE3; box-shadow: {{f.ring}}"></button>
+</sc-for>
+</div>
+</fieldset>
+
+<!-- Taille -->
+<fieldset style="border: none; margin: 0; padding: 0">
+<legend style="padding: 0; margin-bottom: 12px; font-weight: 700; font-size: 15px">Dimensions</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{sizes}}" as="z" hint-placeholder-count="2">
+<button type="button" aria-pressed="{{z.selected}}" onClick="{{z.pick}}" style="min-height: 46px; padding: 0 20px; border-radius: 23px; cursor: pointer; font: 600 14px 'Nunito Sans', sans-serif; border: 1.5px solid {{z.borderColor}}; background: {{z.bg}}; color: {{z.fg}}">{{z.label}}</button>
+</sc-for>
+</div>
+</fieldset>
+
+<!-- Quantité + panier -->
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+<div style="display: flex; align-items: center; border: 1.5px solid #BFAE92; border-radius: 28px; height: 56px">
+<button type="button" aria-label="Retirer un" onClick="{{dec}}" style="width: 52px; height: 52px; border: none; background: transparent; font-size: 22px; color: #2E2A1F; cursor: pointer">−</button>
+<span aria-live="polite" style="min-width: 28px; text-align: center; font-weight: 700; font-size: 17px">{{qty}}</span>
+<button type="button" aria-label="Ajouter un" onClick="{{inc}}" style="width: 52px; height: 52px; border: none; background: transparent; font-size: 22px; color: #2E2A1F; cursor: pointer">+</button>
+</div>
+<button type="button" onClick="{{addToCart}}" style="flex: 1 1 240px; min-height: 56px; border-radius: 28px; border: none; background: {{accent}}; color: #F4EEE3; font: 700 16px 'Nunito Sans', sans-serif; cursor: pointer">{{addLabel}}</button>
+</div>
+<sc-if value="{{added}}" hint-placeholder-val="{{ false }}"><a href="Cart.dc.html" style="align-self: flex-start; font-weight: 700; padding: 10px 0">Voir mon panier →</a></sc-if>
+<div style="display: flex; gap: 12px; align-items: center; font-size: 14px; color: #4A4234"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.6" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M3 12h18M12 8v12M8 8c-2-3 2-5 4 0 2-5 6-3 4 0"/></svg>Emballage cadeau offert · expédié sous [DÉLAI]</div>
+
+<!-- Détails -->
+<div style="border-top: 1.5px dashed #BFAE92">
+<sc-for list="{{panels}}" as="d" hint-placeholder-count="4">
+<div style="border-bottom: 1.5px dashed #BFAE92">
+<button type="button" aria-expanded="{{d.open}}" onClick="{{d.toggle}}" style="width: 100%; min-height: 60px; display: flex; justify-content: space-between; align-items: center; background: transparent; border: none; padding: 0; cursor: pointer; font: 700 16px 'Nunito Sans', sans-serif; color: #2E2A1F; text-align: left">{{d.title}}<span aria-hidden="true" style="font-size: 22px; font-weight: 400; color: #6B4A32">{{d.sign}}</span></button>
+<sc-if value="{{d.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0 0 20px; font-size: 15px; line-height: 1.65; color: #4A4234">{{d.body}}</p></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- Le mot de Kat -->
+<section style="background: #4F5229; color: #F4EEE3">
+<div style="max-width: 900px; margin: 0 auto; padding: 72px 24px; text-align: center; display: flex; flex-direction: column; gap: 16px; align-items: center">
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#D9CFA8" stroke-width="1.5" aria-hidden="true"><path d="M4 20 20 4"/><circle cx="18" cy="6" r="1.2"/><path d="M4 20c3-1 5-1 7 1" stroke-dasharray="2 2"/></svg>
+<p style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 28px; line-height: 1.35">[Le mot de Kat sur cette pièce : le tissu choisi, le temps passé, une anecdote d'atelier.]</p>
+<p style="margin: 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 20px; color: #D9CFA8">— Kat</p>
+</div>
+</section>
+
+<!-- Suggestions -->
+<section style="max-width: 1240px; margin: 0 auto; padding: 80px 24px 96px">
+<h2 style="margin: 0 0 28px; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 40px">Pour compléter le cocon</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px">
+<sc-for list="{{related}}" as="r" hint-placeholder-count="4">
+<a href="Product.dc.html" style="text-decoration: none; color: #2E2A1F; display: flex; flex-direction: column; gap: 10px; background: #FBF7F0; border-radius: 20px; padding: 12px 12px 18px">
+<div class="{{r.ph}}" style="height: 220px; border-radius: 14px; display: grid; place-items: center; font-size: 13px">[Photo produit]</div>
+<span style="padding: 0 8px; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 19px">{{r.name}}</span>
+<span style="padding: 0 8px; font-weight: 700">[PRIX] €</span>
+</a>
+</sc-for>
+</div>
+</section>
+
+<footer style="background: #3A2B1F; color: #BFB39C">
+<p style="max-width: 1240px; margin: 0 auto; padding: 28px 24px; font-size: 13px">© 2026 Kat's Eye Création — fait main avec amour · <a href="Main.dc.html" style="color: #E9E2D2">Retour à l'accueil</a></p>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#5E6233","options":["#5E6233","#6B4A32","#4A5A3A","#7A5A2E"]},"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { shot: 0, fabric: 0, size: 0, qty: 1, cart: 0, added: false, open: 'compo' };
+  }
+  renderVals() {
+    const s = this.state;
+    const shotDefs = [
+      { label: 'Vue d’ensemble', ph: 'ph-k' },
+      { label: 'Plié', ph: 'ph' },
+      { label: 'Détail couture', ph: 'ph-w' },
+      { label: 'En situation', ph: 'ph-k' }
+    ];
+    const fabricDefs = [
+      { name: 'Kaki mousse', color: '#6E7140' },
+      { name: 'Noisette', color: '#9A7150' },
+      { name: 'Écorce', color: '#5A3E2B' },
+      { name: 'Lin naturel', color: '#D8CBB3' }
+    ];
+    const sizeDefs = ['[Petit format]', '[Grand format]'];
+    const panelDefs = [
+      { id: 'compo', title: 'Composition & dimensions', body: '[Matières, doublure, garnissage, dimensions exactes.]' },
+      { id: 'care', title: 'Entretien', body: '[Lavage, séchage, repassage conseillés.]' },
+      { id: 'ship', title: 'Livraison & retours', body: '[Modes et délais de livraison, conditions de retour.]' },
+      { id: 'made', title: 'Fait main : à savoir', body: 'Chaque pièce est coupée et cousue à la main : de légères variations de motif ou de teinte font partie de son charme.' }
+    ];
+    const accent = this.props.accent ?? '#5E6233';
+    return {
+      accent,
+      cart: s.cart,
+      qty: s.qty,
+      mainPh: shotDefs[s.shot].ph,
+      mainLabel: shotDefs[s.shot].label.toLowerCase(),
+      fabricName: fabricDefs[s.fabric].name,
+      added: s.added,
+      addLabel: s.added ? 'Ajouté au panier ✓' : 'Ajouter au panier',
+      shots: shotDefs.map((d, i) => ({ ...d, selected: i === s.shot, border: i === s.shot ? '2.5px solid #6B4A32' : '2.5px solid transparent', pick: () => this.setState({ shot: i }) })),
+      fabrics: fabricDefs.map((d, i) => ({ ...d, selected: i === s.fabric, ring: i === s.fabric ? '0 0 0 2px #2E2A1F' : '0 0 0 1px #BFAE92', pick: () => this.setState({ fabric: i }) })),
+      sizes: sizeDefs.map((label, i) => ({ label, selected: i === s.size, bg: i === s.size ? '#2E2A1F' : 'transparent', fg: i === s.size ? '#F4EEE3' : '#2E2A1F', borderColor: i === s.size ? '#2E2A1F' : '#BFAE92', pick: () => this.setState({ size: i }) })),
+      panels: panelDefs.map((d) => ({ ...d, open: s.open === d.id, sign: s.open === d.id ? '−' : '+', toggle: () => this.setState({ open: s.open === d.id ? null : d.id }) })),
+      dec: () => this.setState({ qty: Math.max(1, s.qty - 1), added: false }),
+      inc: () => this.setState({ qty: s.qty + 1, added: false }),
+      addToCart: () => this.setState({ cart: s.cart + s.qty, added: true }),
+      related: [
+        { name: 'Coussin « Écorce »', ph: 'ph-w' },
+        { name: 'Bouillotte « Cocon »', ph: 'ph-k' },
+        { name: 'Pochette « Mousse »', ph: 'ph' },
+        { name: 'Plaid « Clairière »', ph: 'ph-k' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Kat's Eye Création — Commande</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4EEE3}
+a{color:#4F5229}a:hover{color:#3A3C1D}
+.ph{background-color:#E3D6C2;background-image:repeating-linear-gradient(45deg,rgba(107,74,50,.07) 0 2px,transparent 2px 12px)}
+.ph-k{background-color:#B9B48C;background-image:repeating-linear-gradient(-45deg,rgba(46,42,31,.08) 0 2px,transparent 2px 12px)}
+.ph-w{background-color:#8A6448;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 3px,transparent 3px 14px)}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.f label{font-size:14px;font-weight:700}
+.f input,.f select{min-height:50px;padding:0 16px;border-radius:16px;border:1.5px solid #BFAE92;background:#FBF7F0;font:16px 'Nunito Sans',sans-serif;color:#2E2A1F;box-sizing:border-box;width:100%}
+.f input:focus,.f select:focus{outline:2px solid #4F5229;outline-offset:1px}
+</style>
+</helmet>
+<div style="font-family: 'Nunito Sans', system-ui, sans-serif; color: #2E2A1F; background: #F4EEE3; min-height: 100vh">
+
+<!-- En-tête -->
+<header style="border-bottom: 1.5px dashed #CDBFA8">
+<div style="max-width: 1240px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #2E2A1F">
+<svg width="40" height="40" viewBox="0 0 44 44" fill="none" stroke="#6B4A32" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 22c5-8 11-12 18-12s13 4 18 12c-5 8-11 12-18 12S9 30 4 22Z"/><circle cx="22" cy="22" r="6.5"/><path d="M22 18.5v7" stroke-width="2.2"/><path d="M10 5l3 4M34 5l-3 4" stroke-dasharray="2 3"/></svg>
+<span style="display: flex; flex-direction: column; line-height: 1.05">
+<span style="font-family: Fraunces, Georgia, serif; font-size: 24px; font-weight: 600">Kat's Eye</span>
+<span style="font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: #6B4A32">Création</span>
+</span>
+</a>
+<ol aria-label="Étapes de commande" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; font-weight: 700">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="3">
+<li aria-current="{{st.current}}" style="display: flex; align-items: center; gap: 8px; color: {{st.fg}}"><span style="width: 26px; height: 26px; border-radius: 13px; display: grid; place-items: center; font-size: 13px; box-sizing: border-box; background: {{st.bg}}; color: {{st.dotFg}}; border: {{st.border}}">{{st.mark}}</span>{{st.label}}</li>
+</sc-for>
+</ol>
+<p style="margin: 0; display: flex; gap: 8px; align-items: center; font-size: 14px; color: #4A4234"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.7" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Paiement sécurisé</p>
+</div>
+</header>
+
+<div style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 96px">
+
+<!-- ÉTAPES 2 et 3 -->
+<sc-if value="{{inForm}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 32px">
+
+<!-- Étape 2 : Livraison -->
+<sc-if value="{{isShip}}" hint-placeholder-val="{{ true }}">
+<form onSubmit="{{goPay}}" style="display: flex; flex-direction: column; gap: 32px">
+<div>
+<a href="Cart.dc.html" style="font-weight: 700; font-size: 14px; display: inline-block; padding: 10px 0">← Retour au panier</a>
+<h1 style="margin: 8px 0 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 48px">Où envoyer votre colis ?</h1>
+</div>
+
+<fieldset style="border: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+<legend style="padding: 0; margin-bottom: 14px; font-family: Fraunces, Georgia, serif; font-size: 24px">Vos coordonnées</legend>
+<div class="f"><label for="email">E-mail</label><input id="email" type="email" autocomplete="email" placeholder="vous@exemple.fr"></div>
+<div class="f"><label for="tel">Téléphone <span style="font-weight: 400; color: #6E6350">(pour le transporteur)</span></label><input id="tel" type="tel" autocomplete="tel" placeholder="06 00 00 00 00"></div>
+</fieldset>
+
+<fieldset style="border: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+<legend style="padding: 0; margin-bottom: 14px; font-family: Fraunces, Georgia, serif; font-size: 24px">Adresse de livraison</legend>
+<div class="f"><label for="fn">Prénom</label><input id="fn" type="text" autocomplete="given-name"></div>
+<div class="f"><label for="ln">Nom</label><input id="ln" type="text" autocomplete="family-name"></div>
+<div class="f" style="grid-column: 1 / -1"><label for="addr">Adresse</label><input id="addr" type="text" autocomplete="address-line1" placeholder="N° et nom de rue"></div>
+<div class="f" style="grid-column: 1 / -1"><label for="addr2">Complément <span style="font-weight: 400; color: #6E6350">(facultatif)</span></label><input id="addr2" type="text" autocomplete="address-line2" placeholder="Bâtiment, étage, digicode…"></div>
+<div class="f"><label for="zip">Code postal</label><input id="zip" type="text" inputmode="numeric" autocomplete="postal-code"></div>
+<div class="f"><label for="city">Ville</label><input id="city" type="text" autocomplete="address-level2"></div>
+<div class="f" style="grid-column: 1 / -1"><label for="country">Pays</label><select id="country" autocomplete="country-name"><option>France</option><option>Belgique</option><option>Suisse</option><option>Luxembourg</option></select></div>
+</fieldset>
+
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="padding: 0; margin-bottom: 14px; font-family: Fraunces, Georgia, serif; font-size: 24px">Mode de livraison</legend>
+<sc-for list="{{shipping}}" as="sh" hint-placeholder-count="3">
+<label style="display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 0 18px; border-radius: 18px; border: 1.5px solid {{sh.border}}; background: {{sh.bg}}; cursor: pointer">
+<input type="radio" name="ship" checked="{{sh.selected}}" onChange="{{sh.pick}}" style="width: 18px; height: 18px; accent-color: #4F5229">
+<span style="flex: 1; display: flex; flex-direction: column"><span style="font-weight: 700">{{sh.label}}</span><span style="font-size: 13px; color: #5C5241">{{sh.hint}}</span></span>
+<span style="font-weight: 700">{{sh.price}}</span>
+</label>
+</sc-for>
+</fieldset>
+
+<button type="submit" style="align-self: flex-start; min-height: 56px; padding: 0 36px; border-radius: 28px; border: none; background: {{accent}}; color: #F4EEE3; font: 700 16px 'Nunito Sans', sans-serif; cursor: pointer">Continuer vers le paiement</button>
+</form>
+</sc-if>
+
+<!-- Étape 3 : Paiement -->
+<sc-if value="{{isPay}}" hint-placeholder-val="{{ false }}">
+<form onSubmit="{{goDone}}" style="display: flex; flex-direction: column; gap: 28px">
+<div>
+<button type="button" onClick="{{goShip}}" style="min-height: 44px; padding: 0; border: none; background: transparent; color: #4F5229; font: 700 14px 'Nunito Sans', sans-serif; text-decoration: underline; cursor: pointer">← Modifier la livraison</button>
+<h1 style="margin: 8px 0 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 48px">Paiement</h1>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 18px 20px; border-radius: 18px; border: 1.5px dashed #BFAE92; font-size: 15px">
+<span><strong>Livré à :</strong> [Prénom Nom], [adresse], [CP Ville]</span>
+<span><strong>Par :</strong> {{shipLabel}}</span>
+</div>
+
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="padding: 0; margin-bottom: 14px; font-family: Fraunces, Georgia, serif; font-size: 24px">Moyen de paiement</legend>
+<sc-for list="{{methods}}" as="m" hint-placeholder-count="3">
+<label style="display: flex; align-items: center; gap: 14px; min-height: 60px; padding: 0 18px; border-radius: 18px; border: 1.5px solid {{m.border}}; background: {{m.bg}}; cursor: pointer; font-weight: 700">
+<input type="radio" name="pay" checked="{{m.selected}}" onChange="{{m.pick}}" style="width: 18px; height: 18px; accent-color: #4F5229">
+{{m.label}}
+</label>
+</sc-for>
+</fieldset>
+
+<sc-if value="{{isCard}}" hint-placeholder-val="{{ true }}">
+<div style="background: #FBF7F0; border-radius: 22px; padding: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; outline: 1.5px dashed #CDBFA8; outline-offset: -8px">
+<div class="f" style="grid-column: 1 / -1"><label for="cname">Nom sur la carte</label><input id="cname" type="text" autocomplete="cc-name"></div>
+<div class="f" style="grid-column: 1 / -1"><label for="cnum">Numéro de carte</label><input id="cnum" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="•••• •••• •••• ••••"></div>
+<div class="f"><label for="cexp">Expiration</label><input id="cexp" type="text" autocomplete="cc-exp" placeholder="MM / AA"></div>
+<div class="f"><label for="ccvc">Cryptogramme</label><input id="ccvc" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="123"></div>
+<p style="grid-column: 1 / -1; margin: 0; font-size: 13px; color: #5C5241">Champs fournis par [PRESTATAIRE DE PAIEMENT] : vos données bancaires ne sont jamais stockées par la boutique.</p>
+</div>
+</sc-if>
+<sc-if value="{{isOther}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; padding: 20px; border-radius: 18px; background: #FBF7F0; font-size: 15px; color: #4A4234">Vous serez redirigé·e vers {{methodLabel}} pour finaliser le paiement en toute sécurité.</p>
+</sc-if>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label style="display: flex; align-items: center; gap: 12px; min-height: 44px; cursor: pointer; font-size: 15px">
+<input type="checkbox" checked="{{sameBilling}}" onChange="{{toggleBilling}}" style="width: 20px; height: 20px; accent-color: #4F5229">
+Adresse de facturation identique à la livraison
+</label>
+<sc-if value="{{otherBilling}}" hint-placeholder-val="{{ false }}">
+<div class="f" style="margin: 4px 0 8px 32px"><label for="bill">Adresse de facturation</label><input id="bill" type="text" autocomplete="billing street-address"></div>
+</sc-if>
+<label style="display: flex; align-items: center; gap: 12px; min-height: 44px; cursor: pointer; font-size: 15px">
+<input type="checkbox" required style="width: 20px; height: 20px; accent-color: #4F5229">
+<span>J'accepte les <a href="Checkout.dc.html">conditions générales de vente</a></span>
+</label>
+</div>
+
+<button type="submit" style="align-self: flex-start; min-height: 56px; padding: 0 36px; border-radius: 28px; border: none; background: {{accent}}; color: #F4EEE3; font: 700 16px 'Nunito Sans', sans-serif; cursor: pointer">Payer [TOTAL] €</button>
+</form>
+</sc-if>
+</div>
+
+<!-- Récapitulatif -->
+<aside aria-label="Récapitulatif de commande" style="flex: 1 1 340px; min-width: 0; background: #FBF7F0; border-radius: 28px; padding: 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px; outline: 1.5px dashed #CDBFA8; outline-offset: -10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 26px">Votre commande</h2>
+<a href="Cart.dc.html" style="font-size: 14px; font-weight: 700; padding: 10px 0">Modifier</a>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="3">
+<li style="display: flex; gap: 14px; align-items: center">
+<div class="{{it.ph}}" style="width: 64px; height: 64px; border-radius: 14px; flex: none; position: relative"><span style="position: absolute; top: -6px; right: -6px; width: 24px; height: 24px; border-radius: 12px; background: #6B4A32; color: #F4EEE3; display: grid; place-items: center; font-size: 12px; font-weight: 700">{{it.qty}}</span></div>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 15px">{{it.name}}</span><span style="font-size: 13px; color: #5C5241">{{it.options}}</span></span>
+<span style="font-weight: 700; font-size: 15px">[PRIX] €</span>
+</li>
+</sc-for>
+</ul>
+<dl style="margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 15px; border-top: 1.5px dashed #CDBFA8; padding-top: 16px">
+<div style="display: flex; justify-content: space-between"><dt>Sous-total</dt><dd style="margin: 0; font-weight: 700">[SOUS-TOTAL] €</dd></div>
+<div style="display: flex; justify-content: space-between"><dt>Livraison</dt><dd style="margin: 0; font-weight: 700">{{shipPrice}}</dd></div>
+<div style="display: flex; justify-content: space-between"><dt>Emballage cadeau</dt><dd style="margin: 0; font-weight: 700">Offert</dd></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1.5px dashed #CDBFA8; padding-top: 14px"><dt style="font-family: Fraunces, Georgia, serif; font-size: 22px">Total</dt><dd style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 600">[TOTAL] €</dd></div>
+</dl>
+</aside>
+</div>
+</sc-if>
+
+<!-- CONFIRMATION -->
+<sc-if value="{{isDone}}" hint-placeholder-val="{{ false }}">
+<div style="max-width: 760px; margin: 24px auto 0; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center">
+<div style="width: 112px; height: 112px; border-radius: 56px; background: #4F5229; display: grid; place-items: center; outline: 1.5px dashed #4F5229; outline-offset: 8px">
+<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#F4EEE3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+</div>
+<p style="margin: 0; font-size: 13px; letter-spacing: .24em; text-transform: uppercase; color: #6B4A32; font-weight: 700">Commande n° [NUMÉRO]</p>
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.08">Merci ! Votre cocon<br><em style="color: {{accent}}">se prépare à l'atelier.</em></h1>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #4A4234; max-width: 560px">Un e-mail de confirmation vient de partir vers [adresse e-mail]. Je prépare votre colis avec soin et vous écris dès qu'il est expédié, sous [DÉLAI].</p>
+<div style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; text-align: left; margin-top: 8px">
+<div style="padding: 20px; border-radius: 20px; border: 1.5px dashed #BFAE92; display: flex; flex-direction: column; gap: 6px"><strong style="font-size: 14px">Livraison</strong><span style="font-size: 15px; color: #4A4234">{{shipLabel}}</span></div>
+<div style="padding: 20px; border-radius: 20px; border: 1.5px dashed #BFAE92; display: flex; flex-direction: column; gap: 6px"><strong style="font-size: 14px">Paiement</strong><span style="font-size: 15px; color: #4A4234">{{methodLabel}}</span></div>
+<div style="padding: 20px; border-radius: 20px; border: 1.5px dashed #BFAE92; display: flex; flex-direction: column; gap: 6px"><strong style="font-size: 14px">Total réglé</strong><span style="font-size: 15px; color: #4A4234">[TOTAL] €</span></div>
+</div>
+<p style="margin: 8px 0 0; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 20px; color: #6B4A32">— Kat</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 26px; background: {{accent}}; color: #F4EEE3; text-decoration: none; font-weight: 700">Retour à la boutique</a>
+<button type="button" onClick="{{restart}}" style="min-height: 52px; padding: 0 28px; border-radius: 26px; border: 1.5px solid #6B4A32; background: transparent; color: #6B4A32; font: 700 15px 'Nunito Sans', sans-serif; cursor: pointer">Revoir le parcours</button>
+</div>
+</div>
+</sc-if>
+
+</div>
+
+<footer style="background: #3A2B1F; color: #BFB39C">
+<p style="max-width: 1240px; margin: 0 auto; padding: 28px 24px; font-size: 13px">© 2026 Kat's Eye Création — fait main avec amour · <a href="Main.dc.html" style="color: #E9E2D2">Retour à l'accueil</a></p>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#5E6233","options":["#5E6233","#6B4A32","#4A5A3A","#7A5A2E"]},"startStep":{"editor":"enum","options":["livraison","paiement","confirmation"],"default":"livraison"},"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const map = { livraison: 2, paiement: 3, confirmation: 4 };
+    this.state = { step: map[props.startStep] ?? 2, ship: 0, method: 0, sameBilling: true };
+  }
+  componentDidUpdate(prev) {
+    if (prev.startStep !== this.props.startStep) {
+      const map = { livraison: 2, paiement: 3, confirmation: 4 };
+      this.setState({ step: map[this.props.startStep] ?? 2 });
+    }
+  }
+  renderVals() {
+    const s = this.state;
+    const go = (step) => (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ step }); };
+    const shipDefs = [
+      { label: 'Livraison à domicile', hint: '[Transporteur] · [délai]', price: '[TARIF] €' },
+      { label: 'Point relais', hint: 'Choix du point à l’étape suivante · [délai]', price: '[TARIF] €' },
+      { label: 'Retrait à l’atelier', hint: '[Ville] · sur rendez-vous', price: 'Gratuit' }
+    ];
+    const methodDefs = ['Carte bancaire', 'PayPal', '[Autre moyen]'];
+    const stepDefs = [{ n: 1, label: 'Panier' }, { n: 2, label: 'Livraison' }, { n: 3, label: 'Paiement' }];
+    return {
+      accent: this.props.accent ?? '#5E6233',
+      inForm: s.step < 4,
+      isShip: s.step === 2,
+      isPay: s.step === 3,
+      isDone: s.step === 4,
+      isCard: s.method === 0,
+      isOther: s.method !== 0,
+      methodLabel: methodDefs[s.method],
+      sameBilling: s.sameBilling,
+      otherBilling: !s.sameBilling,
+      toggleBilling: () => this.setState({ sameBilling: !s.sameBilling }),
+      shipLabel: shipDefs[s.ship].label,
+      shipPrice: shipDefs[s.ship].price,
+      goPay: go(3),
+      goShip: go(2),
+      goDone: go(4),
+      restart: go(2),
+      steps: stepDefs.map((d) => {
+        const done = d.n < s.step, cur = d.n === s.step;
+        return {
+          label: d.label,
+          mark: done ? '✓' : String(d.n),
+          current: cur ? 'step' : 'false',
+          fg: done || cur ? '#2E2A1F' : '#6E6350',
+          bg: cur ? '#6B4A32' : done ? '#4F5229' : 'transparent',
+          dotFg: cur || done ? '#F4EEE3' : '#6E6350',
+          border: cur || done ? 'none' : '1.5px dashed #9C8C72'
+        };
+      }),
+      shipping: shipDefs.map((d, i) => ({ ...d, selected: i === s.ship, border: i === s.ship ? '#4F5229' : '#CDBFA8', bg: i === s.ship ? '#EEEBDC' : 'transparent', pick: () => this.setState({ ship: i }) })),
+      methods: methodDefs.map((label, i) => ({ label, selected: i === s.method, border: i === s.method ? '#4F5229' : '#CDBFA8', bg: i === s.method ? '#EEEBDC' : 'transparent', pick: () => this.setState({ method: i }) })),
+      items: [
+        { name: 'Plaid « Sous-bois »', options: 'Kaki mousse · [Grand format]', ph: 'ph-k', qty: 1 },
+        { name: 'Coussin « Écorce »', options: 'Velours côtelé · Noisette', ph: 'ph-w', qty: 2 },
+        { name: 'Pochette « Mousse »', options: 'Lin lavé · Lin naturel', ph: 'ph', qty: 1 }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

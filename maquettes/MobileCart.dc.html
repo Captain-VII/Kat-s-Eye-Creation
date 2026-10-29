@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Kat's Eye Création — Panier mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4EEE3}
+a{color:#4F5229}a:hover{color:#3A3C1D}
+.ph{background-color:#E3D6C2;background-image:repeating-linear-gradient(45deg,rgba(107,74,50,.07) 0 2px,transparent 2px 12px)}
+.ph-k{background-color:#B9B48C;background-image:repeating-linear-gradient(-45deg,rgba(46,42,31,.08) 0 2px,transparent 2px 12px)}
+.ph-w{background-color:#8A6448;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 3px,transparent 3px 14px)}
+</style>
+</helmet>
+<div style="width: 390px; min-height: 1900px; box-sizing: border-box; font-family: 'Nunito Sans', system-ui, sans-serif; color: #2E2A1F; background: #F4EEE3; overflow: hidden">
+
+<!-- En-tête -->
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 1.5px dashed #CDBFA8">
+<a href="MobileProduct.dc.html" aria-label="Continuer mes achats" style="width: 44px; height: 44px; display: grid; place-items: center; color: #2E2A1F"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 600">Mon panier</span>
+<span style="width: 44px; text-align: right; font-size: 14px; font-weight: 700; color: #5C5241">{{count}}</span>
+</header>
+
+<!-- Étapes -->
+<ol aria-label="Étapes de commande" style="list-style: none; margin: 0; padding: 14px 16px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; font-size: 12px; font-weight: 700; text-align: center">
+<li style="display: flex; flex-direction: column; gap: 6px"><span style="height: 4px; border-radius: 2px; background: #6B4A32"></span>Panier</li>
+<li style="display: flex; flex-direction: column; gap: 6px; color: #6E6350"><span style="height: 4px; border-top: 2px dashed #9C8C72"></span>Livraison</li>
+<li style="display: flex; flex-direction: column; gap: 6px; color: #6E6350"><span style="height: 4px; border-top: 2px dashed #9C8C72"></span>Paiement</li>
+</ol>
+
+<!-- Vide -->
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<div style="margin: 24px 16px; border: 1.5px dashed #BFAE92; border-radius: 24px; padding: 48px 20px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6B4A32" stroke-width="1.3" aria-hidden="true"><path d="M5 8h14l-1.2 11H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+<p style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 24px">Votre panier attend sa première douceur</p>
+<a href="MobileHome.dc.html" style="display: flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border-radius: 26px; background: {{accent}}; color: #F4EEE3; text-decoration: none; font-weight: 700">Découvrir la boutique</a>
+</div>
+</sc-if>
+
+<!-- Rempli -->
+<sc-if value="{{filled}}" hint-placeholder-val="{{ true }}">
+<div style="padding: 0 16px">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="3">
+<article style="display: flex; gap: 14px; padding: 18px 0; border-bottom: 1.5px dashed #BFAE92">
+<a href="MobileProduct.dc.html" class="{{it.ph}}" aria-label="Voir {{it.name}}" style="width: 96px; height: 112px; border-radius: 14px; flex: none"></a>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; gap: 8px">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.2">{{it.name}}</h2>
+<button type="button" aria-label="Retirer {{it.name}}" onClick="{{it.remove}}" style="width: 44px; height: 44px; margin: -10px -10px 0 0; flex: none; border: none; background: transparent; cursor: pointer; display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B4A32" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+</div>
+<p style="margin: 0; font-size: 13px; color: #5C5241">{{it.options}}</p>
+<div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center">
+<sc-if value="{{it.unique}}" hint-placeholder-val="{{ false }}"><span style="background: #E9DFCF; color: #6B4A32; border-radius: 10px; padding: 3px 8px; font-size: 12px; font-weight: 700">Pièce unique</span></sc-if>
+<sc-if value="{{it.multi}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; border: 1.5px solid #BFAE92; border-radius: 22px; height: 44px">
+<button type="button" aria-label="Retirer un {{it.name}}" onClick="{{it.dec}}" style="width: 40px; height: 40px; border: none; background: transparent; font-size: 18px; color: #2E2A1F; cursor: pointer">−</button>
+<span aria-live="polite" style="min-width: 18px; text-align: center; font-weight: 700; font-size: 14px">{{it.qty}}</span>
+<button type="button" aria-label="Ajouter un {{it.name}}" onClick="{{it.inc}}" style="width: 40px; height: 40px; border: none; background: transparent; font-size: 18px; color: #2E2A1F; cursor: pointer">+</button>
+</div>
+</sc-if>
+<span style="font-weight: 700; font-size: 15px">[PRIX] €</span>
+</div>
+</div>
+</article>
+</sc-for>
+
+<!-- Cadeau -->
+<div style="margin-top: 20px; background: #E9DFCF; border-radius: 20px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px">
+<label style="display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 15px; cursor: pointer; min-height: 44px">
+<input type="checkbox" checked="{{gift}}" onChange="{{toggleGift}}" style="width: 22px; height: 22px; flex: none; accent-color: #4F5229">
+C'est pour offrir (emballage offert)
+</label>
+<sc-if value="{{gift}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="m-gift" style="font-size: 13px; font-weight: 700">Petit mot glissé dans le paquet</label>
+<textarea id="m-gift" rows="3" placeholder="Pour toi, une douceur pour l'hiver…" style="border-radius: 14px; border: 1.5px solid #BFAE92; background: #FBF7F0; padding: 12px 14px; font: 15px 'Nunito Sans', sans-serif; color: #2E2A1F"></textarea>
+</div>
+</sc-if>
+</div>
+
+<!-- Récapitulatif -->
+<section aria-label="Récapitulatif" style="margin-top: 20px; background: #FBF7F0; border-radius: 24px; padding: 22px 18px; display: flex; flex-direction: column; gap: 16px; outline: 1.5px dashed #CDBFA8; outline-offset: -8px">
+<fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+<legend style="padding: 0; margin-bottom: 8px; font-weight: 700; font-size: 15px">Livraison</legend>
+<sc-for list="{{shipping}}" as="sh" hint-placeholder-count="3">
+<label style="display: flex; align-items: center; gap: 10px; min-height: 50px; padding: 0 14px; border-radius: 14px; border: 1.5px solid {{sh.border}}; background: {{sh.bg}}; cursor: pointer; font-size: 14px">
+<input type="radio" name="m-ship" checked="{{sh.selected}}" onChange="{{sh.pick}}" style="width: 18px; height: 18px; flex: none; accent-color: #4F5229">
+<span style="flex: 1">{{sh.label}}</span><span style="font-weight: 700; font-size: 13px">{{sh.price}}</span>
+</label>
+</sc-for>
+</fieldset>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="m-promo" style="font-weight: 700; font-size: 14px">Code promo</label>
+<div style="display: flex; gap: 8px">
+<input id="m-promo" type="text" style="flex: 1; min-width: 0; min-height: 46px; padding: 0 14px; border-radius: 23px; border: 1.5px solid #BFAE92; background: #F4EEE3; font: 15px 'Nunito Sans', sans-serif; color: #2E2A1F">
+<button type="button" style="min-height: 46px; padding: 0 16px; border-radius: 23px; border: 1.5px solid #6B4A32; background: transparent; color: #6B4A32; font: 700 14px 'Nunito Sans', sans-serif; cursor: pointer">OK</button>
+</div>
+</div>
+<dl style="margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; border-top: 1.5px dashed #CDBFA8; padding-top: 14px">
+<div style="display: flex; justify-content: space-between"><dt>Sous-total</dt><dd style="margin: 0; font-weight: 700">[SOUS-TOTAL] €</dd></div>
+<div style="display: flex; justify-content: space-between"><dt>Livraison</dt><dd style="margin: 0; font-weight: 700">{{shipPrice}}</dd></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1.5px dashed #CDBFA8; padding-top: 12px"><dt style="font-family: Fraunces, Georgia, serif; font-size: 20px">Total</dt><dd style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 24px; font-weight: 600">[TOTAL] €</dd></div>
+</dl>
+</section>
+
+<a href="MobileCheckout.dc.html" style="margin-top: 20px; display: flex; align-items: center; justify-content: center; min-height: 58px; border-radius: 29px; background: {{accent}}; color: #F4EEE3; text-decoration: none; font-weight: 700; font-size: 16px">Passer commande · [TOTAL] €</a>
+<p style="margin: 12px 0 0; display: flex; gap: 8px; align-items: center; justify-content: center; font-size: 13px; color: #5C5241"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F5229" stroke-width="1.7" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Paiement sécurisé</p>
+</div>
+</sc-if>
+
+<!-- Réassurance -->
+<div style="margin: 32px 16px 40px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; font-weight: 700">
+<div style="display: flex; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 16px; border: 1.5px dashed #BFAE92">Cousu main, avec soin</div>
+<div style="display: flex; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 16px; border: 1.5px dashed #BFAE92">Expédié sous [DÉLAI]</div>
+<div style="display: flex; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 16px; border: 1.5px dashed #BFAE92">[Conditions de retour]</div>
+</div>
+
+<footer style="background: #3A2B1F; color: #BFB39C; padding: 24px 16px; font-size: 12px">© 2026 Kat's Eye Création — fait main avec amour</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#5E6233","options":["#5E6233","#6B4A32","#4A5A3A","#7A5A2E"]},"$preview":{"width":390,"height":1900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gift: false,
+      ship: 0,
+      items: [
+        { id: 'plaid', name: 'Plaid « Sous-bois »', options: 'Kaki mousse · [Grand format]', ph: 'ph-k', unique: true, qty: 1 },
+        { id: 'coussin', name: 'Coussin « Écorce »', options: 'Velours côtelé · Noisette', ph: 'ph-w', unique: false, qty: 2 },
+        { id: 'pochette', name: 'Pochette « Mousse »', options: 'Lin lavé · Lin naturel', ph: 'ph', unique: false, qty: 1 }
+      ]
+    };
+  }
+  setQty(id, d) {
+    this.setState({ items: this.state.items.map((x) => x.id === id ? { ...x, qty: Math.max(1, x.qty + d) } : x) });
+  }
+  renderVals() {
+    const s = this.state;
+    const shipDefs = [
+      { label: 'À domicile', price: '[TARIF] €' },
+      { label: 'Point relais', price: '[TARIF] €' },
+      { label: 'Retrait à l’atelier', price: 'Gratuit' }
+    ];
+    return {
+      accent: this.props.accent ?? '#5E6233',
+      count: s.items.reduce((n, x) => n + x.qty, 0) + ' art.',
+      empty: s.items.length === 0,
+      filled: s.items.length > 0,
+      gift: s.gift,
+      toggleGift: () => this.setState({ gift: !s.gift }),
+      shipPrice: shipDefs[s.ship].price,
+      shipping: shipDefs.map((d, i) => ({ ...d, selected: i === s.ship, border: i === s.ship ? '#4F5229' : '#CDBFA8', bg: i === s.ship ? '#EEEBDC' : 'transparent', pick: () => this.setState({ ship: i }) })),
+      items: s.items.map((x) => ({
+        ...x,
+        multi: !x.unique,
+        inc: () => this.setQty(x.id, 1),
+        dec: () => this.setQty(x.id, -1),
+        remove: () => this.setState({ items: s.items.filter((y) => y.id !== x.id) })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
