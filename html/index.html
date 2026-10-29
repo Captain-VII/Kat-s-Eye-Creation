@@ -35,6 +35,7 @@ p{margin:0}
 header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding-top:18px;padding-bottom:18px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
 .logo b{display:block;font-family:var(--serif);font-size:24px;font-weight:600;line-height:1}
+.logo .logo-k{height:.74em;width:auto;margin-right:.03em;vertical-align:baseline;transform:translateY(.01em)}
 .logo small{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--walnut)}
 nav.main{display:flex;flex-wrap:wrap;gap:4px 24px;font-weight:600}
 nav.main a{text-decoration:none;padding:8px 0}
@@ -165,9 +166,9 @@ legend span{font-weight:400;color:var(--muted)}
 <div class="banner">Chaque pièce est cousue à la main, en petite série — livraison offerte dès 60 €</div>
 <header>
   <div class="wrap">
-    <a href="#/" class="logo">
-      <svg width="42" height="42" viewBox="0 0 44 44" fill="none" stroke="#6B4A32" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 22c5-8 11-12 18-12s13 4 18 12c-5 8-11 12-18 12S9 30 4 22Z"/><circle cx="22" cy="22" r="6.5"/><path d="M22 18.5v7" stroke-width="2.2"/><path d="M10 5l3 4M34 5l-3 4" stroke-dasharray="2 3"/></svg>
-      <span><b>Kat's Eye</b><small>Création</small></span>
+    <a href="#/" class="logo" aria-label="Kat's Eye Création, accueil">
+      <svg width="46" height="36" viewBox="0 0 56 44" aria-hidden="true" style="color:var(--walnut)"><path d="M3 24C10 13 18 8 28 8S46 13 53 24C46 35 38 40 28 40S10 35 3 24Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="28" cy="24" r="11" fill="currentColor"/><circle cx="28" cy="24" r="8" fill="none" stroke="var(--cream)" stroke-width="1"/><g fill="var(--cream)"><circle cx="25" cy="21" r="1.6"/><circle cx="31" cy="21" r="1.6"/><circle cx="25" cy="27" r="1.6"/><circle cx="31" cy="27" r="1.6"/></g><path d="M25 21 31 27M31 21 25 27" stroke="var(--cream)" stroke-width="1.1"/></svg>
+      <span><b><svg class="logo-k" viewBox="0 0 46 52" aria-hidden="true"><rect x="5" y="3" width="8.5" height="46" fill="currentColor"/><rect x="1" y="3" width="17" height="2.6" rx=".6" fill="currentColor"/><rect x="1" y="46.4" width="17" height="2.6" rx=".6" fill="currentColor"/><path d="M11 30.5C20 22 30 12.5 41.5 3.2 35 12.5 25 24 15.5 34.5Z" fill="currentColor"/><path d="M15.5 24 21.5 20 41.5 46.5H32.5Z" fill="currentColor"/><rect x="29.5" y="46.4" width="15.5" height="2.6" rx=".6" fill="currentColor"/><path d="M16.5 30.6C24 23.8 31 16.8 38 9.6" stroke="var(--cream)" stroke-width=".7" fill="none"/><circle cx="14.4" cy="28.6" r="2.7" fill="var(--cream)" stroke="currentColor" stroke-width="1.3"/><circle cx="14.4" cy="28.6" r=".9" fill="currentColor"/></svg>at's Eye</b><small>Création</small></span>
     </a>
     <nav class="main" aria-label="Navigation principale">
       <a href="#/boutique">Boutique</a>
