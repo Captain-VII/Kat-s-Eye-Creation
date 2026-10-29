@@ -3,7 +3,7 @@
 Boutique de créations cousues main (plaids, coussins, pochettes, petites douceurs) pour la mère de Dorian.
 Ambiance : tons bois, vert kaki, cocooning.
 
-- Canevas de maquettes (site, mobile, admin, todo A4) : https://claude.ai/artifact/XMpi2rrLapjGcP4iTZ7ixy
+- Canevas de maquettes (site, mobile, admin) : https://claude.ai/artifact/XMpi2rrLapjGcP4iTZ7ixy
 - `maquettes/` : copie des sources du canevas (`.dc.html` + `canvas.json`), au 2026-10-29.
 
 ## Charte
@@ -11,6 +11,5 @@ Ambiance : tons bois, vert kaki, cocooning.
 - Polices : Fraunces (titres), Nunito Sans (texte)
 - Motif : bordures en pointillés façon surpiqûre
 
-## Choix techno recommandé
-Décidé le 2026-10-29 : Shopify + thème custom basé sur Dawn (admin et appli mobile fournis pour Kat). Pas d’hébergement sur le VPS.
-Checklist détaillée : feuilles A4 dans l'onglet « Todo Shopify (A4) » du canevas.
+## Choix techno
+Décidé le 2026-10-29 : Shopify abandonné. Site hébergé sur le VPS (stack à définir).
