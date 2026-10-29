@@ -195,14 +195,14 @@ legend span{font-weight:400;color:var(--muted)}
 
 <script>
 const PRODUCTS = [
-  { id:'sous-bois', name:'Plaid « Sous-bois »', cat:'Plaids & jetés', detail:'Double gaze de coton, kaki & noisette', price:89, ph:'ph-k', unique:true },
-  { id:'ecorce', name:'Coussin « Écorce »', cat:'Coussins', detail:'Velours côtelé, housse amovible', price:39, ph:'ph-w' },
-  { id:'mousse', name:'Pochette « Mousse »', cat:'Pochettes & trousses', detail:'Lin lavé, doublure coton', price:24, ph:'ph' },
-  { id:'cocon', name:'Bouillotte « Cocon »', cat:'Petites douceurs', detail:'Housse polaire & laine bouillie', price:32, ph:'ph-k', unique:true },
-  { id:'clairiere', name:'Plaid « Clairière »', cat:'Plaids & jetés', detail:'Lin & coton gaufré, ton sable', price:95, ph:'ph' },
-  { id:'fougere', name:'Coussin « Fougère »', cat:'Coussins', detail:'Lin brodé main, garnissage plume', price:42, ph:'ph-k' },
-  { id:'noisette', name:'Trousse « Noisette »', cat:'Pochettes & trousses', detail:'Velours milleraies, zip laiton', price:19, ph:'ph-w' },
-  { id:'chouchou', name:'Chouchous « Sous-bois »', cat:'Petites douceurs', detail:'Lot de 3, chutes de tissus', price:12, ph:'ph' }
+  { id:'sous-bois', img:'img/sous-bois.jpg', name:'Plaid « Sous-bois »', cat:'Plaids & jetés', detail:'Double gaze de coton, kaki & noisette', price:89, ph:'ph-k', unique:true },
+  { id:'ecorce', img:'img/ecorce.jpg', name:'Coussin « Écorce »', cat:'Coussins', detail:'Velours côtelé, housse amovible', price:39, ph:'ph-w' },
+  { id:'mousse', img:'img/mousse.jpg', name:'Pochette « Mousse »', cat:'Pochettes & trousses', detail:'Lin lavé, doublure coton', price:24, ph:'ph' },
+  { id:'cocon', img:'img/cocon.jpg', name:'Bouillotte « Cocon »', cat:'Petites douceurs', detail:'Housse polaire & laine bouillie', price:32, ph:'ph-k', unique:true },
+  { id:'clairiere', img:'img/clairiere.jpg', name:'Plaid « Clairière »', cat:'Plaids & jetés', detail:'Lin & coton gaufré, ton sable', price:95, ph:'ph' },
+  { id:'fougere', img:'img/fougere.jpg', name:'Coussin « Fougère »', cat:'Coussins', detail:'Lin brodé main, garnissage plume', price:42, ph:'ph-k' },
+  { id:'noisette', img:'img/noisette.jpg', name:'Trousse « Noisette »', cat:'Pochettes & trousses', detail:'Velours milleraies, zip laiton', price:19, ph:'ph-w' },
+  { id:'chouchou', img:'img/chouchou.jpg', name:'Chouchous « Sous-bois »', cat:'Petites douceurs', detail:'Lot de 3, chutes de tissus', price:12, ph:'ph' }
 ];
 const CATS = ['Plaids & jetés','Coussins','Pochettes & trousses','Petites douceurs'];
 const FABRICS = [['Kaki mousse','#6E7140'],['Noisette','#9A7150'],['Écorce','#5A3E2B'],['Lin naturel','#D8CBB3']];
@@ -211,6 +211,7 @@ const FREE_SHIPPING = 60, SHIPPING = 5.9;
 
 const euro = n => n.toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const photo = p => p.img ? ` style="background:#E3D6C2 url('${p.img}') center/cover"` : '';
 const byId = id => PRODUCTS.find(p => p.id === id);
 
 let cart = [];
@@ -235,7 +236,7 @@ function toast(msg) {
 
 const card = p => `
   <article class="card">
-    <a href="#/produit/${p.id}" class="pic ${p.ph}" aria-label="${esc(p.name)}">${p.unique ? '<span class="badge">Pièce unique</span>' : ''}</a>
+    <a href="#/produit/${p.id}" class="pic ${p.ph}"${photo(p)} aria-label="${esc(p.name)}">${p.unique ? '<span class="badge">Pièce unique</span>' : ''}</a>
     <h3><a href="#/produit/${p.id}">${esc(p.name)}</a></h3>
     <p class="detail">${esc(p.detail)}</p>
     <div class="row"><span class="price">${euro(p.price)}</span><button class="chip" data-add="${p.id}">Ajouter</button></div>
@@ -311,7 +312,7 @@ const views = {
     <div class="wrap"><nav class="crumbs" aria-label="Fil d'Ariane"><a href="#/">Accueil</a>/<a href="#/boutique/${encodeURIComponent(p.cat)}">${esc(p.cat)}</a>/<span>${esc(p.name)}</span></nav></div>
     <section class="wrap product">
       <div>
-        <div class="gallery-main ${SHOTS[0][1]}" id="main-shot">${p.unique ? '<span class="badge" style="top:22px;left:22px">Pièce unique</span>' : ''}<span id="shot-label">${SHOTS[0][0]}</span></div>
+        <div class="gallery-main ${SHOTS[0][1]}" id="main-shot"${photo(p)}>${p.unique ? '<span class="badge" style="top:22px;left:22px">Pièce unique</span>' : ''}<span id="shot-label">${SHOTS[0][0]}</span></div>
         <div class="thumbs">${SHOTS.map(([l, ph], i) => `<button class="${ph}" data-shot="${i}" aria-pressed="${i === 0}">${l}</button>`).join('')}</div>
       </div>
       <div class="info">
@@ -348,7 +349,7 @@ const views = {
         <h1>Mon panier</h1>
         ${cart.map((l, i) => { const p = byId(l.id); return `
           <div class="line">
-            <a href="#/produit/${p.id}" class="pic ${p.ph}" aria-label="${esc(p.name)}"></a>
+            <a href="#/produit/${p.id}" class="pic ${p.ph}"${photo(p)} aria-label="${esc(p.name)}"></a>
             <div><h3>${esc(p.name)}</h3><small>Tissu : ${esc(l.fabric)}</small>
               <div style="display:flex;align-items:center;gap:14px;margin-top:8px">
                 <div class="qty" style="height:40px"><button data-line="${i}" data-d="-1" style="height:36px;width:38px" aria-label="Retirer un">−</button><span>${l.qty}</span><button data-line="${i}" data-d="1" style="height:36px;width:38px" aria-label="Ajouter un">+</button></div>
