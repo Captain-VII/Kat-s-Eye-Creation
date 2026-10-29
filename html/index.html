@@ -187,7 +187,7 @@ legend span{font-weight:400;color:var(--muted)}
     <div><strong style="font-family:var(--serif);font-size:24px;font-weight:400">Kat's Eye Création</strong>Couture artisanale, pièces uniques et petites séries.</div>
     <nav aria-label="Boutique"><strong>Boutique</strong><a href="#/boutique">Toutes les créations</a><a href="#/sur-mesure">Sur-mesure</a></nav>
     <nav aria-label="Infos"><strong>Infos</strong><a href="#/">Livraison &amp; retours</a><a href="#/">Entretien des tissus</a><a href="#/">Mentions légales</a></nav>
-    <div><strong>Me contacter</strong>[E-MAIL]<br>[Instagram]</div>
+    <div><strong>Me contacter</strong>bonjour@kats-eye-creation.fr<br>@katseye.creation</div>
   </div>
   <div class="wrap"><span class="copy">© 2026 Kat's Eye Création — fait main avec amour</span></div>
 </footer>
@@ -206,6 +206,14 @@ const PRODUCTS = [
   { id:'chouchou', img:'img/chouchou.jpg', name:'Chouchous « Sous-bois »', cat:'Petites douceurs', detail:'Lot de 3, chutes de tissus', price:12, ph:'ph' }
 ];
 const CATS = ['Plaids & jetés','Coussins','Pochettes & trousses','Petites douceurs'];
+const CAT_IMG = ['sous-bois','fougere','noisette','cocon'];
+// Textes d'exemple par catégorie, à remplacer par les vraies infos de chaque pièce
+const INFOS = {
+  'Plaids & jetés': { compo:'Dessus double gaze de coton, dos en lin lavé. Sans garnissage. 130 × 170 cm, environ 900 g.', care:'Lavage à 30 °C, cycle délicat. Séchage à plat, pas de sèche-linge. Repassage doux sur l\'envers si besoin.', mot:'J\'ai choisi cette double gaze pour son toucher tout doux qui s\'assouplit encore au fil des lavages. Il m\'a fallu une bonne journée d\'atelier pour l\'assembler et poser la surpiqûre tout autour.' },
+  'Coussins': { compo:'Housse en tissu naturel, fermeture éclair cachée. Garnissage plume et duvet (ou fibre sur demande). 45 × 45 cm.', care:'Housse lavable à 30 °C, à l\'envers. Séchage à l\'air libre. Garnissage : bien secouer pour lui redonner du volume.', mot:'Chaque coussin est coupé pour que le motif tombe bien au centre. Celui-ci a été pensé pour réchauffer un fauteuil ou un coin lecture.' },
+  'Pochettes & trousses': { compo:'Extérieur lin ou velours, doublure coton, fermeture éclair métal. 22 × 14 cm.', care:'Lavage à la main à l\'eau froide. Sécher à plat. Ne pas passer au sèche-linge.', mot:'Une petite pièce que j\'aime beaucoup coudre : on y glisse ses crayons, son maquillage ou ses écouteurs. Les chutes de tissu trouvent ici une seconde vie.' },
+  'Petites douceurs': { compo:'Tissus doux (polaire, laine bouillie ou chutes de coton). Tailles et compositions variables selon la pièce.', care:'Lavage à la main à 30 °C maximum. Séchage à plat.', mot:'Les petites douceurs, ce sont les pièces que je couds avec les chutes des grands projets. Rien ne se perd à l\'atelier.' }
+};
 const FABRICS = [['Kaki mousse','#6E7140'],['Noisette','#9A7150'],['Écorce','#5A3E2B'],['Lin naturel','#D8CBB3']];
 const SHOTS = [['Vue d’ensemble','ph-k'],['Plié','ph'],['Détail couture','ph-w'],['En situation','ph-k']];
 const FREE_SHIPPING = 60, SHIPPING = 5.9;
@@ -253,8 +261,8 @@ const views = {
         <div class="actions"><a href="#/boutique" class="btn">Découvrir la boutique</a><a href="#/atelier" class="btn btn-line">L'histoire de l'atelier</a></div>
       </div>
       <div class="hero-vis">
-        <div class="arch ph"></div>
-        <div class="tile ph-k"></div>
+        <div class="arch ph" style="background:#E3D6C2 url('img/fils.jpg') center/cover"></div>
+        <div class="tile ph-k" style="background:#E3D6C2 url('img/ecorce.jpg') center/cover"></div>
         <div class="wood-card">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E3D6C2" stroke-width="1.5" aria-hidden="true"><path d="M4 20 20 4"/><circle cx="18" cy="6" r="1.2"/><path d="M4 20c3-1 5-1 7 1" stroke-dasharray="2 2"/></svg>
           <p>Pièces uniques &amp; petites séries</p>
@@ -268,7 +276,7 @@ const views = {
       <div class="head-row"><div><p class="eyebrow">Les collections</p><h2>Pour chaque coin de la maison</h2></div><a href="#/boutique"><b>Tout voir →</b></a></div>
       <div class="grid">${CATS.map((c, i) => `
         <a href="#/boutique/${encodeURIComponent(c)}" style="text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:12px">
-          <div class="${['ph-w','ph-k','ph','ph-k'][i]}" style="height:260px;border-radius:20px"></div>
+          <div class="${['ph-w','ph-k','ph','ph-k'][i]}" style="height:260px;border-radius:20px;background:#E3D6C2 url('img/${CAT_IMG[i]}.jpg') center/cover"></div>
           <span style="font-family:var(--serif);font-size:23px">${esc(c)}</span>
         </a>`).join('')}</div>
     </section>
@@ -328,14 +336,14 @@ const views = {
         </div>
         <p style="font-size:14px;color:#4A4234">✿ Emballage cadeau offert · expédié sous 3 à 5 jours</p>
         <div class="acc">
-          <details open><summary>Composition &amp; dimensions</summary><p>[Matières, doublure, garnissage, dimensions exactes.]</p></details>
-          <details><summary>Entretien</summary><p>[Lavage, séchage, repassage conseillés.]</p></details>
+          <details open><summary>Composition &amp; dimensions</summary><p>${esc(INFOS[p.cat].compo)}</p></details>
+          <details><summary>Entretien</summary><p>${esc(INFOS[p.cat].care)}</p></details>
           <details><summary>Livraison &amp; retours</summary><p>Colissimo suivi, offert dès ${FREE_SHIPPING} €. Retours acceptés sous 14 jours.</p></details>
           <details><summary>Fait main : à savoir</summary><p>Chaque pièce est coupée et cousue à la main : de légères variations de motif ou de teinte font partie de son charme.</p></details>
         </div>
       </div>
     </section>
-    <section class="kat-word"><div class="wrap"><p>[Le mot de Kat sur cette pièce : le tissu choisi, le temps passé, une anecdote d'atelier.]</p><p class="sign">— Kat</p></div></section>
+    <section class="kat-word"><div class="wrap"><p>« ${esc(INFOS[p.cat].mot)} »</p><p class="sign">— Kat</p></div></section>
     <section class="wrap block" style="padding-bottom:72px"><h2 style="margin-bottom:24px">Pour compléter le cocon</h2><div class="grid">${related.map(card).join('')}</div></section>`;
   },
 
@@ -394,11 +402,11 @@ const views = {
 function atelier() {
   return `
     <section class="atelier" id="atelier"><div class="wrap">
-      <div class="pic ph-w"></div>
+      <div class="pic ph-w" style="background:#E3D6C2 url('img/atelier.jpg') center/cover"></div>
       <div>
         <p class="eyebrow" style="color:#D9CFA8">L'atelier</p>
         <h2>Derrière chaque couture, un œil attentif.</h2>
-        <p>[Votre histoire : comment est né Kat's Eye Création, ce qui vous inspire, votre façon de travailler — quelques phrases sincères suffisent.]</p>
+        <p>Tout a commencé avec une vieille machine à coudre et une pile de chutes de tissu. Depuis, je couds chaque pièce à la main dans mon petit atelier, au rythme des saisons : des matières naturelles, des couleurs de sous-bois, et le souci du détail. Ici, rien n'est fait à la chaîne : chaque plaid, chaque coussin passe sous mon œil attentif avant de partir chez vous.</p>
         <p class="sign">— Kat</p>
         <a href="#/sur-mesure" class="btn">Commander une pièce sur-mesure</a>
       </div>

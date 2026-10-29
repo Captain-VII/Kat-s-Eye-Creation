@@ -12,3 +12,5 @@ Photos Unsplash publiées sous licence CC0 (domaine public) sur Wikimedia Common
 | fougere.jpg | https://commons.wikimedia.org/wiki/File:Home_Sweet_Home_Pt._6_(Unsplash).jpg |
 | noisette.jpg | https://commons.wikimedia.org/wiki/File:Vintage_sewing_box_(Unsplash).jpg |
 | chouchou.jpg | https://commons.wikimedia.org/wiki/File:Pile_of_thread_(Unsplash).jpg |
+| atelier.jpg | https://commons.wikimedia.org/wiki/File:Vintage_sewing_machine_(Unsplash).jpg |
+| fils.jpg | https://commons.wikimedia.org/wiki/File:Threads_for_sewing_in_a_workshop._(Unsplash).jpg |
