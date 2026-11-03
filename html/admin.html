@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Atelier — Kat's Eyes Créations</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/img/logo/favicon-32.png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+:root{--cream:#FCF8F2;--card:#FFFDF9;--sand:#F6E9E6;--line:#DDBFBA;--khaki:#5F6E4B;--khaki-d:#4B583A;--walnut:#9A5B32;--rose-d:#B86A7C;--text:#2B2622;--muted:#5E5650;--warn:#9B2C2C;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Nunito Sans',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--text);font:15px/1.5 var(--sans)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0}
+a{color:var(--khaki-d)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header{background:var(--khaki-d);color:var(--cream)}
+header .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding-top:12px;padding-bottom:12px}
+header h1{font-size:24px;margin-right:auto}
+header a,header .btn.line{color:var(--cream)}
+nav{display:flex;flex-wrap:wrap;gap:6px}
+nav button{background:transparent;border:1.5px solid rgba(252,248,242,.4);border-radius:18px;padding:6px 14px;font:600 14px var(--sans);cursor:pointer}
+nav button[aria-pressed="true"]{background:var(--cream);color:var(--khaki-d)}
+main{padding:24px 0 60px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:0 18px;border-radius:21px;border:none;background:var(--khaki);color:var(--cream);font:700 14px var(--sans);text-decoration:none;cursor:pointer}
+.btn.line{background:transparent;border:1.5px solid var(--walnut);color:var(--walnut)}
+.btn.danger{background:transparent;border:1.5px solid var(--warn);color:var(--warn)}
+.btn:disabled{opacity:.5}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+.bar h2{font-size:30px;margin-right:auto}
+.card{background:var(--card);border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:0 1px 0 #EAD6D2}
+.row{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.muted{color:var(--muted);font-size:13px}
+.tag{display:inline-block;border-radius:10px;padding:2px 10px;font-size:12px;font-weight:700;background:var(--sand)}
+.tag.payée{background:#F3D9B1}.tag.expédiée{background:#D5DEC4}.tag.remboursée,.tag.annulée{background:#E5E0DA}
+.alert{background:#FBE9E7;border:1.5px dashed var(--warn);border-radius:14px;padding:12px 16px;margin-bottom:16px}
+input,textarea,select{font:15px var(--sans);color:var(--text);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:9px 12px;width:100%}
+textarea{min-height:80px;resize:vertical}
+label{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:14px}
+label small{font-weight:400;color:var(--muted)}
+.check{flex-direction:row;align-items:center;gap:8px}
+.check input{width:18px;height:18px;accent-color:var(--khaki)}
+.grid2{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.thumb{width:64px;height:64px;border-radius:10px;background:var(--sand) center/cover;flex:none}
+.photos{display:flex;flex-wrap:wrap;gap:10px}
+.photos figure{margin:0;position:relative}
+.photos .thumb{width:96px;height:96px}
+.photos button{position:absolute;top:4px;right:4px;border:none;border-radius:50%;width:26px;height:26px;background:var(--cream);cursor:pointer}
+.photos figcaption{font-size:11px;text-align:center;color:var(--muted)}
+.items{margin:8px 0;padding-left:18px}
+.login{max-width:360px;margin:12vh auto;display:grid;gap:14px;padding:0 16px}
+.err{color:var(--warn);font-weight:700}
+dialog{border:none;border-radius:20px;padding:0;width:min(760px,100%);max-height:94vh}
+dialog form{padding:20px;display:grid;gap:12px}
+dialog::backdrop{background:rgba(43,38,34,.45)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#3E4632;color:var(--cream);padding:12px 20px;border-radius:20px;font-weight:600;z-index:20}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div id="login" class="login" hidden>
+  <img src="/img/logo/logo-complet.webp" alt="Kat's Eyes Créations" width="230" style="margin:auto">
+  <form id="login-form" style="display:grid;gap:12px">
+    <label>Mot de passe<input type="password" name="password" required autocomplete="current-password" autofocus></label>
+    <p class="err" id="login-err" hidden></p>
+    <button class="btn">Entrer dans l'atelier</button>
+  </form>
+</div>
+
+<div id="admin" hidden>
+  <header><div class="wrap">
+    <h1>L'atelier</h1>
+    <nav id="tabs">
+      <button data-tab="orders" aria-pressed="true">Commandes</button>
+      <button data-tab="products">Créations</button>
+      <button data-tab="messages">Messages</button>
+      <button data-tab="newsletter">Lettre d'info</button>
+    </nav>
+    <a href="/kit/">Kit pro</a> <a href="/" target="_blank">Voir le site</a> <button id="logout" class="btn line" style="min-height:32px;border-color:var(--cream)">Sortir</button>
+  </div></header>
+  <main class="wrap" id="view"></main>
+</div>
+
+<dialog id="dlg"></dialog>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+let D = null, tab = 'orders', filter = 'payée';
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const euro = c => (c / 100).toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
+const date = d => new Date(d).toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' });
+function toast(m) { const t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2600); }
+async function call(method, url, body, type = 'application/json') {
+  const r = await fetch(url, { method, headers: { 'Content-Type': type }, body: type === 'application/json' && body ? JSON.stringify(body) : body });
+  const j = await r.json().catch(() => ({}));
+  if (r.status === 401 && !url.endsWith('login')) { show(false); throw new Error('Connexion requise'); }
+  if (!r.ok) throw new Error(j.error || 'Erreur');
+  return j;
+}
+const show = on => { $('#login').hidden = on; $('#admin').hidden = !on; };
+async function load() { D = await call('GET', '/api/admin/data'); show(true); render(); }
+
+function alerts() {
+  const a = [];
+  const todo = JSON.stringify(D.boutique).match(/\[[^\]]+\]/g);
+  if (todo) a.push(`Infos légales à compléter dans <code>data/boutique.json</code> (${todo.length}) : ${esc(todo.slice(0, 3).join(', '))}…`);
+  if (!D.payments.stripe && !D.payments.paypal) a.push('Aucun paiement en ligne configuré : les clients ne peuvent pas encore commander.');
+  D.products.filter(p => p.stock < 0).forEach(p => a.push(`Stock négatif pour « ${esc(p.name)} » : une pièce a été vendue deux fois, à régler avec le client (remboursement).`));
+  return a.map(t => `<div class="alert">${t}</div>`).join('');
+}
+
+const views = {
+  orders() {
+    const list = D.orders.filter(o => filter === 'toutes' ? o.status !== 'en attente' : o.status === filter).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    const n = s => D.orders.filter(o => o.status === s).length;
+    return `${alerts()}
+      <div class="bar"><h2>Commandes</h2><a class="btn line" href="/api/admin/recettes.csv">Livre des recettes (CSV)</a></div>
+      <div class="bar">${[['payée', `À préparer (${n('payée')})`], ['expédiée', 'Expédiées'], ['toutes', 'Toutes'], ['en attente', `Non payées (${n('en attente')})`]]
+        .map(([k, l]) => `<button class="btn ${filter === k ? '' : 'line'}" data-filter="${k}">${l}</button>`).join('')}</div>
+      ${filter === 'en attente' ? '<p class="muted">Paniers abandonnés au moment du paiement : rien à faire, sauf si un client vous dit avoir payé.</p>' : ''}
+      ${list.length ? list.map(o => `
+      <div class="card">
+        <div class="row"><b>${o.id}</b><span class="tag ${o.status}">${o.status}</span><span class="muted">${date(o.createdAt)} · ${o.method === 'stripe' ? 'Carte' : 'PayPal'}</span><b style="margin-left:auto">${euro(o.total)}</b></div>
+        <ul class="items">${o.items.map(i => `<li>${i.qty} × ${esc(i.name)}${i.option ? ` — <b>${esc(i.option)}</b>` : ''}</li>`).join('')}</ul>
+        ${o.gift ? `<p>🎁 <b>Cadeau</b> (sans prix dans le colis)${o.giftNote ? ` — mot : « ${esc(o.giftNote)} »` : ''}</p>` : ''}
+        <p style="white-space:pre-line;margin:6px 0">${esc(o.customer.name)}\n${esc(o.customer.address)}\n${esc(o.customer.zip)} ${esc(o.customer.city)}</p>
+        <p class="muted"><a href="mailto:${esc(o.customer.email)}">${esc(o.customer.email)}</a>${o.customer.phone ? ' · ' + esc(o.customer.phone) : ''}</p>
+        <div class="row" style="margin-top:10px">
+          <label style="flex:1 1 160px">Statut<select data-o="${o.id}" data-k="status">${['en attente', 'payée', 'expédiée', 'remboursée', 'annulée'].map(s => `<option ${s === o.status ? 'selected' : ''}>${s}</option>`).join('')}</select></label>
+          <label style="flex:2 1 220px">N° de suivi<input data-o="${o.id}" data-k="tracking" value="${esc(o.tracking)}" placeholder="à saisir avant « expédiée »"></label>
+          <button class="btn" data-save-order="${o.id}" style="align-self:flex-end">Enregistrer</button>
+        </div>
+        <p class="muted" style="margin-top:6px">Passer en « expédiée » envoie au client un e-mail avec le numéro de suivi. Un remboursement se fait d'abord dans Stripe ou PayPal, puis passez ici en « remboursée ».</p>
+      </div>`).join('') : '<p class="muted">Rien ici pour le moment.</p>'}`;
+  },
+
+  products() {
+    return `${alerts()}
+      <div class="bar"><h2>Créations</h2><button class="btn" data-edit="nouveau">+ Nouvelle création</button></div>
+      ${D.products.map(p => `
+      <div class="card row">
+        <div class="thumb" style="background-image:url('${esc(p.images[0] || '')}')"></div>
+        <div style="flex:1 1 200px"><b>${esc(p.name)}</b><br><span class="muted">${esc(p.cat)} · ${euro(p.price)} · ${p.stock == null ? 'à la commande' : p.stock + ' en stock'}</span></div>
+        ${p.published ? '<span class="tag expédiée">en ligne</span>' : '<span class="tag">brouillon</span>'}
+        <button class="btn line" data-edit="${p.id}">Modifier</button>
+      </div>`).join('')}`;
+  },
+
+  messages() {
+    const list = [...D.messages].reverse();
+    return `<div class="bar"><h2>Messages</h2></div>
+      ${list.length ? list.map(m => `
+      <div class="card" style="${m.read ? 'opacity:.7' : ''}">
+        <div class="row"><b>${esc(m.name)}</b><span class="tag">${m.type}</span>${m.kind ? `<span class="muted">${esc(m.kind)}</span>` : ''}<span class="muted" style="margin-left:auto">${date(m.date)}</span></div>
+        <p style="white-space:pre-line;margin:10px 0">${esc(m.text)}</p>
+        <div class="row"><a class="btn" href="mailto:${esc(m.email)}?subject=${encodeURIComponent('Re : votre ' + (m.type === 'sur-mesure' ? 'demande sur-mesure' : 'message'))}">Répondre</a>
+          <button class="btn line" data-read="${m.id}" data-v="${!m.read}">${m.read ? 'Marquer non lu' : 'Marquer lu'}</button>
+          <button class="btn danger" data-del-msg="${m.id}">Supprimer</button></div>
+      </div>`).join('') : '<p class="muted">Aucun message.</p>'}`;
+  },
+
+  newsletter() {
+    return `<div class="bar"><h2>Lettre d'info</h2><a class="btn line" href="/api/admin/newsletter.csv">Exporter (CSV)</a></div>
+      <p class="muted" style="margin-bottom:14px">${D.newsletter.length} inscrit(s). Pour envoyer la lettre, importez le CSV dans un service d'e-mailing (Brevo, gratuit jusqu'à 300 e-mails/jour) : il gère le lien de désinscription obligatoire.</p>
+      ${D.newsletter.map(n => `<div class="card row"><span style="flex:1">${esc(n.email)}</span><span class="muted">${date(n.date)}</span><button class="btn danger" data-del-news="${esc(n.email)}">Retirer</button></div>`).join('')}`;
+  }
+};
+function render() {
+  $('#view').innerHTML = views[tab]();
+  document.querySelectorAll('#tabs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.tab === tab));
+  const unread = D.messages.filter(m => !m.read).length;
+  $('[data-tab=messages]').textContent = unread ? `Messages (${unread})` : 'Messages';
+}
+
+// --- Fiche création ---
+let photos = [];
+function editProduct(id) {
+  const p = D.products.find(x => x.id === id) || { name: '', cat: '', detail: '', desc: '', price: '', stock: 1, unique: false, options: null, images: [], compo: '', care: '', safety: '', published: false };
+  photos = [...p.images];
+  const cats = [...new Set(['Vêtements', 'Accessoires', ...D.products.map(x => x.cat)])];
+  const dlg = $('#dlg');
+  dlg.innerHTML = `<form method="dialog" id="pform">
+    <div class="row"><h2 style="font-size:28px;margin-right:auto">${id === 'nouveau' ? 'Nouvelle création' : 'Modifier'}</h2><button type="button" class="btn line" data-close>Fermer</button></div>
+    <label>Nom<input name="name" required value="${esc(p.name)}" placeholder="Robe « Fougère »"></label>
+    <div class="grid2">
+      <label>Catégorie<input name="cat" required list="cats" value="${esc(p.cat)}"><datalist id="cats">${cats.map(c => `<option value="${esc(c)}">`).join('')}</datalist></label>
+      <label>Prix (€)<input name="price" type="number" step="0.01" min="0.5" required value="${p.price ? p.price / 100 : ''}"></label>
+      <label>Stock <small>vide = cousu à la commande</small><input name="stock" type="number" min="0" value="${p.stock ?? ''}"></label>
+    </div>
+    <label class="check"><input type="checkbox" name="unique" ${p.unique ? 'checked' : ''}> Pièce unique (badge sur le site)</label>
+    <label>Accroche <small>une ligne sous le nom : matière, couleur</small><input name="detail" maxlength="160" value="${esc(p.detail)}"></label>
+    <label>Description<textarea name="desc" rows="4">${esc(p.desc)}</textarea></label>
+    <div class="grid2">
+      <label>Choix proposé <small>ex. Taille, Couleur (facultatif)</small><input name="optionLabel" value="${esc(p.options?.label)}"></label>
+      <label>Valeurs <small>séparées par des virgules : S, M, L</small><input name="optionValues" value="${esc(p.options?.values.join(', '))}"></label>
+    </div>
+    <label>Composition et dimensions <small>obligatoire : % de chaque fibre, ex. « 100 % lin »</small><textarea name="compo" rows="2">${esc(p.compo)}</textarea></label>
+    <label>Entretien<textarea name="care" rows="2">${esc(p.care)}</textarea></label>
+    <label>Avertissements de sécurité <small>si utile : petits éléments, cordons, « ne convient pas aux moins de 3 ans »…</small><textarea name="safety" rows="2">${esc(p.safety)}</textarea></label>
+    <div><b>Photos</b> <span class="muted">la première est la photo principale</span>
+      <div class="photos" id="photos" style="margin:8px 0"></div>
+      <label class="btn line" style="display:inline-flex;flex-direction:row">Ajouter des photos<input type="file" id="upload" accept="image/*" multiple hidden></label>
+    </div>
+    <label class="check"><input type="checkbox" name="published" ${p.published ? 'checked' : ''}> En ligne (visible sur le site)</label>
+    <p class="err" id="perr" hidden></p>
+    <div class="row"><button class="btn" data-save-product="${p.id || 'nouveau'}">Enregistrer</button>${p.id ? `<button type="button" class="btn danger" data-del-product="${p.id}" style="margin-left:auto">Supprimer</button>` : ''}</div>
+  </form>`;
+  drawPhotos();
+  dlg.showModal();
+}
+function drawPhotos() {
+  $('#photos').innerHTML = photos.map((u, i) => `<figure><div class="thumb" style="background-image:url('${esc(u)}')"></div>
+    <button type="button" data-rm-photo="${i}" aria-label="Retirer">✕</button><figcaption>${i ? `<a href="#" data-first="${i}">principale</a>` : 'principale'}</figcaption></figure>`).join('');
+}
+// Réduit les photos du téléphone (souvent 4-8 Mo) à 1600 px en WebP avant l'envoi.
+async function shrink(file) {
+  const img = await createImageBitmap(file);
+  const k = Math.min(1, 1600 / Math.max(img.width, img.height));
+  const c = Object.assign(document.createElement('canvas'), { width: Math.round(img.width * k), height: Math.round(img.height * k) });
+  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+  return new Promise(r => c.toBlob(r, 'image/webp', 0.82));
+}
+
+document.addEventListener('change', async e => {
+  if (e.target.id !== 'upload') return;
+  for (const f of e.target.files) {
+    try { photos.push((await call('POST', '/api/admin/upload', await shrink(f), 'image/webp')).url); drawPhotos(); }
+    catch (x) { toast(`${f.name} : ${x.message}`); }
+  }
+  e.target.value = '';
+});
+
+document.addEventListener('click', async e => {
+  const t = e.target.closest('button,a[data-first]');
+  if (!t) return;
+  const d = t.dataset;
+  try {
+    if (d.tab) { tab = d.tab; render(); }
+    else if (d.filter) { filter = d.filter; render(); }
+    else if (d.edit) editProduct(d.edit);
+    else if ('close' in d) $('#dlg').close();
+    else if (d.rmPhoto) { photos.splice(d.rmPhoto, 1); drawPhotos(); }
+    else if (d.first) { e.preventDefault(); photos.unshift(...photos.splice(d.first, 1)); drawPhotos(); }
+    else if (d.saveProduct) {
+      e.preventDefault();
+      const f = $('#pform'), v = Object.fromEntries(new FormData(f));
+      Object.assign(v, { unique: f.unique.checked, published: f.published.checked, images: photos });
+      await call('PUT', '/api/admin/products/' + d.saveProduct, v);
+      $('#dlg').close(); toast('Création enregistrée'); await load();
+    }
+    else if (d.delProduct && confirm('Supprimer définitivement cette création ?')) { await call('DELETE', '/api/admin/products/' + d.delProduct); $('#dlg').close(); await load(); }
+    else if (d.saveOrder) {
+      const get = k => document.querySelector(`[data-o="${d.saveOrder}"][data-k="${k}"]`).value;
+      if (get('status') === 'expédiée' && !get('tracking') && !confirm('Pas de numéro de suivi : envoyer quand même l\'e-mail d\'expédition ?')) return;
+      await call('PATCH', '/api/admin/orders/' + d.saveOrder, { status: get('status'), tracking: get('tracking') });
+      toast('Commande mise à jour'); await load();
+    }
+    else if (d.read) { await call('PATCH', '/api/admin/messages/' + d.read, { read: d.v === 'true' }); await load(); }
+    else if (d.delMsg && confirm('Supprimer ce message ?')) { await call('DELETE', '/api/admin/messages/' + d.delMsg); await load(); }
+    else if (d.delNews && confirm('Retirer cette adresse ?')) { await call('DELETE', '/api/admin/newsletter/' + encodeURIComponent(d.delNews)); await load(); }
+  } catch (x) {
+    const perr = $('#perr');
+    if (perr && $('#dlg').open) { perr.textContent = x.message; perr.hidden = false; } else toast(x.message);
+  }
+});
+
+$('#login-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  try { await call('POST', '/api/admin/login', { password: e.target.password.value }); await load(); }
+  catch (x) { $('#login-err').textContent = x.message; $('#login-err').hidden = false; }
+});
+$('#logout').addEventListener('click', async () => { await call('POST', '/api/admin/logout'); show(false); });
+load().catch(() => show(false));
+</script>
+</body>
+</html>

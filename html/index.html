@@ -3,11 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kat's Eyes Créations</title>
+<base href="/">
+<title>Kat's Eyes Créations — vêtements et accessoires cousus main</title>
+<meta name="description" content="Vêtements et accessoires cousus main en petite série, dans des tissus naturels choisis avec soin. Pièces uniques, sur-mesure, expédition en France.">
+<meta property="og:title" content="Kat's Eyes Créations">
+<meta property="og:description" content="Vêtements et accessoires cousus main, pièces uniques et sur-mesure.">
+<meta property="og:image" content="/img/logo/logo-complet.webp">
+<meta property="og:type" content="website">
 <link rel="icon" type="image/png" sizes="32x32" href="img/logo/favicon-32.png">
 <link rel="apple-touch-icon" href="img/logo/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Josefin+Sans:wght@400;600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 :root{
   --cream:#FCF8F2;--card:#FFFDF9;--sand:#F6E9E6;--line:#DDBFBA;
@@ -27,12 +32,14 @@ p{margin:0}
 .eyebrow{font-family:var(--caps);font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--rose-d);font-weight:600}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 26px;border-radius:26px;border:none;background:var(--khaki);color:var(--cream);font:700 15px var(--sans);text-decoration:none;cursor:pointer}
 .btn:hover{background:var(--khaki-d)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
 .btn-line{background:transparent;border:1.5px solid var(--walnut);color:var(--walnut)}
 .btn-line:hover{background:var(--sand)}
-.ph{background-color:#F1DFDC;background-image:repeating-linear-gradient(45deg,rgba(184,106,124,.08) 0 2px,transparent 2px 12px)}
-.ph-k{background-color:#C9CFB4;background-image:repeating-linear-gradient(-45deg,rgba(46,42,31,.08) 0 2px,transparent 2px 12px)}
-.ph-w{background-color:#B88560;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 3px,transparent 3px 14px)}
+.photo{background:var(--sand) center/cover no-repeat}
 .badge{position:absolute;top:12px;left:12px;background:var(--cream);color:var(--walnut);border-radius:12px;padding:4px 10px;font-size:12px;font-weight:700}
+.badge.out{color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--rose-d);outline-offset:2px}
 
 /* En-tête */
 .banner{background:var(--khaki-d);color:var(--cream);text-align:center;padding:9px 16px;font-size:14px}
@@ -42,7 +49,7 @@ header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
 @media(min-width:900px){.logo img{height:100px}}
 nav.main{display:flex;flex-wrap:wrap;gap:4px 26px;font-family:var(--caps);font-weight:600;font-size:15px;letter-spacing:.08em}
 nav.main a{text-decoration:none;padding:8px 0;color:var(--text)}
-nav.main a:hover{color:var(--rose-d)}
+nav.main a:hover,nav.main a[aria-current]{color:var(--rose-d)}
 .cart-btn{height:44px;padding:0 16px;border-radius:22px;background:var(--walnut);color:var(--cream);display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px;text-decoration:none}
 
 /* Accueil */
@@ -68,8 +75,9 @@ section.block{padding-top:72px;padding-bottom:40px}
 .head-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:28px}
 .head-row h2,.block>h2{font-size:clamp(30px,4vw,42px)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}
-.chip{border:1.5px solid var(--line);background:transparent;border-radius:20px;min-height:40px;padding:0 16px;font:600 14px var(--sans);color:var(--text);cursor:pointer}
+.chip{display:inline-flex;align-items:center;border:1.5px solid var(--line);background:transparent;border-radius:20px;min-height:40px;padding:0 16px;font:600 14px var(--sans);color:var(--text);cursor:pointer;text-decoration:none}
 .chip[aria-pressed="true"]{background:var(--text);color:var(--cream);border-color:var(--text)}
+.chip:disabled{opacity:.5;cursor:not-allowed}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
 .card{background:var(--card);border-radius:20px;padding:12px 12px 18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 0 #EAD6D2}
 .card .pic{position:relative;height:250px;border-radius:14px;display:block}
@@ -79,6 +87,9 @@ section.block{padding-top:72px;padding-bottom:40px}
 .card .row{display:flex;justify-content:space-between;align-items:center;padding:0 6px;margin-top:auto}
 .card .price{font-weight:700;font-size:17px}
 .card .chip{border-color:var(--khaki)}
+.cats a{text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:12px}
+.cats .photo{height:260px;border-radius:20px}
+.cats span{font-family:var(--serif);font-size:23px}
 
 .atelier{background:var(--khaki-d);color:var(--cream);margin-top:48px}
 .atelier .wrap{display:grid;gap:44px;align-items:center;padding-top:80px;padding-bottom:80px}
@@ -89,17 +100,13 @@ section.block{padding-top:72px;padding-bottom:40px}
 .atelier .btn{background:var(--cream);color:#3A3C1D}
 @media(min-width:900px){.atelier .wrap{grid-template-columns:1fr 1fr}}
 
-.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.reviews figure{margin:0;padding:28px;border-radius:20px;border:1.5px dashed var(--line)}
-.reviews blockquote{margin:0 0 14px;font-family:var(--serif);font-size:19px;line-height:1.45}
-.reviews figcaption{font-size:14px;color:var(--muted);font-weight:700}
-
-.news{background:var(--sand);border-radius:28px;padding:44px 32px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;margin:40px 0 72px}
+.news{background:var(--sand);border-radius:28px;padding:44px 32px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;margin:72px 0}
 .news h2{font-size:32px;margin-bottom:6px}
 .news form{display:flex;flex-wrap:wrap;gap:10px;flex:1 1 380px}
-input,textarea,select{font:16px var(--sans);color:var(--text);background:var(--card);border:1.5px solid var(--line);border-radius:26px;min-height:50px;padding:0 20px}
+.news small{flex-basis:100%;color:var(--muted);font-size:13px}
+input,textarea,select{font:16px var(--sans);color:var(--text);background:var(--card);border:1.5px solid var(--line);border-radius:26px;min-height:50px;padding:0 20px;width:100%}
 textarea{border-radius:18px;padding:14px 18px;min-height:120px;resize:vertical}
-.news input{flex:1 1 220px}
+.news input{flex:1 1 220px;width:auto}
 
 footer{background:var(--sand);color:var(--text);font-size:14px;border-top:1.5px dashed var(--line)}
 footer .brand img{display:block;width:230px;height:auto;margin-bottom:8px}
@@ -122,37 +129,32 @@ footer .copy{border-top:1px dashed var(--line);color:var(--muted);font-size:13px
 .crumbs{font-size:14px;color:var(--muted);padding-top:18px;display:flex;flex-wrap:wrap;gap:8px}
 .product{display:grid;gap:44px;padding-top:24px;padding-bottom:64px;align-items:start}
 @media(min-width:900px){.product{grid-template-columns:1.1fr 1fr}}
-.gallery-main{position:relative;height:520px;border-radius:28px;display:flex;align-items:flex-end;justify-content:center;padding:22px;font-size:13px;outline:1.5px dashed rgba(107,74,50,.35);outline-offset:-14px}
+.gallery-main{position:relative;height:clamp(360px,60vw,560px);border-radius:28px;outline:1.5px dashed rgba(107,74,50,.35);outline-offset:-14px}
 .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
-.thumbs button{height:90px;border-radius:14px;border:2.5px solid transparent;cursor:pointer;font:600 12px var(--sans);color:var(--text)}
+.thumbs button{height:90px;border-radius:14px;border:2.5px solid transparent;cursor:pointer}
 .thumbs button[aria-pressed="true"]{border-color:var(--walnut)}
 .info{display:flex;flex-direction:column;gap:22px}
 .info h1{font-size:clamp(36px,5vw,50px);line-height:1.05}
 .info .price{font-size:25px;font-weight:700}
-.info .desc{font-size:17px;line-height:1.65;color:#4A4234}
+.info .desc{font-size:17px;line-height:1.65;color:#4A4234;white-space:pre-line}
 fieldset{border:none;margin:0;padding:0}
 legend{padding:0;margin-bottom:10px;font-weight:700}
-legend span{font-weight:400;color:var(--muted)}
-.swatches{display:flex;flex-wrap:wrap;gap:12px}
-.swatches button{width:48px;height:48px;border-radius:50%;border:3px solid var(--cream);box-shadow:0 0 0 1px var(--line);cursor:pointer}
-.swatches button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--text)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
 .qty{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:28px;height:52px}
 .qty button{width:46px;height:48px;border:none;background:transparent;font-size:21px;cursor:pointer;color:var(--text)}
 .qty span{min-width:26px;text-align:center;font-weight:700}
 .buy{display:flex;flex-wrap:wrap;gap:12px}
 .buy .btn{flex:1 1 220px;min-height:52px}
+.stock{font-size:14px;color:var(--walnut);font-weight:700}
 .acc{border-top:1.5px dashed var(--line)}
 .acc details{border-bottom:1.5px dashed var(--line)}
 .acc summary{min-height:56px;display:flex;align-items:center;justify-content:space-between;font-weight:700;cursor:pointer;list-style:none}
+.acc summary::-webkit-details-marker{display:none}
 .acc summary::after{content:"+";font-size:22px;font-weight:400;color:var(--walnut)}
 .acc details[open] summary::after{content:"−"}
-.acc p{padding-bottom:18px;color:#4A4234;font-size:15px}
-.kat-word{background:var(--khaki-d);color:var(--cream);text-align:center}
-.kat-word .wrap{max-width:860px;padding-top:64px;padding-bottom:64px}
-.kat-word p{font-family:var(--serif);font-size:clamp(22px,3vw,27px);line-height:1.35}
-.kat-word .sign{font-family:var(--script);font-size:32px;color:var(--rose);margin-top:12px}
+.acc p{padding-bottom:18px;color:#4A4234;font-size:15px;white-space:pre-line}
 
-/* Panier */
+/* Panier & commande */
 .cart-page{display:grid;gap:36px;padding-top:32px;padding-bottom:72px;align-items:start}
 @media(min-width:900px){.cart-page{grid-template-columns:1.6fr 1fr}}
 .cart-page h1{font-size:clamp(34px,5vw,46px);margin-bottom:20px}
@@ -162,217 +164,208 @@ legend span{font-weight:400;color:var(--muted)}
 .line small{color:var(--muted)}
 .line .remove{background:none;border:none;color:var(--walnut);text-decoration:underline;cursor:pointer;font:600 13px var(--sans);padding:6px 0}
 .summary{background:var(--card);border-radius:24px;padding:26px;display:flex;flex-direction:column;gap:14px;outline:1.5px dashed var(--line);outline-offset:-8px}
-.summary .r{display:flex;justify-content:space-between}
+.summary .r{display:flex;justify-content:space-between;gap:10px}
 .summary .total{font-size:20px;font-weight:700;border-top:1.5px dashed var(--line);padding-top:14px}
-.gift{display:flex;gap:10px;align-items:flex-start;font-size:15px}
-.gift input{min-height:auto;width:20px;height:20px;accent-color:var(--khaki);margin-top:2px}
-.empty{padding:40px 0;display:flex;flex-direction:column;gap:18px;align-items:flex-start}
-
-/* Sur-mesure */
+.check{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.check input{min-height:auto;width:20px;height:20px;flex:none;accent-color:var(--khaki);margin-top:2px}
+.empty{padding:40px 0 72px;display:flex;flex-direction:column;gap:18px;align-items:flex-start}
 .form{display:grid;gap:14px;max-width:640px}
 .form label{font-weight:700;font-size:15px;display:flex;flex-direction:column;gap:6px}
+.form .two{display:grid;grid-template-columns:1fr 2fr;gap:14px}
+.pay{display:grid;gap:10px}
+.pay label{flex-direction:row;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:18px;padding:14px 18px;cursor:pointer}
+.pay input{width:20px;min-height:auto;height:20px;accent-color:var(--khaki)}
+.err{color:#9B2C2C;font-weight:700}
 
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:var(--bark);color:var(--cream);padding:14px 22px;border-radius:24px;font-weight:600;transition:transform .25s;z-index:10}
+/* Pages de texte (CGV, mentions…) */
+.doc{max-width:780px;padding-top:40px;padding-bottom:72px}
+.doc h1{font-size:clamp(34px,5vw,46px);margin-bottom:8px}
+.doc h2{font-size:26px;margin:34px 0 10px}
+.doc p,.doc li{color:#4A4234;margin-bottom:10px}
+.doc .box{border:1.5px dashed var(--line);border-radius:18px;padding:18px 22px;margin:16px 0}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:var(--bark);color:var(--cream);padding:14px 22px;border-radius:24px;font-weight:600;transition:transform .25s;z-index:10;max-width:calc(100% - 32px)}
 .toast.show{transform:translateX(-50%) translateY(0)}
 [hidden]{display:none!important}
 </style>
 </head>
 <body>
 
-<div class="banner">Chaque pièce est cousue à la main, en petite série — livraison offerte dès 60 €</div>
+<div class="banner" id="banner">Chaque pièce est cousue à la main, en petite série</div>
 <header>
   <div class="wrap">
-    <a href="#/" class="logo" aria-label="Kat's Eyes Créations, accueil"><img src="img/logo/logo-entete.webp" alt="" width="206" height="100"></a>
+    <a href="/" class="logo" aria-label="Kat's Eyes Créations, accueil"><img src="img/logo/logo-entete.webp" alt="" width="206" height="100"></a>
     <nav class="main" aria-label="Navigation principale">
-      <a href="#/boutique">Boutique</a>
-      <a href="#/atelier">L'atelier</a>
-      <a href="#/sur-mesure">Sur-mesure</a>
-      <a href="#/contact">Contact</a>
+      <a href="/boutique">Boutique</a>
+      <a href="/atelier">L'atelier</a>
+      <a href="/sur-mesure">Sur-mesure</a>
+      <a href="/contact">Contact</a>
     </nav>
-    <a href="#/panier" class="cart-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1.2 11H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Panier · <span id="cart-count">0</span></a>
+    <a href="/panier" class="cart-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1.2 11H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Panier · <span id="cart-count">0</span></a>
   </div>
 </header>
 
-<main id="app"></main>
+<main id="app"><p class="wrap" style="padding:80px 20px">Chargement…</p></main>
 
-<footer id="contact" style="overflow:hidden;position:relative"><img class="veg veg-foot" src="img/vegetal/branche.svg" alt="">
+<footer style="overflow:hidden;position:relative"><img class="veg veg-foot" src="img/vegetal/branche.svg" alt="">
   <div class="wrap">
-    <div class="brand"><img src="img/logo/logo-complet.webp" alt="Kat's Eyes Créations" width="230" height="128" loading="lazy">Couture artisanale, pièces uniques et petites séries.</div>
-    <nav aria-label="Boutique"><strong>Boutique</strong><a href="#/boutique">Toutes les créations</a><a href="#/sur-mesure">Sur-mesure</a></nav>
-    <nav aria-label="Infos"><strong>Infos</strong><a href="#/">Livraison &amp; retours</a><a href="#/">Entretien des tissus</a><a href="#/">Mentions légales</a></nav>
-    <div><strong>Me contacter</strong>bonjour@kats-eye-creation.fr<br>@katseye.creation</div>
+    <div class="brand"><img src="img/logo/logo-complet.webp" alt="Kat's Eyes Créations" width="230" height="128" loading="lazy">Vêtements et accessoires cousus main, pièces uniques et petites séries.</div>
+    <nav aria-label="Boutique"><strong>Boutique</strong><a href="/boutique">Toutes les créations</a><a href="/sur-mesure">Sur-mesure</a><a href="/contact">Contact</a></nav>
+    <nav aria-label="Infos"><strong>Infos</strong><a href="/livraison-retours">Livraison &amp; retours</a><a href="/cgv">Conditions générales de vente</a><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Données personnelles</a></nav>
+    <div><strong>Me contacter</strong><a id="f-mail" href="/contact">Écrire à Kat</a><a id="f-insta" href="https://www.instagram.com/" rel="noopener" hidden>Instagram</a></div>
   </div>
-  <div class="wrap"><span class="copy">© 2026 Kat's Eyes Créations — fait main avec amour</span></div>
+  <div class="wrap"><span class="copy">© <span id="year">2026</span> Kat's Eyes Créations — fait main avec amour</span></div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="legal.js"></script>
 <script>
-const PRODUCTS = [
-  { id:'sous-bois', img:'img/sous-bois.jpg', name:'Plaid « Sous-bois »', cat:'Plaids & jetés', detail:'Double gaze de coton, kaki & noisette', price:89, ph:'ph-k', unique:true },
-  { id:'ecorce', img:'img/ecorce.jpg', name:'Coussin « Écorce »', cat:'Coussins', detail:'Velours côtelé, housse amovible', price:39, ph:'ph-w' },
-  { id:'mousse', img:'img/mousse.jpg', name:'Pochette « Mousse »', cat:'Pochettes & trousses', detail:'Lin lavé, doublure coton', price:24, ph:'ph' },
-  { id:'cocon', img:'img/cocon.jpg', name:'Bouillotte « Cocon »', cat:'Petites douceurs', detail:'Housse polaire & laine bouillie', price:32, ph:'ph-k', unique:true },
-  { id:'clairiere', img:'img/clairiere.jpg', name:'Plaid « Clairière »', cat:'Plaids & jetés', detail:'Lin & coton gaufré, ton sable', price:95, ph:'ph' },
-  { id:'fougere', img:'img/fougere.jpg', name:'Coussin « Fougère »', cat:'Coussins', detail:'Lin brodé main, garnissage plume', price:42, ph:'ph-k' },
-  { id:'noisette', img:'img/noisette.jpg', name:'Trousse « Noisette »', cat:'Pochettes & trousses', detail:'Velours milleraies, zip laiton', price:19, ph:'ph-w' },
-  { id:'chouchou', img:'img/chouchou.jpg', name:'Chouchous « Sous-bois »', cat:'Petites douceurs', detail:'Lot de 3, chutes de tissus', price:12, ph:'ph' }
-];
-const CATS = ['Plaids & jetés','Coussins','Pochettes & trousses','Petites douceurs'];
-const CAT_IMG = ['sous-bois','fougere','noisette','cocon'];
-// Textes d'exemple par catégorie, à remplacer par les vraies infos de chaque pièce
-const INFOS = {
-  'Plaids & jetés': { compo:'Dessus double gaze de coton, dos en lin lavé. Sans garnissage. 130 × 170 cm, environ 900 g.', care:'Lavage à 30 °C, cycle délicat. Séchage à plat, pas de sèche-linge. Repassage doux sur l\'envers si besoin.', mot:'J\'ai choisi cette double gaze pour son toucher tout doux qui s\'assouplit encore au fil des lavages. Il m\'a fallu une bonne journée d\'atelier pour l\'assembler et poser la surpiqûre tout autour.' },
-  'Coussins': { compo:'Housse en tissu naturel, fermeture éclair cachée. Garnissage plume et duvet (ou fibre sur demande). 45 × 45 cm.', care:'Housse lavable à 30 °C, à l\'envers. Séchage à l\'air libre. Garnissage : bien secouer pour lui redonner du volume.', mot:'Chaque coussin est coupé pour que le motif tombe bien au centre. Celui-ci a été pensé pour réchauffer un fauteuil ou un coin lecture.' },
-  'Pochettes & trousses': { compo:'Extérieur lin ou velours, doublure coton, fermeture éclair métal. 22 × 14 cm.', care:'Lavage à la main à l\'eau froide. Sécher à plat. Ne pas passer au sèche-linge.', mot:'Une petite pièce que j\'aime beaucoup coudre : on y glisse ses crayons, son maquillage ou ses écouteurs. Les chutes de tissu trouvent ici une seconde vie.' },
-  'Petites douceurs': { compo:'Tissus doux (polaire, laine bouillie ou chutes de coton). Tailles et compositions variables selon la pièce.', care:'Lavage à la main à 30 °C maximum. Séchage à plat.', mot:'Les petites douceurs, ce sont les pièces que je couds avec les chutes des grands projets. Rien ne se perd à l\'atelier.' }
-};
-const FABRICS = [['Kaki mousse','#6E7140'],['Noisette','#9A7150'],['Écorce','#5A3E2B'],['Lin naturel','#D8CBB3']];
-const SHOTS = [['Vue d’ensemble','ph-k'],['Plié','ph'],['Détail couture','ph-w'],['En situation','ph-k']];
-const FREE_SHIPPING = 60, SHIPPING = 5.9;
-
-const euro = n => n.toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
-const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const photo = p => p.img ? ` style="background:#E3D6C2 url('${p.img}') center/cover"` : '';
+let PRODUCTS = [], SHOP = {};
+const euro = c => (c / 100).toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const bg = url => url ? ` style="background-image:url('${esc(url)}')"` : '';
 const byId = id => PRODUCTS.find(p => p.id === id);
+const cats = () => [...new Set(PRODUCTS.map(p => p.cat))];
+const left = p => p.stock == null ? Infinity : p.stock - cart.filter(l => l.id === p.id).reduce((n, l) => n + l.qty, 0);
+const api = (url, data) => fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+  .then(async r => { const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || 'Une erreur est survenue, réessayez.'); return j; });
 
 let cart = [];
-try { cart = JSON.parse(localStorage.getItem('kats-cart')) || []; } catch (e) {}
-let gift = false;
+try { cart = JSON.parse(localStorage.getItem('kats-panier')) || []; } catch (e) {}
+let gift = false, giftNote = '';
 const saveCart = () => {
-  try { localStorage.setItem('kats-cart', JSON.stringify(cart)); } catch (e) {}
+  try { localStorage.setItem('kats-panier', JSON.stringify(cart)); } catch (e) {}
   document.getElementById('cart-count').textContent = cart.reduce((n, l) => n + l.qty, 0);
 };
-function addToCart(id, qty = 1, fabric = FABRICS[0][0]) {
-  const line = cart.find(l => l.id === id && l.fabric === fabric);
-  line ? line.qty += qty : cart.push({ id, qty, fabric });
+function addToCart(id, qty = 1, option = '') {
+  const p = byId(id);
+  if (qty > left(p)) return toast(left(p) > 0 ? `Il ne reste que ${p.stock} pièce(s)` : 'Cette pièce est déjà dans votre panier');
+  const line = cart.find(l => l.id === id && l.option === option);
+  line ? line.qty += qty : cart.push({ id, qty, option });
   saveCart();
-  toast(`${byId(id).name} ajouté au panier`);
+  toast(`${p.name} ajouté au panier`);
 }
 let toastTimer;
 function toast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
-  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
 }
 
 const card = p => `
   <article class="card">
-    <a href="#/produit/${p.id}" class="pic ${p.ph}"${photo(p)} aria-label="${esc(p.name)}">${p.unique ? '<span class="badge">Pièce unique</span>' : ''}</a>
-    <h3><a href="#/produit/${p.id}">${esc(p.name)}</a></h3>
+    <a href="/produit/${p.id}" class="pic photo"${bg(p.images[0])} aria-label="${esc(p.name)}">${p.stock === 0 ? '<span class="badge out">Épuisé</span>' : p.unique ? '<span class="badge">Pièce unique</span>' : ''}</a>
+    <h3><a href="/produit/${p.id}">${esc(p.name)}</a></h3>
     <p class="detail">${esc(p.detail)}</p>
-    <div class="row"><span class="price">${euro(p.price)}</span><button class="chip" data-add="${p.id}">Ajouter</button></div>
+    <div class="row"><span class="price">${euro(p.price)}</span>${p.stock === 0 ? '' : p.options ? `<a class="chip" href="/produit/${p.id}">Choisir</a>` : `<button class="chip" data-add="${p.id}">Ajouter</button>`}</div>
   </article>`;
+const honeypot = '<label class="sr" aria-hidden="true">Ne pas remplir<input name="website" tabindex="-1" autocomplete="off"></label>';
+const page = (title, body) => `<section class="wrap doc"><h1>${title}</h1>${body}</section>`;
 
 const views = {
-  home: () => `
+  '': () => {
+    const c = cats();
+    return `
     <section class="wrap hero">
       <div class="hero-text">
         <p class="eyebrow">Couture artisanale · fait main</p>
-        <h1>Des créations douces, <em>cousues avec soin</em>, pour un intérieur cocon.</h1>
-        <p class="lead">Plaids, coussins, pochettes et petites douceurs du quotidien, imaginés et cousus un à un dans mon atelier. Des tissus naturels, des couleurs de sous-bois, et beaucoup de patience.</p>
-        <div class="actions"><a href="#/boutique" class="btn">Découvrir la boutique</a><a href="#/atelier" class="btn btn-line">L'histoire de l'atelier</a></div>
+        <h1>Des créations douces, <em>cousues avec soin</em>, à porter chaque jour.</h1>
+        <p class="lead">Vêtements et accessoires imaginés et cousus un à un dans mon atelier. Des tissus naturels, des couleurs de sous-bois, et beaucoup de patience.</p>
+        <div class="actions"><a href="/boutique" class="btn">Découvrir la boutique</a><a href="/atelier" class="btn btn-line">L'histoire de l'atelier</a></div>
       </div>
       <div class="hero-vis"><img class="veg veg-hero-a" src="img/vegetal/branche.svg" alt=""><img class="veg veg-hero-b" src="img/vegetal/coin.svg" alt="">
-        <div class="arch ph" style="background:#E3D6C2 url('img/fils.jpg') center/cover"></div>
-        <div class="tile ph-k" style="background:#E3D6C2 url('img/ecorce.jpg') center/cover"></div>
+        <div class="arch photo" style="background-image:url('img/fils.jpg')"></div>
+        <div class="tile photo"${bg(PRODUCTS[0]?.images[0] || 'img/ecorce.jpg')}></div>
         <div class="wood-card">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E3D6C2" stroke-width="1.5" aria-hidden="true"><path d="M4 20 20 4"/><circle cx="18" cy="6" r="1.2"/><path d="M4 20c3-1 5-1 7 1" stroke-dasharray="2 2"/></svg>
           <p>Pièces uniques &amp; petites séries</p>
         </div>
       </div>
     </section>
-    <section class="promises" aria-label="Nos engagements"><div class="wrap">
-      <span>♡ Cousu main, en France</span><span>❦ Tissus naturels choisis</span><span>✿ Emballage cadeau offert</span><span>➝ Expédié sous 3 à 5 jours</span>
+    <section class="promises" aria-label="Mes engagements"><div class="wrap">
+      <span>♡ Cousu main, en France</span><span>❦ Tissus naturels choisis</span><span>✿ Emballage cadeau offert</span><span>➝ Expédié sous ${esc(SHOP.livraison.delai)}</span>
     </div></section>
-    <section class="wrap block">
-      <div class="head-row"><div><p class="eyebrow">Les collections</p><h2>Pour chaque coin de la maison</h2></div><a href="#/boutique"><b>Tout voir →</b></a></div>
-      <div class="grid">${CATS.map((c, i) => `
-        <a href="#/boutique/${encodeURIComponent(c)}" style="text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:12px">
-          <div class="${['ph-w','ph-k','ph','ph-k'][i]}" style="height:260px;border-radius:20px;background:#E3D6C2 url('img/${CAT_IMG[i]}.jpg') center/cover"></div>
-          <span style="font-family:var(--serif);font-size:23px">${esc(c)}</span>
-        </a>`).join('')}</div>
-    </section>
+    ${c.length > 1 ? `<section class="wrap block">
+      <div class="head-row"><div><p class="eyebrow">Les collections</p><h2>Trouvez votre pièce</h2></div><a href="/boutique"><b>Tout voir →</b></a></div>
+      <div class="grid cats">${c.map(cat => `<a href="/boutique/${encodeURIComponent(cat)}"><div class="photo"${bg(PRODUCTS.find(p => p.cat === cat).images[0])}></div><span>${esc(cat)}</span></a>`).join('')}</div>
+    </section>` : ''}
     <section class="wrap block">
       <h2 style="margin-bottom:28px">Tout juste sortis de l'atelier</h2>
       <div class="grid">${PRODUCTS.slice(0, 4).map(card).join('')}</div>
     </section>
     ${atelier()}
-    <section class="wrap block">
-      <h2 style="text-align:center;margin-bottom:28px">Ils ont adopté leur cocon</h2>
-      <div class="reviews">
-        <figure><blockquote>« Le plaid est encore plus doux qu'en photo, et le petit mot glissé dans le colis m'a touchée. »</blockquote><figcaption>Claire, Nantes</figcaption></figure>
-        <figure><blockquote>« Des finitions impeccables. On sent le temps passé sur chaque couture. »</blockquote><figcaption>Julien, Lyon</figcaption></figure>
-        <figure><blockquote>« J'ai commandé un coussin sur-mesure, Kat a été de très bon conseil sur le tissu. »</blockquote><figcaption>Sophie, Rennes</figcaption></figure>
-      </div>
-    </section>
     <div class="wrap">
       <div class="news"><img class="veg veg-news" src="img/vegetal/coin.svg" alt="">
-        <div style="flex:1 1 320px"><h2>Les nouveautés, au coin du feu</h2><p>Recevez les nouvelles pièces avant tout le monde, une fois par mois, pas plus.</p></div>
-        <form data-form="news"><label for="nl" hidden>Adresse e-mail</label><input id="nl" type="email" required placeholder="votre@email.fr"><button class="btn" style="background:var(--walnut)">Je m'inscris</button></form>
+        <div style="flex:1 1 320px"><h2>Les nouveautés, en avant-première</h2><p>Recevez les nouvelles pièces avant tout le monde, une fois par mois, pas plus.</p></div>
+        <form data-form="newsletter">${honeypot}<label for="nl" class="sr">Adresse e-mail</label><input id="nl" name="email" type="email" required placeholder="votre@email.fr" autocomplete="email"><button class="btn" style="background:var(--walnut)">Je m'inscris</button>
+          <small>Désinscription à tout moment. Votre adresse ne sert qu'à cette lettre (<a href="/confidentialite">données personnelles</a>).</small></form>
       </div>
-    </div>`,
+    </div>`;
+  },
 
-  shop: cat => {
+  boutique: cat => {
     const list = cat ? PRODUCTS.filter(p => p.cat === cat) : PRODUCTS;
     return `
     <section class="wrap block" style="padding-bottom:72px">
       <p class="eyebrow">La boutique</p>
       <h1 style="font-size:clamp(34px,5vw,48px);margin:8px 0 24px">${cat ? esc(cat) : 'Toutes les créations'}</h1>
       <div class="filters">
-        <a href="#/boutique" class="chip" style="display:inline-flex;align-items:center;text-decoration:none" aria-pressed="${!cat}">Tout</a>
-        ${CATS.map(c => `<a href="#/boutique/${encodeURIComponent(c)}" class="chip" style="display:inline-flex;align-items:center;text-decoration:none" aria-pressed="${c === cat}">${esc(c)}</a>`).join('')}
+        <a href="/boutique" class="chip" aria-pressed="${!cat}">Tout</a>
+        ${cats().map(c => `<a href="/boutique/${encodeURIComponent(c)}" class="chip" aria-pressed="${c === cat}">${esc(c)}</a>`).join('')}
       </div>
-      <div class="grid">${list.map(card).join('')}</div>
+      ${list.length ? `<div class="grid">${list.map(card).join('')}</div>` : '<p>Aucune création ici pour le moment.</p>'}
     </section>`;
   },
 
-  product: id => {
-    const p = byId(id) || PRODUCTS[0];
-    const related = PRODUCTS.filter(r => r.id !== p.id).slice(0, 4);
+  produit: id => {
+    const p = byId(id);
+    if (!p) return views.introuvable();
+    document.title = `${p.name} — ${SHOP.nom}`;
+    const related = PRODUCTS.filter(r => r.id !== p.id && r.cat === p.cat).concat(PRODUCTS.filter(r => r.cat !== p.cat)).slice(0, 4);
+    const L = SHOP.livraison;
     return `
-    <div class="wrap"><nav class="crumbs" aria-label="Fil d'Ariane"><a href="#/">Accueil</a>/<a href="#/boutique/${encodeURIComponent(p.cat)}">${esc(p.cat)}</a>/<span>${esc(p.name)}</span></nav></div>
+    <div class="wrap"><nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a>/<a href="/boutique/${encodeURIComponent(p.cat)}">${esc(p.cat)}</a>/<span>${esc(p.name)}</span></nav></div>
     <section class="wrap product">
       <div>
-        <div class="gallery-main ${SHOTS[0][1]}" id="main-shot"${photo(p)}>${p.unique ? '<span class="badge" style="top:22px;left:22px">Pièce unique</span>' : ''}<span id="shot-label">${SHOTS[0][0]}</span></div>
-        <div class="thumbs">${SHOTS.map(([l, ph], i) => `<button class="${ph}" data-shot="${i}" aria-pressed="${i === 0}">${l}</button>`).join('')}</div>
+        <div class="gallery-main photo" id="main-shot"${bg(p.images[0])} role="img" aria-label="${esc(p.name)}">${p.unique ? '<span class="badge" style="top:22px;left:22px">Pièce unique</span>' : ''}</div>
+        ${p.images.length > 1 ? `<div class="thumbs">${p.images.map((u, i) => `<button class="photo"${bg(u)} data-shot="${esc(u)}" aria-pressed="${i === 0}" aria-label="Photo ${i + 1}"></button>`).join('')}</div>` : ''}
       </div>
       <div class="info">
         <div><p class="eyebrow">${esc(p.cat)}</p><h1 style="margin:8px 0">${esc(p.name)}</h1><p class="price">${euro(p.price)}</p></div>
-        <p class="desc">${esc(p.detail)}. Une pièce pensée pour les soirées sur le canapé, à glisser au pied du lit ou à offrir. Coupée et cousue à la main, finitions soignées, tissus choisis pour leur toucher.</p>
-        <fieldset><legend>Tissu : <span id="fabric-name">${FABRICS[0][0]}</span></legend>
-          <div class="swatches">${FABRICS.map(([n, c], i) => `<button style="background:${c}" aria-label="${n}" data-fabric="${i}" aria-pressed="${i === 0}"></button>`).join('')}</div>
-        </fieldset>
+        <p class="desc">${esc(p.desc || p.detail)}</p>
+        ${p.options ? `<fieldset><legend>${esc(p.options.label)}</legend>
+          <div class="opts">${p.options.values.map(v => `<button class="chip" data-option="${esc(v)}" aria-pressed="false">${esc(v)}</button>`).join('')}</div>
+        </fieldset>` : ''}
+        ${p.stock === 0 ? '<p class="stock">Cette pièce a trouvé preneur. <a href="/sur-mesure">Demandez une création similaire</a>.</p>' : `
+        ${p.stock != null && p.stock <= 3 && !p.unique ? `<p class="stock">Plus que ${p.stock} en stock</p>` : ''}
         <div class="buy">
-          <div class="qty"><button data-qty="-1" aria-label="Retirer un">−</button><span id="qty" aria-live="polite">1</span><button data-qty="1" aria-label="Ajouter un">+</button></div>
+          ${p.stock === 1 ? '' : '<div class="qty"><button data-qty="-1" aria-label="Retirer un">−</button><span id="qty" aria-live="polite">1</span><button data-qty="1" aria-label="Ajouter un">+</button></div>'}
           <button class="btn" data-buy="${p.id}">Ajouter au panier</button>
-        </div>
-        <p style="font-size:14px;color:#4A4234">✿ Emballage cadeau offert · expédié sous 3 à 5 jours</p>
+        </div>`}
+        <p style="font-size:14px;color:#4A4234">✿ Emballage cadeau offert · expédié sous ${esc(L.delai)}</p>
         <div class="acc">
-          <details open><summary>Composition &amp; dimensions</summary><p>${esc(INFOS[p.cat].compo)}</p></details>
-          <details><summary>Entretien</summary><p>${esc(INFOS[p.cat].care)}</p></details>
-          <details><summary>Livraison &amp; retours</summary><p>Colissimo suivi, offert dès ${FREE_SHIPPING} €. Retours acceptés sous 14 jours.</p></details>
-          <details><summary>Fait main : à savoir</summary><p>Chaque pièce est coupée et cousue à la main : de légères variations de motif ou de teinte font partie de son charme.</p></details>
+          <details open><summary>Composition &amp; dimensions</summary><p>${esc(p.compo)}</p></details>
+          ${p.care ? `<details><summary>Entretien</summary><p>${esc(p.care)}</p></details>` : ''}
+          <details><summary>Livraison &amp; retours</summary><p>${esc(L.transporteur)} (${esc(L.zone)}) : ${euro(Math.round(L.prix * 100))}, offerte dès ${euro(L.offerteDes * 100)}. Vous avez 14 jours après réception pour changer d'avis. <a href="/livraison-retours">En savoir plus</a></p></details>
+          <details><summary>Fabricant &amp; sécurité</summary><p>Fabriqué à la main par ${esc(SHOP.nomLegal)}, ${esc(SHOP.adresse)} — ${esc(SHOP.email)}.${p.safety ? '\n\n' + esc(p.safety) : ''}\n\nChaque pièce est coupée et cousue à la main : de légères variations de motif ou de teinte font partie de son charme.</p></details>
         </div>
       </div>
     </section>
-    <section class="kat-word"><div class="wrap"><p>« ${esc(INFOS[p.cat].mot)} »</p><p class="sign">— Kat</p></div></section>
-    <section class="wrap block" style="padding-bottom:72px"><h2 style="margin-bottom:24px">Pour compléter le cocon</h2><div class="grid">${related.map(card).join('')}</div></section>`;
+    ${related.length ? `<section class="wrap block" style="padding-bottom:72px"><h2 style="margin-bottom:24px">Vous aimerez aussi</h2><div class="grid">${related.map(card).join('')}</div></section>` : ''}`;
   },
 
-  cart: () => {
+  panier: () => {
     if (!cart.length) return `
-      <section class="wrap empty"><h1 style="font-size:44px">Votre panier est vide</h1><p>Il n'attend qu'un plaid tout doux.</p><a href="#/boutique" class="btn">Découvrir la boutique</a></section>`;
-    const sub = cart.reduce((s, l) => s + byId(l.id).price * l.qty, 0);
-    const ship = sub >= FREE_SHIPPING ? 0 : SHIPPING;
+      <section class="wrap empty"><h1 style="font-size:44px">Votre panier est vide</h1><p>Il n'attend qu'une jolie création.</p><a href="/boutique" class="btn">Découvrir la boutique</a></section>`;
     return `
     <section class="wrap cart-page">
       <div>
         <h1>Mon panier</h1>
         ${cart.map((l, i) => { const p = byId(l.id); return `
           <div class="line">
-            <a href="#/produit/${p.id}" class="pic ${p.ph}"${photo(p)} aria-label="${esc(p.name)}"></a>
-            <div><h3>${esc(p.name)}</h3><small>Tissu : ${esc(l.fabric)}</small>
+            <a href="/produit/${p.id}" class="pic photo"${bg(p.images[0])} aria-label="${esc(p.name)}"></a>
+            <div><h3>${esc(p.name)}</h3>${l.option ? `<small>${esc(p.options?.label || 'Option')} : ${esc(l.option)}</small>` : ''}
               <div style="display:flex;align-items:center;gap:14px;margin-top:8px">
                 <div class="qty" style="height:40px"><button data-line="${i}" data-d="-1" style="height:36px;width:38px" aria-label="Retirer un">−</button><span>${l.qty}</span><button data-line="${i}" data-d="1" style="height:36px;width:38px" aria-label="Ajouter un">+</button></div>
                 <button class="remove" data-remove="${i}">Retirer</button>
@@ -380,108 +373,203 @@ const views = {
             </div>
             <b>${euro(p.price * l.qty)}</b>
           </div>`; }).join('')}
-        <label class="gift" style="margin-top:22px"><input type="checkbox" id="gift" ${gift ? 'checked' : ''}> <span><b>C'est pour offrir</b><br><small style="color:var(--muted)">Emballage tissu offert, sans prix sur le bon de livraison.</small></span></label>
-        <textarea id="gift-note" placeholder="Un petit mot à glisser dans le paquet ?" style="width:100%;margin-top:12px" ${gift ? '' : 'hidden'}></textarea>
+        <label class="check" style="margin-top:22px"><input type="checkbox" id="gift" ${gift ? 'checked' : ''}> <span><b>C'est pour offrir</b><br><small style="color:var(--muted)">Emballage tissu offert, sans prix dans le colis.</small></span></label>
+        <textarea id="gift-note" maxlength="500" placeholder="Un petit mot à glisser dans le paquet ?" style="margin-top:12px" ${gift ? '' : 'hidden'}>${esc(giftNote)}</textarea>
       </div>
-      <aside class="summary" aria-label="Récapitulatif">
-        <h2 style="font-size:26px">Récapitulatif</h2>
-        <div class="r"><span>Sous-total</span><span>${euro(sub)}</span></div>
-        <div class="r"><span>Livraison</span><span>${ship ? euro(ship) : 'Offerte'}</span></div>
-        ${ship ? `<small style="color:var(--muted)">Plus que ${euro(FREE_SHIPPING - sub)} pour la livraison offerte.</small>` : ''}
-        <div class="r total"><span>Total</span><span>${euro(sub + ship)}</span></div>
-        <button class="btn" data-checkout>Passer commande</button>
-        <a href="#/boutique" style="text-align:center;font-weight:700">Continuer mes achats</a>
-      </aside>
+      ${summary('<a href="/commande" class="btn">Passer commande</a><a href="/boutique" style="text-align:center;font-weight:700">Continuer mes achats</a>')}
     </section>`;
+  },
+
+  commande: () => {
+    if (!cart.length) return views.panier();
+    const P = SHOP.payments;
+    return `
+    <section class="wrap cart-page">
+      <form class="form" data-form="checkout" novalidate>
+        <h1>Livraison &amp; paiement</h1>
+        <label>Prénom et nom<input name="name" required autocomplete="name"></label>
+        <label>E-mail<input name="email" type="email" required autocomplete="email"></label>
+        <label>Téléphone <small style="font-weight:400;color:var(--muted)">(facultatif, pour le transporteur)</small><input name="phone" type="tel" autocomplete="tel"></label>
+        <label>Adresse<input name="address" required autocomplete="street-address"></label>
+        <div class="two"><label>Code postal<input name="zip" required inputmode="numeric" pattern="\\d{5}" maxlength="5" autocomplete="postal-code"></label><label>Ville<input name="city" required autocomplete="address-level2"></label></div>
+        <p style="font-size:14px;color:var(--muted)">Livraison en ${esc(SHOP.livraison.zone)} uniquement, par ${esc(SHOP.livraison.transporteur)}.</p>
+        <fieldset><legend>Paiement sécurisé</legend><div class="pay">
+          ${P.stripe ? `<label><input type="radio" name="method" value="stripe" checked> Carte bancaire, Apple Pay, Google Pay</label>` : ''}
+          ${P.paypal ? `<label><input type="radio" name="method" value="paypal" ${P.stripe ? '' : 'checked'}> PayPal</label>` : ''}
+          ${P.stripe || P.paypal ? '' : '<p class="err">Le paiement en ligne n\'est pas encore ouvert. Écrivez-moi depuis la page <a href="/contact">Contact</a> pour commander.</p>'}
+        </div></fieldset>
+        <label class="check" style="font-weight:400"><input type="checkbox" name="cgv" required> <span>J'ai lu et j'accepte les <a href="/cgv" target="_blank">conditions générales de vente</a>, dont le droit de rétractation de 14 jours.</span></label>
+        <p class="err" id="checkout-err" role="alert" hidden></p>
+        <button class="btn" ${P.stripe || P.paypal ? '' : 'disabled'}>Payer ${euro(totals().total)}</button>
+        <small style="color:var(--muted)" ${P.stripe || P.paypal ? '' : 'hidden'}>Vous serez redirigé vers la page de paiement sécurisée de ${P.stripe && P.paypal ? 'Stripe ou PayPal' : P.paypal ? 'PayPal' : 'Stripe'}. Aucune donnée bancaire ne transite par ce site.</small>
+      </form>
+      ${summary(`<a href="/panier" style="text-align:center;font-weight:700">Modifier le panier</a>`)}
+    </section>`;
+  },
+
+  merci: () => {
+    cart = []; gift = false; giftNote = ''; saveCart();
+    const id = new URLSearchParams(location.search).get('commande') || '';
+    return `<section class="wrap empty"><p class="eyebrow">Commande ${esc(id)}</p><h1 style="font-size:44px">Merci pour votre commande&nbsp;!</h1>
+      <p>Un e-mail de confirmation vient de partir. Je prépare votre colis avec soin et vous envoie le numéro de suivi dès l'expédition.</p>
+      <p class="sign" style="font-family:var(--script);font-size:34px;color:var(--rose-d)">— Kat</p><a href="/boutique" class="btn">Retour à la boutique</a></section>`;
   },
 
   atelier: () => atelier() + '<div style="height:48px"></div>',
 
-  custom: () => `
+  'sur-mesure': () => `
     <section class="wrap block" style="padding-bottom:72px">
       <p class="eyebrow">Sur-mesure</p>
       <h1 style="font-size:clamp(34px,5vw,48px);margin:8px 0 12px">Une pièce rien qu'à vous</h1>
-      <p style="max-width:560px;margin-bottom:28px;color:#4A4234">Une taille particulière, un tissu à vous, un cadeau de naissance ? Racontez-moi votre idée, je vous réponds sous quelques jours avec un devis.</p>
-      <form class="form" data-form="custom">
-        <label>Prénom<input required></label>
-        <label>E-mail<input type="email" required></label>
-        <label>Type de pièce<select><option>Plaid</option><option>Coussin</option><option>Pochette / trousse</option><option>Autre</option></select></label>
-        <label>Votre idée<textarea required placeholder="Dimensions, couleurs, pour quelle occasion…"></textarea></label>
+      <p style="max-width:560px;margin-bottom:28px;color:#4A4234">Une taille particulière, un tissu à vous, un cadeau ? Racontez-moi votre idée, je vous réponds sous quelques jours avec un devis.</p>
+      <form class="form" data-form="message" data-type="sur-mesure">${honeypot}
+        <label>Prénom<input name="name" required autocomplete="given-name"></label>
+        <label>E-mail<input name="email" type="email" required autocomplete="email"></label>
+        <label>Type de pièce<select name="kind">${[...cats(), 'Autre'].map(c => `<option>${esc(c)}</option>`).join('')}</select></label>
+        <label>Votre idée<textarea name="text" required placeholder="Mesures, couleurs, pour quelle occasion…"></textarea></label>
         <button class="btn" style="justify-self:start">Envoyer ma demande</button>
       </form>
-    </section>`
+    </section>`,
+
+  contact: () => `
+    <section class="wrap block" style="padding-bottom:72px">
+      <p class="eyebrow">Contact</p>
+      <h1 style="font-size:clamp(34px,5vw,48px);margin:8px 0 12px">Une question ?</h1>
+      <p style="max-width:560px;margin-bottom:28px;color:#4A4234">Une question sur une création, une commande ou un retour ? Écrivez-moi, je réponds personnellement${SHOP.instagram ? `, ou sur Instagram <a href="https://www.instagram.com/${esc(SHOP.instagram)}" rel="noopener">@${esc(SHOP.instagram)}</a>` : ''}.</p>
+      <form class="form" data-form="message" data-type="contact">${honeypot}
+        <label>Prénom<input name="name" required autocomplete="given-name"></label>
+        <label>E-mail<input name="email" type="email" required autocomplete="email"></label>
+        <label>Message<textarea name="text" required></textarea></label>
+        <button class="btn" style="justify-self:start">Envoyer</button>
+      </form>
+    </section>`,
+
+  introuvable: () => `<section class="wrap empty"><h1 style="font-size:44px">Page introuvable</h1><p>Cette page n'existe pas ou plus.</p><a href="/boutique" class="btn">Voir la boutique</a></section>`
 };
+
+function totals() {
+  const sub = cart.reduce((s, l) => s + byId(l.id).price * l.qty, 0);
+  const ship = sub >= SHOP.livraison.offerteDes * 100 ? 0 : Math.round(SHOP.livraison.prix * 100);
+  return { sub, ship, total: sub + ship };
+}
+function summary(actions) {
+  const { sub, ship, total } = totals();
+  return `
+    <aside class="summary" aria-label="Récapitulatif">
+      <h2 style="font-size:26px">Récapitulatif</h2>
+      <div class="r"><span>Sous-total</span><span>${euro(sub)}</span></div>
+      <div class="r"><span>Livraison</span><span>${ship ? euro(ship) : 'Offerte'}</span></div>
+      ${ship ? `<small style="color:var(--muted)">Plus que ${euro(SHOP.livraison.offerteDes * 100 - sub)} pour la livraison offerte.</small>` : ''}
+      <div class="r total"><span>Total</span><span>${euro(total)}</span></div>
+      <small style="color:var(--muted)">${esc(SHOP.tva)}</small>
+      ${actions}
+    </aside>`;
+}
 
 function atelier() {
   return `
     <section class="atelier" id="atelier"><div class="wrap">
-      <div class="pic ph-w" style="background:#E3D6C2 url('img/atelier.jpg') center/cover"></div>
+      <div class="pic photo" style="background-image:url('img/atelier.jpg')"></div>
       <div>
         <p class="eyebrow" style="color:var(--rose)">L'atelier</p>
         <h2>Derrière chaque couture, un œil attentif.</h2>
-        <p>Tout a commencé avec une vieille machine à coudre et une pile de chutes de tissu. Depuis, je couds chaque pièce à la main dans mon petit atelier, au rythme des saisons : des matières naturelles, des couleurs de sous-bois, et le souci du détail. Ici, rien n'est fait à la chaîne : chaque plaid, chaque coussin passe sous mon œil attentif avant de partir chez vous.</p>
+        <p>Tout a commencé avec une vieille machine à coudre et une pile de chutes de tissu. Depuis, je couds chaque pièce à la main dans mon petit atelier, au rythme des saisons : des matières naturelles, des couleurs de sous-bois, et le souci du détail. Ici, rien n'est fait à la chaîne : chaque vêtement, chaque accessoire passe sous mon œil attentif avant de partir chez vous.</p>
         <p class="sign">— Kat</p>
-        <a href="#/sur-mesure" class="btn">Commander une pièce sur-mesure</a>
+        <a href="/sur-mesure" class="btn">Commander une pièce sur-mesure</a>
       </div>
     </div></section>`;
 }
 
-let product = { qty: 1, fabric: 0 };
+let product = { qty: 1, option: '' };
 function render() {
-  const [, route = '', arg] = location.hash.split('/');
+  const [route = '', arg] = location.pathname.split('/').filter(Boolean).map(decodeURIComponent);
   const app = document.getElementById('app');
-  product = { qty: 1, fabric: 0 };
-  if (route === 'contact') { app.innerHTML = views.home(); document.getElementById('contact').scrollIntoView(); return; }
-  app.innerHTML =
-    route === 'boutique' ? views.shop(arg && decodeURIComponent(arg)) :
-    route === 'produit' ? views.product(arg) :
-    route === 'panier' ? views.cart() :
-    route === 'atelier' ? views.atelier() :
-    route === 'sur-mesure' ? views.custom() : views.home();
+  product = { qty: 1, option: '' };
+  document.title = `${SHOP.nom} — vêtements et accessoires cousus main`;
+  const legal = window.LEGAL[route];
+  app.innerHTML = legal ? page(legal.title, legal.body(SHOP)) : (views[route] || views.introuvable)(arg);
+  if (legal) document.title = `${legal.title} — ${SHOP.nom}`;
+  document.querySelectorAll('nav.main a').forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === '/' + route));
+  const q = new URLSearchParams(location.search).get('paiement');
+  if (route === 'panier' && q) toast(q === 'annule' ? 'Paiement annulé : votre panier est conservé.' : 'Le paiement n\'a pas abouti. Vous pouvez réessayer.');
   window.scrollTo(0, 0);
 }
+const go = href => { history.pushState(null, '', href); render(); };
 
 document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="/"]');
+  if (a && !a.target && !e.ctrlKey && !e.metaKey && !e.shiftKey && !a.getAttribute('href').startsWith('/admin')) { e.preventDefault(); return go(a.getAttribute('href')); }
   const t = e.target.closest('button');
   if (!t) return;
   const d = t.dataset;
   if (d.add) addToCart(d.add);
   else if (d.shot) {
-    const [label, ph] = SHOTS[d.shot];
-    const main = document.getElementById('main-shot');
-    main.className = 'gallery-main ' + ph;
-    document.getElementById('shot-label').textContent = label;
+    document.getElementById('main-shot').style.backgroundImage = `url('${d.shot}')`;
     document.querySelectorAll('[data-shot]').forEach(b => b.setAttribute('aria-pressed', b === t));
   }
-  else if (d.fabric) {
-    product.fabric = +d.fabric;
-    document.getElementById('fabric-name').textContent = FABRICS[d.fabric][0];
-    document.querySelectorAll('[data-fabric]').forEach(b => b.setAttribute('aria-pressed', b === t));
+  else if (d.option !== undefined) {
+    product.option = d.option;
+    document.querySelectorAll('[data-option]').forEach(b => b.setAttribute('aria-pressed', b === t));
   }
   else if (d.qty) {
     product.qty = Math.max(1, product.qty + +d.qty);
     document.getElementById('qty').textContent = product.qty;
   }
-  else if (d.buy) addToCart(d.buy, product.qty, FABRICS[product.fabric][0]);
+  else if (d.buy) {
+    const p = byId(d.buy);
+    if (p.options && !product.option) return toast(`Choisissez : ${p.options.label.toLowerCase()}`);
+    addToCart(d.buy, product.qty, product.option);
+  }
   else if (d.line) {
-    const l = cart[d.line]; l.qty += +d.d;
+    const l = cart[d.line];
+    if (+d.d > 0 && left(byId(l.id)) < 1) return toast('Il n\'y en a pas davantage en stock');
+    l.qty += +d.d;
     if (l.qty < 1) cart.splice(d.line, 1);
     saveCart(); render();
   }
   else if (d.remove) { cart.splice(d.remove, 1); saveCart(); render(); }
-  else if ('checkout' in d) toast('Ici, on passera au paiement sécurisé Shopify');
 });
 document.addEventListener('change', e => {
   if (e.target.id === 'gift') { gift = e.target.checked; document.getElementById('gift-note').hidden = !gift; }
 });
-document.addEventListener('submit', e => {
+document.addEventListener('input', e => { if (e.target.id === 'gift-note') giftNote = e.target.value; });
+document.addEventListener('submit', async e => {
   e.preventDefault();
-  toast(e.target.dataset.form === 'news' ? 'Merci, à très vite !' : 'Merci ! Kat vous répond très vite.');
-  e.target.reset();
+  const f = e.target, data = Object.fromEntries(new FormData(f)), btn = f.querySelector('button:not([data-qty])');
+  if (f.dataset.form === 'checkout') {
+    const err = document.getElementById('checkout-err');
+    if (!f.checkValidity()) { err.textContent = 'Merci de compléter les champs obligatoires et d\'accepter les CGV.'; err.hidden = false; return f.reportValidity(); }
+    btn.disabled = true; err.hidden = true;
+    try {
+      const { url } = await api('/api/checkout', { method: data.method, cgv: true, customer: data, items: cart, gift, giftNote });
+      location.href = url;
+    } catch (x) { err.textContent = x.message; err.hidden = false; btn.disabled = false; }
+    return;
+  }
+  btn.disabled = true;
+  try {
+    if (f.dataset.form === 'newsletter') await api('/api/newsletter', data);
+    else await api('/api/message', { ...data, type: f.dataset.type });
+    toast(f.dataset.form === 'newsletter' ? 'Merci, à très vite !' : 'Merci ! Kat vous répond très vite.');
+    f.reset();
+  } catch (x) { toast(x.message); }
+  btn.disabled = false;
 });
-addEventListener('hashchange', render);
-saveCart();
-render();
+addEventListener('popstate', render);
+
+Promise.all([fetch('/api/products'), fetch('/api/shop')].map(p => p.then(r => r.json()))).then(([products, shop]) => {
+  PRODUCTS = products; SHOP = shop;
+  cart = cart.filter(l => byId(l.id));
+  const L = SHOP.livraison;
+  document.getElementById('banner').textContent = `Chaque pièce est cousue à la main, en petite série — livraison offerte dès ${L.offerteDes} €`;
+  document.getElementById('f-mail').textContent = SHOP.email;
+  document.getElementById('year').textContent = new Date().getFullYear();
+  if (SHOP.instagram) Object.assign(document.getElementById('f-insta'), { hidden: false, href: 'https://www.instagram.com/' + SHOP.instagram, textContent: '@' + SHOP.instagram });
+  saveCart();
+  render();
+}).catch(() => {
+  document.getElementById('app').innerHTML = '<p class="wrap" style="padding:80px 20px">La boutique est momentanément indisponible. Merci de réessayer dans quelques instants.</p>';
+});
 </script>
 </body>
 </html>
