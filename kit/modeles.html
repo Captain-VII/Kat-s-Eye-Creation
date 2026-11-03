@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Modèles à imprimer — Kit pro</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/img/logo/favicon-32.png">
+<link rel="stylesheet" href="kit.css">
+<style>
+[contenteditable]{outline:1px dashed transparent;border-radius:4px}
+[contenteditable]:hover,[contenteditable]:focus{outline-color:var(--rose-d);background:#fff}
+.sheet{background:#fff;border-radius:6px;box-shadow:0 2px 10px rgba(43,38,34,.12);padding:28px;margin:14px 0 8px;color:#2B2622}
+.labels{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.label{border:1px dashed #bbb;border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.4;text-align:center;min-height:120px}
+.label img{height:34px;display:block;margin:0 auto 4px}
+.cards2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.thanks{border:1px dashed #bbb;border-radius:8px;padding:22px;text-align:center;aspect-ratio:3/2;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.thanks .script{font:34px var(--script);color:var(--rose-d)}
+.doc-head{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+.doc-head img{height:70px}
+.sheet table td,.sheet table th{font-size:14px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+@media print{
+  body.one section.tpl:not(.printing){display:none}
+  .sheet{box-shadow:none;padding:0;margin:0}
+  h2,.intro,.tools{display:none}
+  section.tpl{break-after:page}
+}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Kit"><div class="in"><b>Kit pro</b><a href="index.html">Démarrer</a><a href="obligations.html">Règles</a><a href="prix.html">Prix</a><a href="modeles.html" aria-current="page">Modèles</a><a href="vendre.html">Vendre</a><a href="quotidien.html">Au quotidien</a><a href="/admin">← Atelier</a></div></nav>
+<main>
+<div class="intro">
+<p class="eyebrow">Modèles à imprimer</p>
+<h1>Modèles prêts à l'emploi</h1>
+<p class="lead">Cliquez sur un texte pour le modifier directement, puis « Imprimer ce modèle ». Les modifications ne sont pas enregistrées : pensez à imprimer ou à enregistrer en PDF (choisir « Enregistrer au format PDF » comme imprimante).</p>
+</div>
+
+<section class="tpl" id="etiquettes">
+  <h2>Étiquettes de composition</h2>
+  <p class="intro">À imprimer sur du papier transfert textile ou à recopier pour un fabricant d'étiquettes tissées. Composition obligatoire, en français, cousue dans la pièce. Le nom et l'e-mail répondent à la règle « fabricant identifiable ».</p>
+  <div class="tools"><button class="btn" data-print="etiquettes">Imprimer ce modèle</button></div>
+  <div class="sheet labels" contenteditable="true">
+    <div class="label"><img src="/img/logo/logo-etiquette.webp" alt=""><b>100 % lin</b><br>Lavage 30 °C · Pas de sèche-linge<br>Repassage doux<br>Fait main en France<br>bonjour@kats-eye-creation.fr · Réf. FOUGÈRE</div>
+    <div class="label"><img src="/img/logo/logo-etiquette.webp" alt=""><b>55 % lin, 45 % coton</b><br>Lavage 30 °C · Séchage à plat<br>Fait main en France<br>bonjour@kats-eye-creation.fr · Réf. CLAIRIÈRE</div>
+    <div class="label"><img src="/img/logo/logo-etiquette.webp" alt=""><b>Extérieur : 100 % coton<br>Doublure : 100 % coton</b><br>Lavage main à froid<br>Fait main en France<br>bonjour@kats-eye-creation.fr · Réf. MOUSSE</div>
+    <div class="label"><img src="/img/logo/logo-etiquette.webp" alt=""><b>100 % laine</b><br>Lavage main à froid · Séchage à plat<br>Fait main en France<br>bonjour@kats-eye-creation.fr · Réf. …</div>
+  </div>
+</section>
+
+<section class="tpl" id="merci">
+  <h2>Cartes de remerciement</h2>
+  <p class="intro">Format 15 × 10 cm, deux par page. Un petit mot manuscrit au dos fait toute la différence.</p>
+  <div class="tools"><button class="btn" data-print="merci">Imprimer ce modèle</button></div>
+  <div class="sheet cards2" contenteditable="true">
+    <div class="thanks"><img src="/img/logo/logo-complet.webp" alt="" style="height:70px;margin:0 auto"><p class="script">Merci&nbsp;!</p><p>Cette pièce a été cousue à la main, avec soin, rien que pour vous.<br>J'espère qu'elle vous accompagnera longtemps.</p><p style="font-size:13px">Une photo ? Identifiez @katseye.creation<br>kats-eye-creation.fr</p></div>
+    <div class="thanks"><img src="/img/logo/logo-complet.webp" alt="" style="height:70px;margin:0 auto"><p class="script">Prenez-en soin</p><p style="font-size:14px">Lavez à 30 °C maximum, sur l'envers, cycle délicat.<br>Séchez à plat, loin d'une source de chaleur.<br>Repassez doucement sur l'envers.</p><p style="font-size:13px">Un souci ? bonjour@kats-eye-creation.fr</p></div>
+  </div>
+</section>
+
+<section class="tpl" id="devis">
+  <h2>Devis sur-mesure</h2>
+  <p class="intro">À envoyer avant de commencer une pièce sur-mesure. Le « bon pour accord » signé (ou un e-mail d'accord) vaut commande. Rappel : pas de droit de rétractation pour le sur-mesure, d'où l'intérêt d'un devis précis.</p>
+  <div class="tools"><button class="btn" data-print="devis">Imprimer ce modèle</button></div>
+  <div class="sheet" contenteditable="true">
+    <div class="doc-head"><img src="/img/logo/logo-complet.webp" alt=""><div style="text-align:right;font-size:14px"><b>[Prénom Nom], EI — Kat's Eyes Créations</b><br>[Adresse de l'atelier]<br>SIRET [numéro]<br>bonjour@kats-eye-creation.fr · [téléphone]</div></div>
+    <h3 style="margin-top:0">Devis n° D-2026-001</h3>
+    <p>Date : [jj/mm/aaaa] · Valable 1 mois<br>Client : [Nom], [adresse], [e-mail]</p>
+    <table><tr><th>Description</th><th>Qté</th><th>Prix</th></tr>
+      <tr><td>[Robe portefeuille en lin, taille sur mesures (tour de poitrine 92, taille 74, longueur 110 cm), coloris vieux rose, doublure coton]</td><td>1</td><td>[150,00 €]</td></tr>
+      <tr><td>Livraison Colissimo suivi</td><td>1</td><td>[5,90 €]</td></tr>
+      <tr><th colspan="2">Total</th><th>[155,90 €]</th></tr></table>
+    <p>TVA non applicable, art. 293 B du CGI.<br>Délai de réalisation : [3 semaines] à compter de l'acompte. Acompte de [30 %] à la commande, solde avant l'envoi.<br>Pièce confectionnée selon les spécifications du client : pas de droit de rétractation (art. L221-28 3° du Code de la consommation). Les garanties légales s'appliquent.</p>
+    <p style="margin-top:28px">Bon pour accord, date et signature :</p>
+  </div>
+</section>
+
+<section class="tpl" id="facture">
+  <h2>Facture</h2>
+  <p class="intro">Obligatoire pour un client professionnel, ou si un particulier la demande. Numéros qui se suivent sans trou (F-2026-001, F-2026-002…). Toutes les mentions ci-dessous sont obligatoires.</p>
+  <div class="tools"><button class="btn" data-print="facture">Imprimer ce modèle</button></div>
+  <div class="sheet" contenteditable="true">
+    <div class="doc-head"><img src="/img/logo/logo-complet.webp" alt=""><div style="text-align:right;font-size:14px"><b>[Prénom Nom], EI — Kat's Eyes Créations</b><br>[Adresse de l'atelier]<br>SIRET [numéro]<br>bonjour@kats-eye-creation.fr</div></div>
+    <h3 style="margin-top:0">Facture n° F-2026-001</h3>
+    <p>Date : [jj/mm/aaaa] · Date de la vente / livraison : [jj/mm/aaaa]<br>Client : [Nom ou raison sociale], [adresse]<br>[Pour un professionnel : SIREN du client et adresse de livraison si différente]</p>
+    <table><tr><th>Désignation</th><th>Qté</th><th>Prix unitaire</th><th>Total</th></tr>
+      <tr><td>[Étole « Sous-bois », 100 % coton] (réf. commande KE-…)</td><td>1</td><td>[49,00 €]</td><td>[49,00 €]</td></tr>
+      <tr><td>Frais de livraison</td><td>1</td><td>[5,90 €]</td><td>[5,90 €]</td></tr>
+      <tr><th colspan="3">Total à payer</th><th>[54,90 €]</th></tr></table>
+    <p>TVA non applicable, art. 293 B du CGI.<br>Payée le [jj/mm/aaaa] par [carte bancaire / PayPal / virement / espèces].<br>[Pour un professionnel uniquement : paiement à 30 jours ; pénalités de retard au taux de 3 fois le taux d'intérêt légal ; indemnité forfaitaire pour frais de recouvrement de 40 € ; pas d'escompte pour paiement anticipé.]</p>
+  </div>
+</section>
+
+<section class="tpl" id="achats">
+  <h2>Registre des achats</h2>
+  <p class="intro">Une ligne par achat professionnel (tissus, mercerie, emballages, étiquettes, matériel). Garder chaque facture, papier ou PDF, 10 ans. Un tableur avec les mêmes colonnes convient aussi.</p>
+  <div class="tools"><button class="btn" data-print="achats">Imprimer ce modèle</button></div>
+  <div class="sheet" contenteditable="true">
+    <h3 style="margin-top:0">Registre des achats — année [2026]</h3>
+    <table><tr><th>Date</th><th>Fournisseur</th><th>Nature de l'achat</th><th>N° de facture</th><th>Montant TTC</th><th>Payé par</th></tr>
+      <tr><td>[04/11/2026]</td><td>[Mercerie X]</td><td>[Lin lavé 3 m, fil]</td><td>[12345]</td><td>[42,60 €]</td><td>[CB pro]</td></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="tpl" id="recettes-marche">
+  <h2>Ventes sur un marché</h2>
+  <p class="intro">Les ventes du site sont dans le livre des recettes exporté depuis l'atelier. Celles des marchés et des ventes en direct se notent ici, puis s'ajoutent à la déclaration URSSAF.</p>
+  <div class="tools"><button class="btn" data-print="recettes-marche">Imprimer ce modèle</button></div>
+  <div class="sheet" contenteditable="true">
+    <h3 style="margin-top:0">Ventes hors site — [marché de Noël de …, 12/12/2026]</h3>
+    <table><tr><th>Heure / date</th><th>Article</th><th>Client (si connu)</th><th>Montant</th><th>Paiement</th></tr>
+      <tr><td>[10 h 20]</td><td>[Chouchous x3]</td><td></td><td>[12,00 €]</td><td>[Espèces]</td></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr><tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr><tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr><tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+      <tr><th colspan="3">Total de la journée</th><th></th><th></th></tr></table>
+  </div>
+</section>
+</main>
+<script>
+// « Imprimer ce modèle » n'imprime que la section choisie.
+document.addEventListener('click', e => {
+  const id = e.target.dataset?.print;
+  if (!id) return;
+  const s = document.getElementById(id);
+  document.body.classList.add('one'); s.classList.add('printing');
+  print();
+  document.body.classList.remove('one'); s.classList.remove('printing');
+});
+</script>
+</body>
+</html>

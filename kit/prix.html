@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Calculer ses prix — Kit pro</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/img/logo/favicon-32.png">
+<link rel="stylesheet" href="kit.css">
+<style>
+.calc{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
+.calc fieldset{border:1.5px dashed var(--line);border-radius:18px;padding:14px 18px;margin:0 0 14px;background:var(--card)}
+.calc legend{font:600 20px var(--serif);padding:0 6px}
+.calc label{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0;font-size:15px}
+.calc input{width:96px;font:16px var(--sans);padding:7px 10px;border:1.5px solid var(--line);border-radius:10px;text-align:right}
+.res{position:sticky;top:12px;background:var(--khaki-d);color:var(--cream);border-radius:22px;padding:22px 24px}
+.res .big{font:600 52px/1 var(--serif);margin:6px 0 2px}
+.res table{color:var(--text);background:var(--cream);border-radius:12px;overflow:hidden}
+.res small{color:#E3E6D6}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Kit"><div class="in"><b>Kit pro</b><a href="index.html">Démarrer</a><a href="obligations.html">Règles</a><a href="prix.html" aria-current="page">Prix</a><a href="modeles.html">Modèles</a><a href="vendre.html">Vendre</a><a href="quotidien.html">Au quotidien</a><a href="/admin">← Atelier</a></div></nav>
+<main>
+<p class="eyebrow">Calculer ses prix</p>
+<h1>Le juste prix d'une création</h1>
+<p class="lead">L'erreur la plus courante du fait-main : oublier de se payer. Ce calculateur part de ce que coûte la pièce et du temps passé, puis ajoute les charges et les frais de paiement pour que vous touchiez vraiment ce que vous avez prévu.</p>
+
+<form class="calc" id="calc" oninput="calc()">
+  <div>
+    <fieldset><legend>Matières, pour une pièce</legend>
+      <label>Tissu (€)<input name="tissu" type="number" step="0.01" min="0" value="12"></label>
+      <label>Doublure, entoilage (€)<input name="doublure" type="number" step="0.01" min="0" value="3"></label>
+      <label>Mercerie : fil, boutons, zip, élastique (€)<input name="mercerie" type="number" step="0.01" min="0" value="2.5"></label>
+      <label>Étiquettes (€)<input name="etiquettes" type="number" step="0.01" min="0" value="0.6"></label>
+      <label>Emballage et carte (€)<input name="emballage" type="number" step="0.01" min="0" value="1.2"></label>
+    </fieldset>
+    <fieldset><legend>Votre temps</legend>
+      <label>Coupe, couture, finitions (heures)<input name="heures" type="number" step="0.25" min="0" value="3"></label>
+      <label>Photo, mise en ligne, colis (heures)<input name="annexes" type="number" step="0.25" min="0" value="0.5"></label>
+      <label>Ce que vous voulez gagner de l'heure (€)<input name="taux" type="number" step="0.5" min="0" value="15"></label>
+    </fieldset>
+    <fieldset><legend>Frais et charges</legend>
+      <label>Frais généraux par pièce : machine, électricité, aiguilles, site (€)<input name="frais" type="number" step="0.1" min="0" value="2"></label>
+      <label>Charges URSSAF et taxes (% du prix)<input name="charges" type="number" step="0.1" min="0" value="13"></label>
+      <label>Impôt : versement libératoire (%)<input name="impot" type="number" step="0.1" min="0" value="1"></label>
+      <label>Paiement en ligne, % (Stripe ≈ 1,5)<input name="pcb" type="number" step="0.1" min="0" value="1.5"></label>
+      <label>Paiement en ligne, fixe (€)<input name="fixe" type="number" step="0.01" min="0" value="0.25"></label>
+    </fieldset>
+  </div>
+  <div class="res" aria-live="polite">
+    <small>Prix de vente conseillé</small>
+    <p class="big" id="prix">—</p>
+    <small id="arrondi"></small>
+    <table style="margin-top:16px">
+      <tr><td>Matières</td><td id="r-mat"></td></tr>
+      <tr><td>Votre rémunération</td><td id="r-temps"></td></tr>
+      <tr><td>Frais généraux</td><td id="r-frais"></td></tr>
+      <tr><td>Charges et impôt</td><td id="r-charges"></td></tr>
+      <tr><td>Frais de paiement</td><td id="r-paie"></td></tr>
+    </table>
+    <p style="margin-top:14px"><b>Et si je vends au prix de</b> <input id="test" type="number" step="1" min="1" style="width:84px"> € ?<br><span id="r-test"></span></p>
+  </div>
+</form>
+
+<h2>Repères</h2>
+<ul>
+  <li><b>Le taux horaire</b> : 15 € de l'heure, c'est à peine plus que le SMIC une fois les congés et les heures non vendues comptés. Les créateurs installés visent souvent 18 à 25 €.</li>
+  <li><b>Les heures « invisibles »</b> (achats de tissu, photos, réseaux sociaux, marchés) prennent souvent autant de temps que la couture. Les compter au moins en partie dans « photo, mise en ligne, colis ».</li>
+  <li><b>Dépôt-vente</b> : une boutique prend souvent 25 à 40 % de commission. Vérifier que le prix tient encore (champ « Et si je vends au prix de »).</li>
+  <li><b>Etsy</b> prend une commission de vente et des frais de paiement (environ 10 à 12 % au total) : remplacer 1,5 % par 11 % pour voir l'effet.</li>
+  <li><b>Les petites séries</b> réduisent le temps par pièce : couper plusieurs pièces à la fois, puis diviser le temps de coupe.</li>
+  <li><b>Les frais de port</b> sont payés à part par le client (5,90 €, offerts dès 60 €) : la livraison offerte est un coût pour vous, à garder en tête sur les grosses commandes.</li>
+  <li>Garder les mêmes prix sur le site et sur les marchés : les clients comparent.</li>
+</ul>
+</main>
+<script>
+const f = document.getElementById('calc');
+const eur = n => n.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
+const v = k => Math.max(0, parseFloat(f.elements[k].value) || 0);
+const set = (id, t) => document.getElementById(id).textContent = t;
+function calc() {
+  const mat = v('tissu') + v('doublure') + v('mercerie') + v('etiquettes') + v('emballage');
+  const temps = (v('heures') + v('annexes')) * v('taux');
+  const pct = (v('charges') + v('impot') + v('pcb')) / 100;
+  // Le prix doit couvrir les coûts + les prélèvements calculés sur ce même prix.
+  const prix = (mat + temps + v('frais') + v('fixe')) / (1 - pct);
+  set('prix', eur(prix));
+  const rond = Math.ceil(prix) % 5 === 0 ? Math.ceil(prix) : Math.ceil(prix / 5) * 5 - 1;
+  set('arrondi', `Arrondi commercial : ${eur(Math.max(rond, Math.ceil(prix)))}`);
+  set('r-mat', eur(mat)); set('r-temps', eur(temps)); set('r-frais', eur(v('frais')));
+  set('r-charges', eur(prix * (v('charges') + v('impot')) / 100)); set('r-paie', eur(prix * v('pcb') / 100 + v('fixe')));
+  const t = parseFloat(document.getElementById('test').value);
+  if (t > 0) {
+    const reste = t * (1 - pct) - v('fixe') - mat - v('frais');
+    const h = v('heures') + v('annexes');
+    set('r-test', reste <= 0 ? `Vous perdez ${eur(-reste)} par pièce.` : `Il vous reste ${eur(reste)}, soit ${h ? eur(reste / h) : '—'} de l'heure.`);
+  } else set('r-test', '');
+}
+document.getElementById('test').oninput = calc;
+calc();
+</script>
+</body>
+</html>

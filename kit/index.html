@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Kit pro — Kat's Eyes Créations</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/img/logo/favicon-32.png">
+<link rel="stylesheet" href="kit.css">
+</head>
+<body>
+<nav class="top" aria-label="Kit"><div class="in"><b>Kit pro</b><a href="index.html" aria-current="page">Démarrer</a><a href="obligations.html">Règles</a><a href="prix.html">Prix</a><a href="modeles.html">Modèles</a><a href="vendre.html">Vendre</a><a href="quotidien.html">Au quotidien</a><a href="/admin">← Atelier</a></div></nav>
+<main>
+<p class="eyebrow">Kat's Eyes Créations</p>
+<h1>Le kit pour vendre ses créations</h1>
+<p class="lead">Tout ce qu'il faut pour vendre des vêtements et accessoires cousus main, en règle et sereinement : les obligations, le calcul des prix, les modèles à imprimer, la communication et la routine de chaque semaine.</p>
+
+<div class="cards">
+  <a href="obligations.html"><b>Les règles</b>Statut, déclarations, étiquettes, sécurité des vêtements, vente en ligne.</a>
+  <a href="prix.html"><b>Calculer ses prix</b>Le bon prix pour être payée de son temps, en tenant compte des charges.</a>
+  <a href="modeles.html"><b>Modèles à imprimer</b>Étiquettes, carte de remerciement, devis, facture, registre des achats.</a>
+  <a href="vendre.html"><b>Se faire connaître</b>Photos, fiches produits, Instagram, marchés de créateurs, calendrier.</a>
+  <a href="quotidien.html"><b>Au quotidien</b>Une commande de A à Z, les retours, la déclaration URSSAF, l'espace admin.</a>
+</div>
+
+<h2>Avant d'ouvrir la boutique</h2>
+<p>Cochez au fur et à mesure (les cases sont mémorisées sur cet appareil).</p>
+<ul class="check" id="check">
+  <li><h3>Administratif</h3></li>
+  <li><label><input type="checkbox"><span>Vérifier sur le guichet unique (formalites.entreprises.gouv.fr) que l'activité déclarée est bien la <b>fabrication et vente de vêtements et accessoires</b> (activité artisanale), et la modifier sinon.</span></label></li>
+  <li><label><input type="checkbox"><span>Ouvrir un <b>compte bancaire dédié</b> à l'activité (c'est là qu'arriveront les paiements Stripe et PayPal).</span></label></li>
+  <li><label><input type="checkbox"><span>Adhérer à un <b>médiateur de la consommation</b> (obligatoire pour vendre aux particuliers) et noter son nom, son adresse et son site.</span></label></li>
+  <li><label><input type="checkbox"><span>Souscrire une <b>assurance responsabilité civile professionnelle</b> qui couvre les produits vendus.</span></label></li>
+  <li><label><input type="checkbox"><span>Ouvrir un cahier ou un tableur pour le <b>registre des achats</b> (tissus, mercerie, emballages) et garder toutes les factures.</span></label></li>
+  <li><h3>Boutique en ligne</h3></li>
+  <li><label><input type="checkbox"><span>Donner à Dorian les infos légales : nom, SIRET, adresse de l'atelier, téléphone, médiateur. Elles s'affichent dans les mentions légales et les CGV.</span></label></li>
+  <li><label><input type="checkbox"><span>Créer le compte <b>Stripe</b> (pièce d'identité + IBAN du compte pro) et le compte <b>PayPal Business</b>.</span></label></li>
+  <li><label><input type="checkbox"><span>Choisir le nom de domaine et l'adresse e-mail pro (ex. bonjour@kats-eye-creation.fr).</span></label></li>
+  <li><label><input type="checkbox"><span>Relire les <a href="/cgv" target="_blank">CGV</a>, les <a href="/livraison-retours" target="_blank">conditions de livraison</a> et le texte de <a href="/atelier" target="_blank">l'atelier</a> : ce sont vos mots, vos délais, vos frais de port.</span></label></li>
+  <li><label><input type="checkbox"><span>Supprimer les <b>créations d'exemple</b> dans l'atelier et ajouter les vraies, avec photos, composition et entretien.</span></label></li>
+  <li><label><input type="checkbox"><span>Passer une <b>commande test</b> de bout en bout (Dorian l'active en mode test), puis une vraie commande à petit prix, remboursée ensuite.</span></label></li>
+  <li><h3>Les créations</h3></li>
+  <li><label><input type="checkbox"><span>Coudre une <b>étiquette de composition</b> dans chaque vêtement et accessoire textile (voir <a href="obligations.html#etiquetage">Règles</a> et <a href="modeles.html">Modèles</a>).</span></label></li>
+  <li><label><input type="checkbox"><span>Calculer le prix de chaque modèle avec le <a href="prix.html">calculateur</a>.</span></label></li>
+  <li><label><input type="checkbox"><span>Préparer un stock d'emballages : pochettes, papier de soie, cartes de remerciement imprimées.</span></label></li>
+  <li><label><input type="checkbox"><span>Pour toute pièce enfant : relire la partie <a href="obligations.html#enfants">vêtements pour enfants</a>.</span></label></li>
+  <li><h3>Le lancement</h3></li>
+  <li><label><input type="checkbox"><span>Préparer 9 publications Instagram d'avance et annoncer l'ouverture aux proches.</span></label></li>
+  <li><label><input type="checkbox"><span>Prévoir les premiers marchés de créateurs de la saison.</span></label></li>
+</ul>
+
+<div class="box tip"><b>Où trouver quoi :</b> l'espace <a href="/admin">Atelier</a> sert à gérer les créations, les commandes, les messages et la lettre d'information. Ce kit y est accessible à tout moment par le lien « Kit pro ».</div>
+</main>
+<script>
+// Mémorise les cases cochées sur cet appareil.
+const boxes = [...document.querySelectorAll('#check input')];
+let saved = [];
+try { saved = JSON.parse(localStorage.getItem('kit-check')) || []; } catch (e) {}
+boxes.forEach((b, i) => { b.checked = !!saved[i]; b.onchange = () => { try { localStorage.setItem('kit-check', JSON.stringify(boxes.map(x => x.checked))); } catch (e) {} }; });
+</script>
+</body>
+</html>
