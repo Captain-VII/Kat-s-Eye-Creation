@@ -1,0 +1,13 @@
+{
+  "nom": "Kat's Eyes Créations",
+  "email": "bonjour@kats-eye-creation.fr",
+  "instagram": "katseye.creation",
+  "telephone": "[Téléphone]",
+  "nomLegal": "[Prénom Nom], entrepreneur individuel (EI)",
+  "siret": "[Numéro SIRET]",
+  "adresse": "[Adresse postale de l'atelier]",
+  "tva": "TVA non applicable, art. 293 B du CGI",
+  "mediateur": { "nom": "[Nom du médiateur de la consommation]", "site": "[Site du médiateur]", "adresse": "[Adresse du médiateur]" },
+  "hebergeur": "[Hébergeur du VPS : raison sociale, adresse, téléphone — ex. OVH SAS, 2 rue Kellermann, 59100 Roubaix]",
+  "livraison": { "prix": 5.9, "offerteDes": 60, "delai": "3 à 5 jours ouvrés", "transporteur": "Colissimo suivi", "zone": "France métropolitaine" }
+}

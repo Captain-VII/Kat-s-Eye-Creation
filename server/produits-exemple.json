@@ -1,0 +1,22 @@
+[
+  { "id": "etole-sous-bois", "name": "Étole « Sous-bois »", "cat": "Vêtements", "detail": "Double gaze de coton, kaki & noisette", "price": 4900, "stock": 1, "unique": true,
+    "options": null, "images": ["/img/sous-bois.jpg"], "published": true,
+    "desc": "Exemple : une grande étole toute douce à draper sur les épaules les soirs de fraîcheur. Coupée et cousue à la main, finitions roulottées.",
+    "compo": "100 % coton. 70 × 180 cm.", "care": "Lavage à 30 °C, cycle délicat. Séchage à plat. Repassage doux.", "safety": "" },
+  { "id": "chale-clairiere", "name": "Châle « Clairière »", "cat": "Vêtements", "detail": "Lin & coton gaufré, ton sable", "price": 5500, "stock": null, "unique": false,
+    "options": { "label": "Couleur", "values": ["Sable", "Kaki mousse", "Vieux rose"] }, "images": ["/img/clairiere.jpg"], "published": true,
+    "desc": "Exemple : châle léger cousu à la commande dans la couleur de votre choix.",
+    "compo": "55 % lin, 45 % coton. 90 × 200 cm.", "care": "Lavage à 30 °C. Séchage à l'air libre.", "safety": "" },
+  { "id": "pochette-mousse", "name": "Pochette « Mousse »", "cat": "Accessoires", "detail": "Lin lavé, doublure coton", "price": 2400, "stock": 4, "unique": false,
+    "options": null, "images": ["/img/mousse.jpg"], "published": true,
+    "desc": "Exemple : pochette zippée pour le maquillage, les crayons ou les écouteurs.",
+    "compo": "Extérieur 100 % lin, doublure 100 % coton. 22 × 14 cm.", "care": "Lavage à la main à l'eau froide. Séchage à plat.", "safety": "" },
+  { "id": "trousse-noisette", "name": "Trousse « Noisette »", "cat": "Accessoires", "detail": "Velours milleraies, zip laiton", "price": 1900, "stock": 3, "unique": false,
+    "options": null, "images": ["/img/noisette.jpg"], "published": true,
+    "desc": "Exemple : trousse en velours avec fermeture éclair en laiton.",
+    "compo": "Extérieur 100 % coton (velours), doublure 100 % coton.", "care": "Lavage à la main à 30 °C. Séchage à plat.", "safety": "" },
+  { "id": "chouchous-sous-bois", "name": "Chouchous « Sous-bois »", "cat": "Accessoires", "detail": "Lot de 3, chutes de tissus", "price": 1200, "stock": 10, "unique": false,
+    "options": null, "images": ["/img/chouchou.jpg"], "published": true,
+    "desc": "Exemple : trois chouchous cousus dans les chutes des grandes pièces.",
+    "compo": "Tissus 100 % coton, élastique (polyester, élasthanne).", "care": "Lavage à la main à 30 °C.", "safety": "Contient de petits éléments : ne convient pas aux enfants de moins de 3 ans." }
+]

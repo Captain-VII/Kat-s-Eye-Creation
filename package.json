@@ -1,0 +1,14 @@
+{
+  "name": "kats-eye-creation",
+  "private": true,
+  "type": "module",
+  "description": "Boutique en ligne Kat's Eyes Créations : site, paiement Stripe/PayPal, espace admin",
+  "engines": { "node": ">=20.12" },
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node --test server/"
+  },
+  "dependencies": {
+    "nodemailer": "10.2.1"
+  }
+}
