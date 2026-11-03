@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Au quotidien — Kit pro</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/img/logo/favicon-32.png">
+<link rel="stylesheet" href="kit.css">
+</head>
+<body>
+<nav class="top" aria-label="Kit"><div class="in"><b>Kit pro</b><a href="index.html">Démarrer</a><a href="obligations.html">Règles</a><a href="prix.html">Prix</a><a href="modeles.html">Modèles</a><a href="vendre.html">Vendre</a><a href="quotidien.html" aria-current="page">Au quotidien</a><a href="/admin">← Atelier</a></div></nav>
+<main>
+<p class="eyebrow">Au quotidien</p>
+<h1>La routine de la boutique</h1>
+<p class="lead">Comment utiliser l'atelier, traiter une commande du paiement à l'envoi, gérer un retour, et ne rien oublier côté URSSAF.</p>
+
+<h2>1. L'atelier (espace admin)</h2>
+<p>Adresse : <b>/admin</b> sur le site, avec le mot de passe donné par Dorian. Fonctionne aussi sur téléphone.</p>
+<ul>
+  <li><b>Commandes</b> : « À préparer » liste les commandes payées. Les commandes « non payées » sont des paniers abandonnés au moment du paiement : rien à faire.</li>
+  <li><b>Créations</b> : ajouter, modifier, mettre en ligne ou en brouillon. Le stock baisse tout seul à chaque vente ; à 0, la création s'affiche « épuisée ».</li>
+  <li><b>Messages</b> : les questions et demandes sur-mesure envoyées depuis le site (vous les recevez aussi par e-mail). « Répondre » ouvre votre messagerie.</li>
+  <li><b>Lettre d'info</b> : la liste des inscrits, exportable.</li>
+  <li><b>Livre des recettes</b> (onglet Commandes) : le fichier des ventes du site, à ouvrir dans un tableur.</li>
+</ul>
+<h3>Ajouter une création</h3>
+<ol>
+  <li>Créations → « Nouvelle création ».</li>
+  <li>Nom, catégorie (Vêtements, Accessoires… ou une nouvelle), prix, stock (vide si cousue à la commande).</li>
+  <li>Accroche, description, composition (obligatoire), entretien, et les avertissements s'il y en a.</li>
+  <li>Pour les tailles ou couleurs : « Choix proposé » = Taille, « Valeurs » = 36, 38, 40.</li>
+  <li>Ajouter les photos (directement depuis le téléphone), choisir la principale.</li>
+  <li>Cocher « En ligne » et enregistrer. Laisser décoché pour préparer une nouveauté en avance.</li>
+</ol>
+<div class="box tip"><b>Tailles et stock</b> : le stock est commun à toutes les tailles d'une création. Pour des pièces déjà cousues en plusieurs tailles, créer une fiche par taille (« Robe Fougère — 38 ») ; pour des pièces cousues à la commande, laisser le stock vide.</div>
+
+<h2>2. Une commande, de A à Z</h2>
+<ol>
+  <li><b>Le client paie</b> sur la page sécurisée de Stripe ou PayPal. Il reçoit aussitôt un e-mail de confirmation ; vous recevez « Nouvelle commande ».</li>
+  <li><b>Préparer</b> : ouvrir l'atelier → Commandes → À préparer. L'adresse, les articles, les options (taille, couleur) et l'éventuel mot cadeau y sont.</li>
+  <li><b>Emballer</b> : papier de soie, carte de remerciement, carte d'entretien. Si c'est un cadeau : pas de prix dans le colis, et le petit mot du client.</li>
+  <li><b>Expédier</b> : affranchir en ligne sur laposte.fr (Colissimo, poids pesé avec le colis) ou au bureau de poste. Garder la preuve de dépôt.</li>
+  <li><b>Saisir le numéro de suivi</b> dans la commande et passer le statut à « expédiée » → le client reçoit un e-mail avec le lien de suivi.</li>
+</ol>
+<p>Délai annoncé sur le site : expédition sous 3 à 5 jours ouvrés. En cas d'imprévu (maladie, rupture de tissu), prévenir le client par e-mail tout de suite : il préférera toujours être tenu au courant.</p>
+
+<h2>3. Retours et remboursements</h2>
+<ol>
+  <li>Le client écrit dans les 14 jours suivant la réception : lui répondre avec l'adresse de retour (frais de retour à sa charge, sauf défaut).</li>
+  <li>À réception, vérifier l'état (non portée, non lavée).</li>
+  <li>Rembourser dans les 14 jours : dans le tableau de bord <b>Stripe</b> (Paiements → la commande → Rembourser) ou <b>PayPal</b> (Activité → la transaction → Rembourser). Rembourser aussi les frais de livraison payés à l'achat.</li>
+  <li>Dans l'atelier : passer la commande en « remboursée », et remettre la pièce en stock dans sa fiche si elle est revendable.</li>
+</ol>
+<p>Une <b>pièce défectueuse</b> : réparer, remplacer ou rembourser, frais de retour à votre charge (garantie légale de conformité). Une pièce <b>sur-mesure</b> n'est pas reprise pour un simple changement d'avis, mais reste couverte en cas de défaut.</p>
+
+<h2>4. Chaque mois (ou trimestre)</h2>
+<ol>
+  <li>Exporter le <b>livre des recettes</b> depuis l'atelier et faire le total des ventes encaissées sur la période (colonne « Date d'encaissement »), remboursements déduits.</li>
+  <li>Ajouter les ventes des marchés et ventes directes (feuilles « Ventes sur un marché »).</li>
+  <li>Déclarer ce total sur <a href="https://www.autoentrepreneur.urssaf.fr">autoentrepreneur.urssaf.fr</a> avant la date limite, même si c'est 0 €. Le paiement des cotisations se fait au même moment.</li>
+  <li>Ranger les factures d'achats du mois et compléter le registre des achats.</li>
+  <li>Vérifier que les virements Stripe et PayPal arrivent bien sur le compte pro.</li>
+</ol>
+<div class="box"><b>Bon à savoir</b> : Stripe verse l'argent sur le compte bancaire quelques jours après chaque vente, PayPal le garde sur le compte PayPal jusqu'à ce qu'on le transfère (à faire régulièrement). Dans les deux cas, c'est la date de paiement par le client qui compte pour l'URSSAF.</div>
+
+<h2>5. Chaque année</h2>
+<ul>
+  <li>En janvier : vérifier les nouveaux taux et plafonds sur le site de l'URSSAF, et revoir les prix avec le <a href="prix.html">calculateur</a>.</li>
+  <li>Au printemps : reporter le chiffre d'affaires de l'année dans la déclaration de revenus (case des micro-entrepreneurs, même avec le versement libératoire).</li>
+  <li>Faire le point avec Dorian : sauvegardes du site, nom de domaine à renouveler, mises à jour.</li>
+</ul>
+
+<h2>6. Qui fait quoi</h2>
+<table>
+  <tr><th>Kat</th><th>Dorian</th></tr>
+  <tr><td>Créations, photos, prix, stock<br>Commandes, colis, retours, remboursements<br>Messages, lettre d'information, réseaux sociaux<br>Déclarations URSSAF, registres</td>
+      <td>Hébergement, nom de domaine, sauvegardes<br>Comptes techniques Stripe/PayPal (clés), envoi des e-mails<br>Infos légales du site (nom, SIRET, médiateur…)<br>Frais de port et délais affichés</td></tr>
+</table>
+</main>
+</body>
+</html>
